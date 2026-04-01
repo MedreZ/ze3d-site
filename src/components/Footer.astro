@@ -1,0 +1,417 @@
+---
+/**
+ * Footer.astro — Pied de page ZE3D
+ * Footer sombre 3 colonnes : Identité / Navigation / Contact
+ * Fond sombre conservé — typographie mise à jour vers DM Sans
+ */
+
+const navLinks = [
+  { label: 'Accueil',      href: '/'            },
+  { label: 'Prestations',  href: '/prestations'  },
+  { label: 'Réalisations', href: '/realisations' },
+  { label: 'À propos',     href: '/a-propos'     },
+  { label: 'Contact',      href: '/contact'      },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer" aria-label="Pied de page">
+
+  <div class="footer-body">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- ─── Colonne 1 : Identité ZE3D ─────────────────────── -->
+        <div class="footer-col footer-col--brand">
+          <div class="footer-brand-inner">
+
+            <a href="/" class="footer-logo" aria-label="ZE3D — Retour à l'accueil">
+              <img
+                src="/logo-fond-fonce.png"
+                alt="ZE3D"
+                class="footer-logo-img"
+                width="140"
+                height="240"
+              />
+            </a>
+
+            <div class="footer-brand-text">
+              <p class="footer-tagline">
+                <span class="footer-tagline-item">Scan</span>
+                <span class="footer-tagline-sep" aria-hidden="true">·</span>
+                <span class="footer-tagline-item">BIM</span>
+                <span class="footer-tagline-sep" aria-hidden="true">·</span>
+                <span class="footer-tagline-item">Visualisation</span>
+              </p>
+
+              <p class="footer-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Perpignan, Occitanie
+              </p>
+
+              <p class="footer-description">
+                Spécialiste du scan 3D, modélisation BIM et visualisation architecturale
+                pour les professionnels de la construction et de l'immobilier.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── Colonne 2 : Navigation rapide ─────────────────── -->
+        <div class="footer-col footer-col--nav">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul class="footer-nav-list" role="list">
+            {navLinks.map(link => (
+              <li>
+                <a href={link.href} class="footer-nav-link">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- ─── Colonne 3 : Contact ────────────────────────────── -->
+        <div class="footer-col footer-col--contact">
+          <h3 class="footer-col-title">Contact</h3>
+          <ul class="footer-contact-list" role="list">
+
+            <li class="footer-contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <a href="mailto:contact@ze3d.fr" class="footer-contact-link">
+                contact@ze3d.fr
+              </a>
+            </li>
+
+            <li class="footer-contact-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span class="footer-contact-text">
+                Perpignan (66)<br/>
+                <span class="footer-contact-sub">Pyrénées-Orientales, Occitanie</span>
+              </span>
+            </li>
+
+          </ul>
+
+          <a href="/contact" class="btn-primary footer-cta">
+            Nous contacter
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Barre de copyright ──────────────────────────────── -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copyright">
+          &copy; {year} ZE3D &mdash; Tous droits réservés
+        </p>
+        <p class="footer-credits">
+          Perpignan, Occitanie &nbsp;|&nbsp; Scan 3D &bull; BIM &bull; Visualisation
+        </p>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+<style>
+  /* ============================================================
+     Footer — Styles (fond sombre conservé, DM Sans)
+     ============================================================ */
+
+  .footer {
+    background-color: var(--color-footer-bg, #1A2530);
+    color:            #C8CDD4;    position:         relative;
+    overflow:         hidden;
+  }
+
+  /* Texture grille subtile */
+  .footer::before {
+    content:  '';
+    position: absolute;
+    inset:    0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events:  none;
+    z-index:         0;
+  }
+
+  .footer-body,
+  .footer-bottom {
+    position: relative;
+    z-index:  1;
+  }
+
+  .footer-body {
+    padding: 80px 0 48px;
+  }
+
+  /* Grille 3 colonnes */
+  .footer-grid {
+    display:               grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap:                   32px 48px;
+    align-items:           start;
+  }
+
+  /* Titres de colonnes */
+  .footer-col-title {
+    font-family:    var(--font-body, 'DM Sans', sans-serif);
+    font-size:      0.7rem;
+    font-weight:    500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color:          #4A6580;
+    margin-bottom:  20px;
+  }
+
+  /* Colonne 1 : Brand */
+  .footer-brand-inner {
+    display:     flex;
+    align-items: flex-start;
+    gap:         24px;
+  }
+
+  .footer-brand-text {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .footer-logo {
+    display:         inline-flex;
+    align-items:     flex-start;
+    text-decoration: none;
+    flex-shrink:     0;
+  }
+
+  .footer-logo-img {
+    height:    120px;
+    width:     auto;
+    display:   block;
+    transition: opacity 200ms ease;
+  }
+
+  .footer-logo:hover .footer-logo-img {
+    opacity: 0.85;
+  }
+
+  .footer-tagline {
+    display:        flex;
+    align-items:    center;
+    gap:            8px;
+    font-family:    var(--font-body, 'DM Sans', sans-serif);
+    font-size:      0.75rem;
+    font-weight:    500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color:          #4A6580;
+    margin-bottom:  10px;
+  }
+
+  .footer-tagline-sep {
+    color:     rgba(74,101,128,0.5);
+    font-size: 1.1em;
+  }
+
+  .footer-location {
+    display:       flex;
+    align-items:   center;
+    gap:           8px;
+    font-family:   var(--font-body, 'DM Sans', sans-serif);
+    font-size:     0.875rem;
+    color:         rgba(200,208,212,0.65);
+    margin-bottom: 16px;
+  }
+
+  .footer-location svg {
+    flex-shrink: 0;
+    color:       rgba(74,101,128,0.7);
+  }
+
+  .footer-description {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size:   0.875rem;
+    line-height: 1.7;
+    color:       rgba(200,208,212,0.55);
+    max-width:   300px;
+  }
+
+  /* Colonne 2 : Navigation */
+  .footer-nav-list {
+    list-style:     none;
+    padding:        0;
+    margin:         0;
+    display:        flex;
+    flex-direction: column;
+    gap:            2px;
+  }
+
+  .footer-nav-link {
+    display:         flex;
+    align-items:     center;
+    gap:             8px;
+    padding:         5px 0;
+    font-family:     var(--font-body, 'DM Sans', sans-serif);
+    font-size:       0.875rem;
+    font-weight:     400;
+    color:           #C8C8C0;
+    text-decoration: none;
+    transition:      color 150ms ease, gap 150ms ease;
+  }
+
+  .footer-nav-link svg {
+    flex-shrink: 0;
+    color:       #4A6580;
+    opacity:     0.5;
+    transition:  opacity 150ms ease, transform 150ms ease;
+  }
+
+  .footer-nav-link:hover {
+    color: #FFFFFF;
+    gap:   12px;
+  }
+
+  .footer-nav-link:hover svg {
+    opacity:   1;
+    transform: translateX(2px);
+  }
+
+  /* Colonne 3 : Contact */
+  .footer-contact-list {
+    list-style:     none;
+    padding:        0;
+    margin:         0 0 24px;
+    display:        flex;
+    flex-direction: column;
+    gap:            16px;
+  }
+
+  .footer-contact-item {
+    display:     flex;
+    align-items: flex-start;
+    gap:         12px;
+  }
+
+  .footer-contact-item svg {
+    flex-shrink: 0;
+    margin-top:  2px;
+    color:       rgba(74,101,128,0.7);
+  }
+
+  .footer-contact-link {
+    font-family:     var(--font-body, 'DM Sans', sans-serif);
+    font-size:       0.875rem;
+    font-weight:     400;
+    color:           #C8C8C0;
+    text-decoration: none;
+    transition:      color 150ms ease;
+  }
+
+  .footer-contact-link:hover {
+    color: #4A6580;
+  }
+
+  .footer-contact-text {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size:   0.875rem;
+    font-weight: 400;
+    color:       #C8C8C0;
+    line-height: 1.5;
+  }
+
+  .footer-contact-sub {
+    font-size: 0.75rem;
+    color:     rgba(200,208,212,0.5);
+  }
+
+  .footer-cta {
+    font-size: 0.8rem;
+    height:    40px;
+    padding:   0 18px;
+  }
+
+  /* Barre de copyright */
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding:    16px 0;
+  }
+
+  .footer-bottom-inner {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    flex-wrap:       wrap;
+    gap:             8px;
+  }
+
+  .footer-copyright {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size:   0.75rem;
+    color:       rgba(200,208,212,0.4);
+    margin:      0;
+  }
+
+  .footer-credits {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size:   0.75rem;
+    color:       rgba(200,208,212,0.3);
+    margin:      0;
+  }
+
+  /* ============================================================
+     Responsive
+     ============================================================ */
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-col--brand {
+      grid-column: 1 / -1;
+    }
+
+    .footer-description {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-brand-inner {
+      flex-direction: column;
+      align-items:    flex-start;
+      gap:            16px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom-inner {
+      flex-direction: column;
+      align-items:    flex-start;
+      gap:            4px;
+    }
+  }
+</style>

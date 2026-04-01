@@ -1,0 +1,255 @@
+/* ============================================================
+   ZE3D — Styles globaux
+   Refonte 2025 — Typographie DM Sans + Nasalization
+   ============================================================ */
+
+/* --- Google Fonts : DM Sans uniquement (@import en premier) --- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400;1,9..40,700&display=swap');
+
+/* --- Nasalization — police exclusive pour la marque ZE3D --- */
+@font-face {
+  font-family: 'Nasalization';
+  src: url('/fonts/Nasalization.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Variables CSS --- */
+:root {
+  /* Couleurs principales — palette fond clair */
+  --color-bg:           #FFFFFF;
+  --color-bg-alt:       #F3F5F7;
+  --color-text:         #1A2530;
+  --color-text-light:   rgba(26,37,48,0.55);
+  --color-accent:       #4A6580;
+  --color-accent-light: rgba(74,101,128,0.08);
+  --color-border:       rgba(26,37,48,0.08);
+  --color-footer-bg:    #1A2530;
+
+  /* Alias pour compatibilité avec composants existants */
+  --color-accent-or:    #4A6580;
+  --color-white:        #FFFFFF;
+
+  /* Typographie — DM Sans pour tout */
+  --font-body:          'DM Sans', system-ui, sans-serif;
+  --font-titre:         'DM Sans', system-ui, sans-serif;
+
+  /* Tailles de police */
+  --text-xs:    0.75rem;
+  --text-sm:    0.875rem;
+  --text-base:  1.0625rem;
+  --text-lg:    1.125rem;
+  --text-xl:    1.25rem;
+  --text-2xl:   1.5rem;
+  --text-3xl:   1.875rem;
+  --text-4xl:   2.25rem;
+  --text-5xl:   3rem;
+  --text-6xl:   3.75rem;
+
+  /* Espacements */
+  --space-1:    0.25rem;
+  --space-2:    0.5rem;
+  --space-3:    0.75rem;
+  --space-4:    1rem;
+  --space-6:    1.5rem;
+  --space-8:    2rem;
+  --space-10:   2.5rem;
+  --space-12:   3rem;
+  --space-16:   4rem;
+  --space-20:   5rem;
+  --space-24:   6rem;
+
+  /* Bordures */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   1rem;
+  --radius-full: 9999px;
+
+  /* Ombres */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 2px 8px rgba(0, 0, 0, 0.05), 0 20px 40px rgba(0, 0, 0, 0.03);
+  --shadow-lg:  0 4px 16px rgba(0, 0, 0, 0.08), 0 24px 48px rgba(0, 0, 0, 0.06);
+
+  /* Transitions */
+  --transition-fast:  150ms ease;
+  --transition-base:  250ms ease;
+  --transition-slow:  400ms ease;
+
+  /* Navigation */
+  --nav-height: 76px;
+}
+
+/* --- Reset minimal --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family:       var(--font-body);
+  font-size:         var(--text-base);
+  line-height:       1.75;
+  color:             var(--color-text);
+  background-color:  var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Typographie de base --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family:  var(--font-titre);
+  line-height:  1.15;
+  font-weight:  700;
+  color:        var(--color-text);
+}
+
+h1 { font-size: var(--text-5xl); font-weight: 700; }
+h2 { font-size: var(--text-4xl); font-weight: 700; }
+h3 { font-size: var(--text-3xl); font-weight: 700; }
+h4 { font-size: var(--text-2xl); }
+h5 { font-size: var(--text-xl); }
+h6 { font-size: var(--text-lg); }
+
+p {
+  margin-bottom: var(--space-4);
+}
+
+a {
+  color:           var(--color-accent);
+  text-decoration: none;
+  transition:      color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-text);
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- Classe marque ZE3D --- */
+.brand-ze3d {
+  font-family:    'Nasalization', sans-serif;
+  line-height:    1.5;
+  letter-spacing: 0.05em;
+}
+
+/* --- Classes utilitaires --- */
+
+/* Conteneur centré principal */
+.container {
+  width:     100%;
+  max-width: 1200px;
+  margin:    0 auto;
+  padding:   0 var(--space-6);
+}
+
+/* Étiquette de section */
+.section-label {
+  display:        block;
+  font-family:    var(--font-body);
+  font-size:      0.7rem;
+  font-weight:    500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color:          var(--color-accent);
+  margin-bottom:  var(--space-3);
+}
+
+/* Bouton principal — fond cuivre */
+.btn-primary {
+  display:          inline-flex;
+  align-items:      center;
+  gap:              var(--space-2);
+  height:           50px;
+  padding:          0 28px;
+  font-family:      var(--font-body);
+  font-size:        var(--text-sm);
+  font-weight:      500;
+  color:            #FFFFFF;
+  background-color: var(--color-accent);
+  border:           1.5px solid var(--color-accent);
+  border-radius:    6px;
+  cursor:           pointer;
+  text-decoration:  none;
+  transition:       background-color var(--transition-base),
+                    color var(--transition-base),
+                    border-color var(--transition-base);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color:            var(--color-accent);
+  border-color:     var(--color-accent);
+}
+
+/* Bouton secondaire — contour */
+.btn-outline {
+  display:          inline-flex;
+  align-items:      center;
+  gap:              var(--space-2);
+  height:           50px;
+  padding:          0 28px;
+  font-family:      var(--font-body);
+  font-size:        var(--text-sm);
+  font-weight:      500;
+  color:            var(--color-text);
+  background-color: transparent;
+  border:           1.5px solid var(--color-text);
+  border-radius:    6px;
+  cursor:           pointer;
+  text-decoration:  none;
+  transition:       background-color var(--transition-base),
+                    color var(--transition-base),
+                    border-color var(--transition-base);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-text);
+  color:            #FFFFFF;
+}
+
+/* Section spacing */
+.section {
+  padding: 100px 0;
+}
+
+/* Texte centré */
+.text-center {
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .section {
+    padding: var(--space-16) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+}

@@ -1,0 +1,91 @@
+---
+/**
+ * Layout.astro — Layout principal ZE3D
+ * Inclut : Navigation, contenu (slot), Footer
+ *
+ * Props :
+ *   title       — Titre de la page (balise <title>)
+ *   description — Meta description SEO (optionnel)
+ *   image       — Image Open Graph (optionnel, chemin absolu)
+ */
+
+import Navigation from '../components/Navigation.astro';
+import Footer     from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title:        string;
+  description?: string;
+  image?:       string;
+}
+
+const {
+  title,
+  description = 'ZE3D — Spécialiste du scan 3D, modélisation BIM et visualisation architecturale à Perpignan, Occitanie.',
+  image       = '/og-default.jpg',
+} = Astro.props;
+
+/* URL canonique */
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://ze3d.fr');
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- ── Méta de base ─────────────────────────────────────── -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- ── SEO ──────────────────────────────────────────────── -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- ── Open Graph / Twitter Card ───────────────────────── -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={image} />
+    <meta property="og:locale"      content="fr_FR" />
+    <meta property="og:site_name"   content="ZE3D" />
+
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={image} />
+
+    <!-- ── Couleur thème navigateur mobile ──────────────────── -->
+    <meta name="theme-color" content="#1A1A2E" />
+  </head>
+
+  <body>
+    <!-- Navigation fixe — toujours visible -->
+    <Navigation />
+
+    <!-- Décalage pour compenser la nav fixe -->
+    <div class="layout-content">
+      <slot />
+    </div>
+
+    <!-- Footer sombre -->
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  /* ============================================================
+     Styles globaux injectés par le layout
+     ============================================================ */
+
+  /* Décale le contenu pour ne pas être masqué par la nav fixe */
+  .layout-content {
+    padding-top: var(--nav-height, 72px);
+    min-height:  calc(100vh - var(--nav-height, 72px));
+  }
+</style>

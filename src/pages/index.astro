@@ -1,17 +1,1211 @@
 ---
-
+/**
+ * index.astro — Page d'accueil ZE3D — Refonte fond clair 2025
+ * Sections : Hero · Prestations · À propos · Stats · Réalisations · CTA final
+ */
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="ZE3D — Scan 3D, BIM & Visualisation | Perpignan, Occitanie"
+  description="ZE3D, spécialiste du scan 3D, modélisation BIM et visualisation architecturale à Perpignan. 20 ans d'expertise au service des professionnels de la construction en Occitanie."
+>
+  <main>
+
+    <!-- ============================================================
+         1. HERO SECTION — fond blanc
+         ============================================================ -->
+    <section class="hero" aria-label="Introduction ZE3D">
+      <div class="container hero-inner">
+
+        <!-- Colonne gauche : texte (52%) -->
+        <div class="hero-content">
+          <span class="hero-badge">Relevé · Maquette Numérique · Rendus</span>
+
+          <h1 class="hero-title">
+            Votre projet,<br />
+            modélisé avec<br />
+            <em class="hero-accent">expertise.</em>
+          </h1>
+
+          <p class="hero-subtitle">
+            Spécialiste BIM avec 20 ans d'expérience, je vous accompagne dans la réalisation
+            de vos Maquettes Numériques, depuis le relevé sur site jusqu'aux rendus visuels.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/contact" class="btn-primary">
+              Demander un devis →
+            </a>
+            <a href="/prestations" class="btn-outline">
+              Nos prestations
+            </a>
+          </div>
+
+          <p class="hero-trust">
+            20 ans d'expérience · Perpignan / France · Réponse sous 48h
+          </p>
+        </div>
+
+        <!-- Colonne droite : photo (48%) -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-image-wrap">
+            <img
+              src="https://picsum.photos/seed/bim3d/800/900"
+              alt="Modélisation BIM d'un bâtiment"
+              class="hero-image"
+              loading="eager"
+              width="800"
+              height="900"
+            />
+            <div class="hero-image-line" aria-hidden="true"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-separator" aria-hidden="true"></div>
+    </section>
+
+
+    <!-- ============================================================
+         2. NOS PRESTATIONS — fond #F3F5F7
+         ============================================================ -->
+    <section class="section prestations-section" id="prestations" aria-label="Nos prestations">
+      <div class="container">
+
+        <div class="section-intro text-center">
+          <span class="section-label">NOS PRESTATIONS</span>
+          <h2 class="section-title">3 pôles d'expertise complémentaires</h2>
+          <p class="section-subtitle">
+            De la capture terrain à la maquette numérique — une expertise complète, un seul interlocuteur.
+          </p>
+        </div>
+
+        <div class="prestations-grid">
+
+          <!-- Carte 1 — Capture & Relevé -->
+          <article class="prestation-card">
+            <span class="card-number">01</span>
+            <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="2" y="8" width="20" height="8" rx="2"/>
+              <line x1="6" y1="8" x2="6" y2="11"/>
+              <line x1="9" y1="8" x2="9" y2="10"/>
+              <line x1="12" y1="8" x2="12" y2="11"/>
+              <line x1="15" y1="8" x2="15" y2="10"/>
+              <line x1="18" y1="8" x2="18" y2="11"/>
+            </svg>
+            <h3 class="card-title">Capture & Relevé numérique</h3>
+            <p class="card-text">
+              Relevé terrain par laser scanner dernière génération. Nuages de points, panoramas 360° et métrés de précision.
+            </p>
+            <hr class="card-separator" />
+            <p class="card-livrables-label">LIVRABLES :</p>
+            <div class="card-badges">
+              <span class="badge">Nuage de points</span>
+              <span class="badge">Panoramas 360°</span>
+              <span class="badge">Autres</span>
+            </div>
+            <a href="/prestations#scan" class="card-link">En savoir plus →</a>
+          </article>
+
+          <!-- Carte 2 — Modélisation BIM -->
+          <article class="prestation-card">
+            <span class="card-number">02</span>
+            <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+            <h3 class="card-title">Modélisation 3D & BIM</h3>
+            <p class="card-text">
+              Maquettes numériques Revit à partir de nuages de points, plans DAO ou autres sources. Niveau de détail LOD 100 à 400.
+            </p>
+            <hr class="card-separator" />
+            <p class="card-livrables-label">LIVRABLES :</p>
+            <div class="card-badges">
+              <span class="badge">Maquette Revit</span>
+              <span class="badge">Export IFC</span>
+              <span class="badge">Plans DWG</span>
+              <span class="badge">Plans PDF</span>
+              <span class="badge">Autres</span>
+            </div>
+            <a href="/prestations#bim" class="card-link">En savoir plus →</a>
+          </article>
+
+          <!-- Carte 3 — Rendu & Visualisation -->
+          <article class="prestation-card">
+            <span class="card-number">03</span>
+            <svg class="card-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <h3 class="card-title">Rendu & Visualisation</h3>
+            <p class="card-text">
+              Rendus 3D photoréalistes, vidéos d'architecture et visites virtuelles immersives.
+            </p>
+            <hr class="card-separator" />
+            <p class="card-livrables-label">LIVRABLES :</p>
+            <div class="card-badges">
+              <span class="badge">Rendus 3D</span>
+              <span class="badge">Vidéos</span>
+              <span class="badge">Panoramas 360°</span>
+              <span class="badge">Autres</span>
+            </div>
+            <a href="/prestations#rendu" class="card-link">En savoir plus →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. À PROPOS — fond blanc
+         ============================================================ -->
+    <section class="section apropos-section" id="apropos" aria-label="À propos de ZE3D">
+      <div class="container">
+        <div class="apropos-inner">
+
+          <!-- Colonne gauche : image -->
+          <div class="apropos-image-col">
+            <div class="apropos-image-wrap">
+              <img
+                src="/photo-emmanuel.JPG"
+                alt="Emmanuel Zerdoun — Expert BIM ZE3D"
+                class="apropos-image"
+                loading="lazy"
+                width="600"
+                height="700"
+              />
+              <div class="apropos-badge">
+                <span class="apropos-badge-number">20 ans</span>
+                <span class="apropos-badge-label">d'expérience</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Colonne droite : texte -->
+          <div class="apropos-text-col">
+            <span class="section-label">À PROPOS</span>
+            <h2 class="apropos-title">20 ans d'expertise BIM<br />au service de vos projets</h2>
+
+            <p class="apropos-para">
+              Dessinateur projeteur et BIM Coordinateur pendant 20 ans dans un cabinet de maîtrise d'œuvre parisien,
+              je crée aujourd'hui <span class="brand-ze3d">ZE3D</span> pour mettre cette expertise au service
+              des professionnels du BTP en Occitanie et dans toute la France.
+            </p>
+            <p class="apropos-para">
+              Basé à Perpignan, j'interviens sur site pour les relevés laser en région Occitanie
+              et accompagne des projets de modélisation et de visualisation sur toute la France.
+            </p>
+
+            <ul class="apropos-list">
+              <li class="apropos-list-item">
+                <span class="check-icon" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+                <span>Revit Expert (20 ans de pratique)</span>
+              </li>
+              <li class="apropos-list-item">
+                <span class="check-icon" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+                <span>Laser scanner dernière génération</span>
+              </li>
+              <li class="apropos-list-item">
+                <span class="check-icon" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+                <span>BIM Modeleur</span>
+              </li>
+              <li class="apropos-list-item">
+                <span class="check-icon" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+                <span>Interlocuteur unique de A à Z</span>
+              </li>
+            </ul>
+
+            <a href="/a-propos" class="btn-primary">En savoir plus →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. STATS — fond #F3F5F7
+         ============================================================ -->
+    <section class="stats-section" aria-label="Chiffres clés ZE3D">
+      <div class="container">
+        <div class="stats-grid">
+
+          <div class="stat-item">
+            <span class="stat-value">20</span>
+            <span class="stat-primary">ANS</span>
+            <span class="stat-secondary">d'expérience</span>
+          </div>
+
+          <div class="stat-divider" aria-hidden="true"></div>
+
+          <div class="stat-item">
+            <span class="stat-value">3</span>
+            <span class="stat-primary">PÔLES</span>
+            <span class="stat-secondary">de prestations</span>
+          </div>
+
+          <div class="stat-divider" aria-hidden="true"></div>
+
+          <div class="stat-item">
+            <span class="stat-value">Perpignan</span>
+            <span class="stat-primary">ZONE</span>
+            <span class="stat-secondary">& France entière</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         5. RÉALISATIONS — fond blanc
+         ============================================================ -->
+    <section class="section realisations-section" id="realisations" aria-label="Nos réalisations">
+      <div class="container">
+
+        <div class="section-intro text-center">
+          <span class="section-label">NOS RÉALISATIONS</span>
+          <h2 class="section-title">Quelques projets récents</h2>
+        </div>
+
+        <div class="realisations-grid">
+
+          <div class="realisation-item realisation-item--1">
+            <div class="realisation-inner">
+              <img src="https://picsum.photos/seed/project1/600/400" alt="Projet scan 3D" loading="lazy" width="600" height="400" />
+              <div class="realisation-overlay">
+                <span class="realisation-category">SCAN 3D</span>
+                <p class="realisation-title">Relevé laser bâtiment industriel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="realisation-item realisation-item--2">
+            <div class="realisation-inner">
+              <img src="https://picsum.photos/seed/project2/600/550" alt="Projet modélisation BIM" loading="lazy" width="600" height="550" />
+              <div class="realisation-overlay">
+                <span class="realisation-category">MODÉLISATION BIM</span>
+                <p class="realisation-title">Maquette Revit LOD 350 — École primaire</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="realisation-item realisation-item--3">
+            <div class="realisation-inner">
+              <img src="https://picsum.photos/seed/project3/600/400" alt="Rendu architectural" loading="lazy" width="600" height="400" />
+              <div class="realisation-overlay">
+                <span class="realisation-category">RENDU ARCH.</span>
+                <p class="realisation-title">Visualisation villa contemporaine</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="realisation-item realisation-item--4">
+            <div class="realisation-inner">
+              <img src="https://picsum.photos/seed/project4/600/400" alt="Projet scan 3D" loading="lazy" width="600" height="400" />
+              <div class="realisation-overlay">
+                <span class="realisation-category">SCAN 3D</span>
+                <p class="realisation-title">Relevé patrimoine historique</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="realisation-item realisation-item--5">
+            <div class="realisation-inner">
+              <img src="https://picsum.photos/seed/project5/600/550" alt="BIM LOD 400" loading="lazy" width="600" height="550" />
+              <div class="realisation-overlay">
+                <span class="realisation-category">BIM LOD 400</span>
+                <p class="realisation-title">Coordination BIM résidence R+4</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="realisation-item realisation-item--6">
+            <div class="realisation-inner">
+              <img src="https://picsum.photos/seed/project6/600/400" alt="Visite virtuelle VR" loading="lazy" width="600" height="400" />
+              <div class="realisation-overlay">
+                <span class="realisation-category">VISITE VR</span>
+                <p class="realisation-title">Visite virtuelle appartement témoin</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="realisations-cta text-center">
+          <a href="/realisations" class="btn-outline">Voir toutes les réalisations →</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         6. CTA FINAL — fond #F3F5F7
+         ============================================================ -->
+    <section class="cta-section" aria-label="Demande de contact">
+      <div class="container cta-inner">
+
+        <!-- Gauche : texte -->
+        <div class="cta-text-col">
+          <span class="section-label">CONTACTEZ-NOUS</span>
+          <h2 class="cta-title">
+            Un projet de relevé<br />
+            ou de modélisation ?
+          </h2>
+          <p class="cta-text">
+            Contactez-moi pour discuter de vos besoins et obtenir un devis personnalisé sous 48h.
+          </p>
+        </div>
+
+        <!-- Droite : cartes infos + CTA -->
+        <div class="cta-info-col">
+          <div class="cta-info-cards">
+
+            <div class="cta-info-card">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="cta-info-icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <div>
+                <span class="cta-info-label">Adresse</span>
+                <span class="cta-info-value">Perpignan (66), Occitanie</span>
+              </div>
+            </div>
+
+            <div class="cta-info-card">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="cta-info-icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <div>
+                <span class="cta-info-label">Email</span>
+                <a href="mailto:contact@ze3d.fr" class="cta-info-value cta-info-link">contact@ze3d.fr</a>
+              </div>
+            </div>
+
+            <div class="cta-info-card">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="cta-info-icon">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <div>
+                <span class="cta-info-label">Zone</span>
+                <span class="cta-info-value">Toute la France</span>
+              </div>
+            </div>
+
+          </div>
+
+          <a href="/contact" class="btn-primary cta-btn">
+            Demander un devis gratuit →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  /* ============================================================
+     INDEX — Styles spécifiques à la page d'accueil
+     ============================================================ */
+
+  /* ─── 1. HERO ──────────────────────────────────────────────── */
+
+  .hero {
+    position:         relative;
+    min-height:       90vh;
+    display:          flex;
+    flex-direction:   column;
+    background-color: #FFFFFF;
+    padding-top:      var(--nav-height, 76px);
+  }
+
+  .hero-inner {
+    display:               grid;
+    grid-template-columns: 52% 48%;
+    align-items:           stretch;
+    gap:                   0;
+    flex:                  1;
+    min-height:            calc(90vh - var(--nav-height, 76px));
+  }
+
+  /* Colonne texte */
+  .hero-content {
+    display:        flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top:    60px;
+    padding-bottom: 80px;
+    padding-right:  48px;
+  }
+
+  /* Badge pill */
+  .hero-badge {
+    display:        inline-block;
+    background:     rgba(74,101,128,0.09);
+    border:         1px solid rgba(74,101,128,0.2);
+    border-radius:  100px;
+    padding:        5px 14px;
+    font-family:    var(--font-body);
+    font-size:      0.65rem;
+    font-weight:    500;
+    letter-spacing: 0.18em;
+    color:          #4A6580;
+    text-transform: uppercase;
+    margin-bottom:  28px;
+    align-self:     flex-start;
+  }
+
+  /* H1 */
+  .hero-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(2.8rem, 5vw, 4.2rem);
+    font-weight:   700;
+    line-height:   1.08;
+    color:         #1A2530;
+    margin-bottom: 24px;
+  }
+
+  .hero-accent {
+    color:      #4A6580;
+    font-style: italic;
+  }
+
+  /* Sous-titre */
+  .hero-subtitle {
+    font-family:   var(--font-body);
+    font-size:     1.0625rem;
+    font-weight:   400;
+    line-height:   1.8;
+    color:         rgba(26,37,48,0.6);
+    max-width:     440px;
+    margin-bottom: 40px;
+  }
+
+  /* Boutons */
+  .hero-actions {
+    display:     flex;
+    gap:         12px;
+    flex-wrap:   wrap;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  /* Ligne de confiance */
+  .hero-trust {
+    font-family: var(--font-body);
+    font-size:   0.8rem;
+    font-weight: 400;
+    color:       rgba(26,37,48,0.45);
+    margin:      0;
+  }
+
+  /* Colonne photo */
+  .hero-visual {
+    position:   relative;
+    overflow:   hidden;
+  }
+
+  .hero-image-wrap {
+    position:   relative;
+    height:     100%;
+    min-height: 500px;
+  }
+
+  .hero-image {
+    width:         100%;
+    height:        100%;
+    object-fit:    cover;
+    display:       block;
+    border-radius: 4px 0 0 4px;
+  }
+
+  /* Ligne décorative verticale cuivre */
+  .hero-image-line {
+    position:   absolute;
+    bottom:     40px;
+    left:       24px;
+    width:      2px;
+    height:     60px;
+    background: #4A6580;
+    z-index:    2;
+  }
+
+  /* Séparateur bas de hero */
+  .hero-separator {
+    height:           1px;
+    background-color: rgba(26,37,48,0.06);
+    margin:           0;
+  }
+
+
+  /* ─── 2. PRESTATIONS ───────────────────────────────────────── */
+
+  .prestations-section {
+    background-color: #F3F5F7;
+  }
+
+  .section-intro {
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(2rem, 3vw, 2.6rem);
+    font-weight:   700;
+    color:         #1A2530;
+    margin-bottom: 16px;
+    margin-top:    8px;
+  }
+
+  .section-subtitle {
+    font-family: var(--font-body);
+    font-size:   1rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color:       rgba(26,37,48,0.55);
+    max-width:   560px;
+    margin:      0 auto;
+  }
+
+  .prestations-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   20px;
+  }
+
+  /* Carte prestation */
+  .prestation-card {
+    background:    #FFFFFF;
+    border:        1px solid rgba(26,37,48,0.07);
+    border-radius: 8px;
+    padding:       36px 32px;
+    display:       flex;
+    flex-direction: column;
+    transition:    transform 250ms ease,
+                   box-shadow 250ms ease;
+  }
+
+  .prestation-card:hover {
+    box-shadow: 0 0 0 2px #4A6580;
+    transform:  translateY(-4px);
+  }
+
+  .card-number {
+    font-family:    var(--font-body);
+    font-size:      0.65rem;
+    font-weight:    500;
+    letter-spacing: 0.18em;
+    color:          #4A6580;
+    text-transform: uppercase;
+    display:        block;
+  }
+
+  .card-icon {
+    color:       #4A6580;
+    margin:      14px 0;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-family:   var(--font-titre);
+    font-size:     1.15rem;
+    font-weight:   700;
+    color:         #1A2530;
+    margin-bottom: 10px;
+    line-height:   1.3;
+  }
+
+  .card-text {
+    font-family: var(--font-body);
+    font-size:   0.9375rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color:       rgba(26,37,48,0.55);
+    margin-bottom: 0;
+  }
+
+  .card-separator {
+    border:     none;
+    border-top: 1px solid rgba(26,37,48,0.07);
+    margin:     20px 0;
+  }
+
+  .card-livrables-label {
+    font-family:    var(--font-body);
+    font-size:      0.6rem;
+    font-weight:    500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color:          rgba(26,37,48,0.4);
+    margin-bottom:  8px;
+  }
+
+  .card-badges {
+    display:    flex;
+    flex-wrap:  wrap;
+    gap:        6px;
+    margin-bottom: 20px;
+  }
+
+  .badge {
+    background:     rgba(74,101,128,0.07);
+    border:         1px solid rgba(74,101,128,0.15);
+    font-family:    var(--font-body);
+    font-size:      0.72rem;
+    font-weight:    500;
+    color:          #4A6580;
+    border-radius:  4px;
+    padding:        2px 9px;
+    display:        inline-block;
+  }
+
+  .card-link {
+    font-family:     var(--font-body);
+    font-size:       0.875rem;
+    font-weight:     500;
+    color:           #4A6580;
+    text-decoration: none;
+    border-bottom:   1px solid transparent;
+    padding-bottom:  2px;
+    margin-top:      auto;
+    display:         inline-block;
+    transition:      border-bottom-color 200ms ease;
+  }
+
+  .card-link:hover {
+    border-bottom-color: #4A6580;
+    color:               #4A6580;
+  }
+
+
+  /* ─── 3. À PROPOS ──────────────────────────────────────────── */
+
+  .apropos-section {
+    background-color: #FFFFFF;
+  }
+
+  .apropos-inner {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   80px;
+    align-items:           center;
+  }
+
+  .apropos-image-col {
+    position: relative;
+  }
+
+  .apropos-image-wrap {
+    position: relative;
+  }
+
+  .apropos-image-wrap::before {
+    content:       '';
+    position:      absolute;
+    inset:         -14px;
+    border:        1.5px solid rgba(74,101,128,0.3);
+    border-radius: 8px;
+    z-index:       0;
+  }
+
+  .apropos-image {
+    width:         100%;
+    height:        auto;
+    display:       block;
+    border-radius: 6px;
+    position:      relative;
+    z-index:       1;
+  }
+
+  .apropos-badge {
+    position:       absolute;
+    bottom:         -16px;
+    right:          -16px;
+    background:     #1A2530;
+    border-radius:  6px;
+    padding:        14px 18px;
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            2px;
+    z-index:        2;
+  }
+
+  .apropos-badge-number {
+    font-family: var(--font-titre);
+    font-size:   1.3rem;
+    font-weight: 700;
+    color:       #4A6580;
+    line-height: 1;
+  }
+
+  .apropos-badge-label {
+    font-family:    var(--font-body);
+    font-size:      0.6rem;
+    font-weight:    500;
+    letter-spacing: 0.08em;
+    color:          rgba(255,255,255,0.55);
+    text-transform: none;
+  }
+
+  .apropos-text-col {
+    padding-left: 8px;
+  }
+
+  .apropos-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(1.7rem, 2.8vw, 2.3rem);
+    font-weight:   700;
+    color:         #1A2530;
+    margin-bottom: 24px;
+    margin-top:    8px;
+    line-height:   1.2;
+  }
+
+  .apropos-para {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    font-weight:   400;
+    line-height:   1.75;
+    color:         rgba(26,37,48,0.7);
+    margin-bottom: 16px;
+  }
+
+  /* Liste avec icônes check */
+  .apropos-list {
+    list-style: none;
+    padding:    0;
+    margin:     28px 0 36px;
+    display:    flex;
+    flex-direction: column;
+    gap:        14px;
+  }
+
+  .apropos-list-item {
+    display:     flex;
+    align-items: center;
+    gap:         12px;
+    font-family: var(--font-body);
+    font-size:   0.9375rem;
+    font-weight: 500;
+    color:       #1A2530;
+  }
+
+  .check-icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           20px;
+    height:          20px;
+    min-width:       20px;
+    background:      #4A6580;
+    border-radius:   50%;
+  }
+
+
+  /* ─── 4. STATS ─────────────────────────────────────────────── */
+
+  .stats-section {
+    background-color: #F3F5F7;
+    padding:          80px 0;
+  }
+
+  .stats-grid {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             0;
+  }
+
+  .stat-item {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            6px;
+    flex:           1;
+    padding:        0 40px;
+    text-align:     center;
+  }
+
+  .stat-divider {
+    width:      1px;
+    height:     80px;
+    background: rgba(26,37,48,0.1);
+    flex-shrink: 0;
+  }
+
+  .stat-value {
+    font-family: var(--font-titre);
+    font-size:   clamp(2.2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color:       #1A2530;
+    line-height: 1;
+  }
+
+  .stat-primary {
+    font-family:    var(--font-body);
+    font-size:      0.65rem;
+    font-weight:    500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color:          #4A6580;
+  }
+
+  .stat-secondary {
+    font-family: var(--font-body);
+    font-size:   0.85rem;
+    font-weight: 400;
+    color:       rgba(26,37,48,0.55);
+  }
+
+
+  /* ─── 5. RÉALISATIONS ──────────────────────────────────────── */
+
+  .realisations-section {
+    background-color: #FFFFFF;
+  }
+
+  .realisations-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   12px;
+    margin-bottom:         48px;
+  }
+
+  .realisation-item {
+    overflow:      hidden;
+    border-radius: 6px;
+    border:        1px solid rgba(26,37,48,0.06);
+  }
+
+  /* Colonne centrale décalée */
+  .realisation-item--2 {
+    grid-column: 2;
+    grid-row:    1 / 3;
+    margin-top:  -40px;
+  }
+
+  .realisation-item--4 {
+    grid-column: 1;
+    grid-row:    2;
+  }
+
+  .realisation-item--5 {
+    grid-column: 3;
+    grid-row:    1 / 3;
+    margin-top:  -40px;
+  }
+
+  .realisation-item--6 {
+    display: none;
+  }
+
+  .realisation-inner {
+    position: relative;
+    overflow: hidden;
+    height:   100%;
+  }
+
+  .realisation-inner img {
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+    display:    block;
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .realisation-inner:hover img {
+    transform: scale(1.04);
+  }
+
+  .realisation-overlay {
+    position:       absolute;
+    inset:          0;
+    background:     linear-gradient(to top, rgba(26,37,48,0.88) 0%, rgba(26,37,48,0.2) 50%, transparent 100%);
+    display:        flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding:        20px;
+    opacity:        0;
+    transition:     opacity 300ms ease;
+  }
+
+  .realisation-inner:hover .realisation-overlay {
+    opacity: 1;
+  }
+
+  .realisation-category {
+    position:       absolute;
+    top:            16px;
+    left:           16px;
+    background:     #4A6580;
+    font-family:    var(--font-body);
+    font-size:      0.6rem;
+    font-weight:    500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color:          white;
+    padding:        4px 10px;
+    border-radius:  3px;
+  }
+
+  .realisation-title {
+    font-family: var(--font-body);
+    font-size:   0.95rem;
+    font-weight: 700;
+    color:       white;
+    margin:      0;
+    transform:   translateY(8px);
+    opacity:     0;
+    transition:  transform 300ms ease, opacity 300ms ease;
+  }
+
+  .realisation-inner:hover .realisation-title {
+    transform: translateY(0);
+    opacity:   1;
+  }
+
+  .realisations-cta {
+    margin-top: 48px;
+  }
+
+
+  /* ─── 6. CTA FINAL ─────────────────────────────────────────── */
+
+  .cta-section {
+    background-color: #F3F5F7;
+    padding:          80px 0;
+  }
+
+  .cta-inner {
+    display:     grid;
+    grid-template-columns: 60% 40%;
+    gap:         60px;
+    align-items: center;
+  }
+
+  .cta-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(1.8rem, 3vw, 2.6rem);
+    font-weight:   700;
+    color:         #1A2530;
+    margin:        12px 0 16px;
+    line-height:   1.2;
+  }
+
+  .cta-text {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    font-weight:   400;
+    line-height:   1.75;
+    color:         rgba(26,37,48,0.65);
+    margin-bottom: 0;
+  }
+
+  /* Cartes d'info */
+  .cta-info-cards {
+    display:        flex;
+    flex-direction: column;
+    gap:            10px;
+    margin-bottom:  20px;
+  }
+
+  .cta-info-card {
+    display:       flex;
+    align-items:   center;
+    gap:           14px;
+    background:    #FFFFFF;
+    border:        1px solid rgba(26,37,48,0.07);
+    border-radius: 6px;
+    padding:       16px 20px;
+  }
+
+  .cta-info-icon {
+    color:       #4A6580;
+    flex-shrink: 0;
+  }
+
+  .cta-info-card > div {
+    display:        flex;
+    flex-direction: column;
+    gap:            2px;
+  }
+
+  .cta-info-label {
+    font-family:    var(--font-body);
+    font-size:      0.65rem;
+    font-weight:    500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color:          rgba(26,37,48,0.4);
+  }
+
+  .cta-info-value {
+    font-family: var(--font-body);
+    font-size:   0.9rem;
+    font-weight: 500;
+    color:       #1A2530;
+  }
+
+  .cta-info-link {
+    color:       #4A6580;
+    text-decoration: none;
+    transition:  color 150ms ease;
+  }
+
+  .cta-info-link:hover {
+    color: #1A2530;
+  }
+
+
+  /* ─── RESPONSIVE 768px ─────────────────────────────────────── */
+
+  @media (max-width: 768px) {
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+      min-height:            auto;
+    }
+
+    .hero-content {
+      padding-right:  0;
+      padding-bottom: 60px;
+    }
+
+    .hero-visual {
+      display: none;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 7vw, 3rem);
+    }
+
+    .section-intro {
+      margin-bottom: 48px;
+    }
+
+    .prestations-grid {
+      grid-template-columns: 1fr;
+      gap:                   16px;
+    }
+
+    .apropos-inner {
+      grid-template-columns: 1fr;
+      gap:                   60px;
+    }
+
+    .apropos-image-col {
+      max-width: 480px;
+      margin:    0 auto;
+    }
+
+    .apropos-badge {
+      bottom: -16px;
+      right:  -12px;
+    }
+
+    .stats-grid {
+      flex-wrap: wrap;
+      gap:       40px;
+    }
+
+    .stat-divider {
+      display: none;
+    }
+
+    .stat-item {
+      width:   calc(50% - 20px);
+      padding: 0 20px;
+    }
+
+    .realisations-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows:    auto;
+    }
+
+    .realisation-item--2,
+    .realisation-item--4,
+    .realisation-item--5 {
+      grid-column: auto;
+      grid-row:    auto;
+      margin-top:  0;
+    }
+
+    .realisation-item--6 {
+      display: block;
+    }
+
+    .cta-inner {
+      grid-template-columns: 1fr;
+      gap:                   40px;
+    }
+  }
+
+  /* ─── RESPONSIVE 480px ─────────────────────────────────────── */
+
+  @media (max-width: 480px) {
+
+    .hero-badge {
+      font-size: 0.55rem;
+      padding:   5px 12px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items:    stretch;
+    }
+
+    .hero-actions .btn-primary,
+    .hero-actions .btn-outline {
+      justify-content: center;
+    }
+
+    .stat-item {
+      width: 100%;
+    }
+
+    .realisations-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .realisation-item--3,
+    .realisation-item--6 {
+      display: none;
+    }
+
+    .cta-title {
+      font-size: 1.9rem;
+    }
+  }
+</style>
