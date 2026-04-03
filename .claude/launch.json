@@ -3,15 +3,17 @@
   "configurations": [
     {
       "name": "ZE3D Dev Server",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "/usr/local/bin/npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 4321
+      "port": 4321,
+      "autoPort": true
     },
     {
       "name": "ZE3D Preview (build)",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "/usr/local/bin/npm",
       "runtimeArgs": ["run", "preview"],
-      "port": 4321
+      "port": 4321,
+      "autoPort": true
     }
   ]
 }

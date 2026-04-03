@@ -1,5 +1,5 @@
 # MEMOIRE PROJET — Site vitrine ZE3D
-# Derniere mise a jour : 3 avril 2026
+# Derniere mise a jour : 3 avril 2026 — Session 2
 
 ---
 
@@ -18,18 +18,21 @@
 
 ## 2. OFFRE — 3 POLES DE PRESTATIONS
 
-### Pole 1 — Capture & Releve numerique
-- Scanner laser 3D, telemetre, metre classique
-- **Livrables :** Nuage de points (RCP, E57, PTX), Panoramas 360
+### Pole 1 — Releve & Capture numerique
+- Releve sur site : techniques traditionnelles (metre, telemetre) ou scanner laser / LiDAR
+- Metres de precision adaptes aux besoins du projet
+- **Livrables :** Nuage de points, RCP, E57, Panoramas 360, Autres
 
 ### Pole 2 — Modelisation 3D & BIM (Scan-to-BIM)
-- Maquettes Revit depuis nuages de points, plans DAO, plans papier
-- LOD 100 a 400
-- **Livrables :** Maquette Revit (.rvt), Export IFC, Plans DWG, Plans PDF
+- Realisation de la Maquette Numerique 3D (Autodesk - Revit)
+- A partir du releve realise ou des sources client (plans DAO, autres)
+- Integration BIM et LOD selon besoins
+- **Livrables :** Maquette Revit (.rvt), Export IFC, Plans DWG, Plans PDF, Autres
 
 ### Pole 3 — Rendu & Visualisation
-- Rendus photorealistes, videos, panoramas 360, visites VR
-- **Livrables :** Images 3D, Videos archi, Panoramas 360, Visites virtuelles/VR
+- Mise en image de la Maquette Numerique
+- Integration des materiaux et textures
+- **Livrables :** Rendus 3D photorealistes, Videos, Panoramas 360, Autres
 
 ---
 
@@ -168,9 +171,12 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 
 ## 11. DECISIONS DE DESIGN PRISES
 
-- Hero : split 52/48 (texte/image), image 509.jpg
+- Hero : split 52/48 (texte/image), image 509.jpg, object-position 18% center
+- Texte "ZE3D" dans la nav : meme hauteur que le logo (font-size 4.2rem)
 - Grille realisations : systeme 4x4 (16 cellules), images de tailles variees (1x1, 2x1, 1x2, 2x2), cellules vides pour dynamisme
+  - Disposition : 513 (2x2) | vide | 507 (1x1) | 503 (2x1) | 501 (1x2) | vide | 505 (1x1) | 502 (2x2)
 - Stats : 5 blocs (15 ans / Revit Expert / BIM Modeleur / Releve 3D Scanner Laser / Perpignan & France entiere)
+- Cartes prestations : texte en flex:1 pour aligner les separateurs et livrables, min-height 62px sur badges
 - Palette fond clair, accent #4A6580
 - Navigation : fond blanc semi-transparent avec blur
 - Footer : fond sombre #1A2530
@@ -184,6 +190,20 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 "Specialiste en modelisation 3D et BIM Architecture depuis plus de 15 ans, je vous accompagne dans la realisation des Maquettes Numeriques de vos batiments - depuis le releve sur site jusqu'aux rendus graphiques."
 
 Note : "Maquettes Numeriques" en majuscules = choix volontaire du fondateur.
+
+### Texte Pole 01
+"Releve sur site de vos batiments a l'aide de techniques traditionnelles (metre, telemetre) ou de scanner laser / LiDAR derniere generation. Metres de precision adaptes a vos besoins et votre projet."
+
+### Texte Pole 02
+"Realisation de la Maquette Numerique 3D (Autodesk - Revit) de vos batiments a partir du releve realise ou de vos sources (plans DAO, autres). Integration BIM et LOD selon vos besoins."
+
+### Texte Pole 03
+"Mise en image de votre Maquette Numerique. Integrations des materiaux et textures. Creation de vos elements graphiques : Vues 3D photorealistes, integration dans le site, videos, panorama a 360, autres."
+
+### Texte A propos
+"Responsable du pole 3D et BIM Coordinateur pendant plus de 15 ans dans un cabinet de maitrise d'oeuvre parisien, je cree aujourd'hui ZE3D pour mettre cette expertise au service des professionnels du batiment en Occitanie et dans toute la France."
+
+"Base a Perpignan, j'interviens sur site pour vos metres et releves numeriques et accompagne vos projets de modelisation 3D et de rendus graphiques sur toute la France."
 
 ---
 
@@ -202,9 +222,12 @@ Page mentions legales a creer avec :
 ## 14. HISTORIQUE GIT
 
 ```
+e299b5a Refonte page accueil : textes, grille realisations 4x4, stats 5 blocs
 a6f80f1 Refonte design : palette Encre & Ardoise, logos, contenu editorial
 2f213f7 init: projet Astro ZE3D
 ```
+
+Premier deploiement test effectue le 3 avril 2026 sur https://ze3d-test.netlify.app
 
 ---
 
@@ -216,3 +239,7 @@ a6f80f1 Refonte design : palette Encre & Ardoise, logos, contenu editorial
 - Expliquer les decisions techniques importantes
 - Ne jamais push sur main sans validation du fondateur
 - Toujours travailler sur la branche `develop`
+- "Maquettes Numeriques" toujours avec majuscules (choix du fondateur)
+- Le fondateur prefere valider les textes avant application
+- Pour lancer le dev server : export PATH="/usr/local/bin:$PATH" && cd "/Users/emmanuelzerdoun/Documents/SITE WEB" && npm run dev
+- npm se trouve dans /usr/local/bin/npm (pas dans le PATH par defaut du shell Claude Code)

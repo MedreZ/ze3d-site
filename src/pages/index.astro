@@ -28,6 +28,17 @@ import Layout from '../layouts/Layout.astro';
             <em class="hero-accent">expertise.</em>
           </h1>
 
+          <!-- Image mobile — visible uniquement sur mobile, après le titre -->
+          <div class="hero-mobile-image">
+            <img
+              src="/509.jpg"
+              alt="Coupe immeuble de bureaux — rendu 3D"
+              loading="eager"
+              width="800"
+              height="450"
+            />
+          </div>
+
           <p class="hero-subtitle">
             Spécialiste en modélisation 3D et BIM Architecture depuis plus de 15 ans,
             je vous accompagne dans la réalisation des Maquettes Numériques de vos bâtiments
@@ -194,6 +205,23 @@ import Layout from '../layouts/Layout.astro';
             <span class="section-label">À PROPOS</span>
             <h2 class="apropos-title">15 ans d'expertise BIM<br />au service de vos projets</h2>
 
+            <!-- Photo mobile — visible uniquement sur mobile, après le titre -->
+            <div class="apropos-mobile-image">
+              <div class="apropos-image-wrap">
+                <img
+                  src="/photo-emmanuel.JPG"
+                  alt="Emmanuel Zerdoun — Expert BIM ZE3D"
+                  loading="lazy"
+                  width="600"
+                  height="700"
+                />
+                <div class="apropos-badge">
+                  <span class="apropos-badge-number">15 ans</span>
+                  <span class="apropos-badge-label">d'expérience</span>
+                </div>
+              </div>
+            </div>
+
             <p class="apropos-para">
               Responsable du pôle 3D et BIM Coordinateur pendant plus de 15 ans dans un cabinet de maîtrise d'œuvre parisien,
               je crée aujourd'hui <span class="brand-ze3d">ZE3D</span> pour mettre cette expertise au service
@@ -203,6 +231,21 @@ import Layout from '../layouts/Layout.astro';
               Basé à Perpignan, j'interviens sur site pour vos métrés et relevés numériques
               et accompagne vos projets de modélisation 3D et de rendus graphiques sur toute la France.
             </p>
+
+            <!-- Bloc références clients -->
+            <div class="apropos-references">
+              <p class="apropos-references-text">
+                Au cours de mes 15 ans d'expérience, j'ai eu l'opportunité d'intervenir sur des projets pour des acteurs tels que :
+              </p>
+              <div class="apropos-logos">
+                <img src="/logos/cnav.png" alt="CNAV" class="apropos-logo" />
+                <img src="/logos/caf.svg" alt="CAF" class="apropos-logo" />
+                <img src="/logos/ofii.png" alt="OFII" class="apropos-logo" />
+                <img src="/logos/capgemini.svg" alt="Capgemini" class="apropos-logo" />
+                <img src="/logos/optical-center.svg" alt="Optical Center" class="apropos-logo" />
+                <img src="/logos/fujitsu.svg" alt="Fujitsu" class="apropos-logo" />
+              </div>
+            </div>
 
             <ul class="apropos-list">
               <li class="apropos-list-item">
@@ -522,6 +565,11 @@ import Layout from '../layouts/Layout.astro';
     font-style: italic;
   }
 
+  /* Image mobile — cachée sur desktop */
+  .hero-mobile-image {
+    display: none;
+  }
+
   /* Sous-titre */
   .hero-subtitle {
     font-family:   var(--font-body);
@@ -731,27 +779,21 @@ import Layout from '../layouts/Layout.astro';
 
   .apropos-inner {
     display:               grid;
-    grid-template-columns: 1fr 1fr;
-    gap:                   80px;
-    align-items:           center;
+    grid-template-columns: 0.5fr 1fr;
+    gap:                   60px;
+    align-items:           start;
   }
 
   .apropos-image-col {
-    position: relative;
+    position:   relative;
+    margin-top: 48px;
   }
 
   .apropos-image-wrap {
     position: relative;
   }
 
-  .apropos-image-wrap::before {
-    content:       '';
-    position:      absolute;
-    inset:         -14px;
-    border:        1.5px solid rgba(74,101,128,0.3);
-    border-radius: 8px;
-    z-index:       0;
-  }
+  /* liseré supprimé */
 
   .apropos-image {
     width:         100%;
@@ -807,6 +849,11 @@ import Layout from '../layouts/Layout.astro';
     line-height:   1.2;
   }
 
+  /* Photo mobile — cachée sur desktop */
+  .apropos-mobile-image {
+    display: none;
+  }
+
   .apropos-para {
     font-family:   var(--font-body);
     font-size:     1rem;
@@ -814,6 +861,40 @@ import Layout from '../layouts/Layout.astro';
     line-height:   1.75;
     color:         rgba(26,37,48,0.7);
     margin-bottom: 16px;
+  }
+
+  /* Bloc références clients */
+  .apropos-references {
+    margin:        24px 0;
+    padding:       20px 0;
+    border-top:    1px solid rgba(26,37,48,0.08);
+  }
+
+  .apropos-references-text {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    font-weight:   500;
+    line-height:   1.6;
+    color:         rgba(26,37,48,0.7);
+    margin-bottom: 24px;
+  }
+
+  .apropos-logos {
+    display:     flex;
+    flex-wrap:   wrap;
+    align-items: center;
+    gap:         24px;
+  }
+
+  .apropos-logo {
+    height:     42px;
+    width:      auto;
+    filter:     grayscale(100%) opacity(0.5);
+    transition: filter 300ms ease;
+  }
+
+  .apropos-logo:hover {
+    filter: grayscale(0%) opacity(1);
   }
 
   /* Liste avec icônes check */
@@ -1103,6 +1184,10 @@ import Layout from '../layouts/Layout.astro';
 
   @media (max-width: 768px) {
 
+    .hero {
+      min-height: auto;
+    }
+
     .hero-inner {
       grid-template-columns: 1fr;
       min-height:            auto;
@@ -1110,11 +1195,26 @@ import Layout from '../layouts/Layout.astro';
 
     .hero-content {
       padding-right:  0;
-      padding-bottom: 60px;
+      padding-top:    0;
+      padding-bottom: 40px;
+      margin-top:     -16px;
     }
 
     .hero-visual {
       display: none;
+    }
+
+    .hero-mobile-image {
+      display:       block;
+      margin-bottom: 24px;
+      border-radius: 6px;
+      overflow:      hidden;
+    }
+
+    .hero-mobile-image img {
+      width:      100%;
+      height:     auto;
+      display:    block;
     }
 
     .hero-title {
@@ -1132,17 +1232,40 @@ import Layout from '../layouts/Layout.astro';
 
     .apropos-inner {
       grid-template-columns: 1fr;
-      gap:                   60px;
+      gap:                   40px;
     }
 
     .apropos-image-col {
-      max-width: 480px;
-      margin:    0 auto;
+      display: none;
     }
 
-    .apropos-badge {
-      bottom: -16px;
-      right:  -12px;
+    .apropos-mobile-image {
+      display:       block;
+      margin:        0 auto 24px;
+      max-width:     80%;
+      position:      relative;
+    }
+
+    .apropos-mobile-image .apropos-image-wrap {
+      position: relative;
+    }
+
+    .apropos-mobile-image .apropos-image-wrap::before {
+      inset: -10px;
+    }
+
+    .apropos-mobile-image img {
+      width:         100%;
+      height:        auto;
+      display:       block;
+      border-radius: 6px;
+      position:      relative;
+      z-index:       1;
+    }
+
+    .apropos-mobile-image .apropos-badge {
+      bottom: -12px;
+      right:  -8px;
     }
 
     .stats-grid {
