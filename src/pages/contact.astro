@@ -1,0 +1,796 @@
+---
+/**
+ * contact.astro — Page contact ZE3D
+ * Formulaire Netlify Forms + infos de contact + CTA alternatif
+ */
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact — ZE3D | Demandez un devis pour votre projet BIM"
+  description="Contactez ZE3D pour votre projet de relevé numérique, modélisation BIM ou rendu architectural. Réponse sous 48 h avec un devis personnalisé. Perpignan et France entière."
+>
+  <main>
+
+    <!-- ============================================================
+         1. HERO — fond blanc
+         ============================================================ -->
+    <section class="contact-hero">
+      <div class="container contact-hero-inner">
+        <span class="section-label">CONTACT</span>
+        <h1 class="contact-hero-title">Parlons de votre projet</h1>
+        <p class="contact-hero-subtitle">
+          Je vous réponds sous 48 h avec un devis personnalisé adapté à vos besoins.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         2. BLOC PRINCIPAL — formulaire + infos
+         ============================================================ -->
+    <section class="contact-main" aria-label="Formulaire de contact">
+      <div class="container contact-main-inner">
+
+        <!-- ─── Colonne gauche : FORMULAIRE ─── -->
+        <div class="contact-form-col">
+          <h2 class="contact-col-title">Demandez un devis</h2>
+          <p class="contact-form-hint">
+            Les champs marqués d'un <span class="form-required">*</span> sont obligatoires.
+          </p>
+
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="contact-form"
+            id="contact-form"
+            novalidate
+          >
+            <!-- Requis par Netlify Forms -->
+            <input type="hidden" name="form-name" value="contact" />
+
+            <!-- Honeypot anti-spam (caché aux humains) -->
+            <p class="form-hidden">
+              <label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
+
+            <!-- Nom + Prénom -->
+            <div class="form-row form-row--two-cols">
+              <label class="form-field">
+                <span class="form-label">Nom <span class="form-required">*</span></span>
+                <input type="text" name="nom" required autocomplete="family-name" />
+              </label>
+              <label class="form-field">
+                <span class="form-label">Prénom <span class="form-required">*</span></span>
+                <input type="text" name="prenom" required autocomplete="given-name" />
+              </label>
+            </div>
+
+            <!-- Entreprise -->
+            <label class="form-field">
+              <span class="form-label">Entreprise / organisation</span>
+              <input type="text" name="entreprise" autocomplete="organization" />
+            </label>
+
+            <!-- Email + Téléphone -->
+            <div class="form-row form-row--two-cols">
+              <label class="form-field">
+                <span class="form-label">Email <span class="form-required">*</span></span>
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+              <label class="form-field">
+                <span class="form-label">Téléphone</span>
+                <input type="tel" name="telephone" pattern="[0-9 +().-]+" autocomplete="tel" />
+              </label>
+            </div>
+
+            <!-- Type de projet -->
+            <label class="form-field">
+              <span class="form-label">Type de projet <span class="form-required">*</span></span>
+              <select name="type_projet" required>
+                <option value="">— Sélectionnez —</option>
+                <option>Relevé numérique</option>
+                <option>Modélisation 3D &amp; BIM</option>
+                <option>Rendu &amp; visualisation</option>
+                <option>Plusieurs / projet complet</option>
+                <option>Autre</option>
+              </select>
+            </label>
+
+            <!-- Message -->
+            <label class="form-field">
+              <span class="form-label">Votre projet en quelques lignes</span>
+              <textarea
+                name="message"
+                rows="6"
+                placeholder="Décrivez votre projet : type de bâtiment, surface, délai souhaité, niveau de détail attendu..."
+              ></textarea>
+            </label>
+
+            <!-- Consentement RGPD -->
+            <label class="form-checkbox">
+              <input type="checkbox" name="rgpd" required />
+              <span>
+                J'accepte que mes données soient utilisées pour me recontacter dans
+                le cadre de ma demande. <a href="/mentions-legales">En savoir plus</a>
+                <span class="form-required">*</span>
+              </span>
+            </label>
+
+            <!-- Bouton submit -->
+            <button type="submit" class="btn-primary contact-submit is-inactive" id="contact-submit">
+              Envoyer ma demande →
+            </button>
+
+            <!-- Message validation si champs manquants (affiché après tentative) -->
+            <p class="contact-validation-hint" id="contact-validation-hint" hidden>
+              Merci de remplir les champs obligatoires mis en évidence.
+            </p>
+
+            <!-- Message d'erreur (caché par défaut) -->
+            <p class="contact-error" id="contact-error" hidden>
+              Une erreur est survenue lors de l'envoi. Merci de réessayer ou de
+              m'écrire directement à <a href="mailto:contact@ze3d.fr">contact@ze3d.fr</a>.
+            </p>
+          </form>
+
+          <!-- Message de succès (caché par défaut, affiché par JS après submit) -->
+          <div class="contact-success" id="contact-success" hidden>
+            <span class="contact-success-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </span>
+            <h3 class="contact-success-title">Merci pour votre message !</h3>
+            <p class="contact-success-text">
+              Votre demande a bien été envoyée. Je vous réponds sous 48 h.
+            </p>
+          </div>
+        </div>
+
+        <!-- ─── Colonne droite : INFOS DE CONTACT ─── -->
+        <aside class="contact-info-col" aria-label="Informations de contact">
+          <h2 class="contact-col-title">Informations</h2>
+
+          <ul class="contact-info-list">
+
+            <!-- Email -->
+            <li class="contact-info-card">
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </span>
+              <div class="contact-info-body">
+                <span class="contact-info-label">Email</span>
+                <a href="mailto:contact@ze3d.fr" class="contact-info-value">contact@ze3d.fr</a>
+                <span class="contact-info-sub">Écrivez-moi directement</span>
+              </div>
+            </li>
+
+            <!-- Zone d'intervention -->
+            <li class="contact-info-card">
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </span>
+              <div class="contact-info-body">
+                <span class="contact-info-label">Zone d'intervention</span>
+                <span class="contact-info-value">France entière</span>
+                <span class="contact-info-sub">Déplacement possible selon le projet</span>
+              </div>
+            </li>
+
+            <!-- Délai de réponse -->
+            <li class="contact-info-card">
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </span>
+              <div class="contact-info-body">
+                <span class="contact-info-label">Délai de réponse</span>
+                <span class="contact-info-value">Sous 48 h en général</span>
+                <span class="contact-info-sub">Réponse rapide et personnalisée</span>
+              </div>
+            </li>
+
+          </ul>
+
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. CTA ALTERNATIF — fond gris clair
+         ============================================================ -->
+    <section class="contact-alt-cta" aria-label="Autres options">
+      <div class="container contact-alt-cta-inner">
+        <p class="contact-alt-cta-text">
+          Pas encore prêt à demander un devis ?
+        </p>
+        <div class="contact-alt-cta-actions">
+          <a href="/prestations" class="btn-outline">Voir les prestations</a>
+          <a href="/realisations" class="btn-outline">Voir les réalisations</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+
+<style>
+  /* ============================================================
+     CONTACT — Styles spécifiques à la page
+     ============================================================ */
+
+
+  /* ─── 1. HERO ─────────────────────────────────────────────── */
+
+  .contact-hero {
+    background-color: #FFFFFF;
+    padding:          100px 0 40px;
+    text-align:       center;
+  }
+
+  .contact-hero-inner {
+    max-width: 720px;
+  }
+
+  .contact-hero-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight:   700;
+    line-height:   1.1;
+    color:         #1A2530;
+    margin:        12px 0 20px;
+  }
+
+  .contact-hero-subtitle {
+    font-family: var(--font-body);
+    font-size:   1.0625rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color:       rgba(26,37,48,0.65);
+    max-width:   580px;
+    margin:      0 auto;
+  }
+
+
+  /* ─── 2. BLOC PRINCIPAL ───────────────────────────────────── */
+
+  .contact-main {
+    background-color: #FFFFFF;
+    padding:          40px 0 100px;
+  }
+
+  .contact-main-inner {
+    display:               grid;
+    grid-template-columns: 60% 40%;
+    gap:                   64px;
+    align-items:           start;
+  }
+
+  .contact-col-title {
+    font-family:   var(--font-titre);
+    font-size:     1.4rem;
+    font-weight:   700;
+    color:         #1A2530;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #4A6580;
+  }
+
+  .contact-form-hint {
+    font-family:   var(--font-body);
+    font-size:     0.85rem;
+    color:         rgba(26,37,48,0.55);
+    margin:        -8px 0 20px;
+    font-style:    italic;
+  }
+
+
+  /* ─── FORMULAIRE ──────────────────────────────────────────── */
+
+  .contact-form {
+    display:        flex;
+    flex-direction: column;
+    gap:            18px;
+  }
+
+  .form-hidden {
+    position:  absolute;
+    left:      -9999px;
+    width:     1px;
+    height:    1px;
+    overflow:  hidden;
+  }
+
+  .form-row--two-cols {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   16px;
+  }
+
+  .form-field {
+    display:        flex;
+    flex-direction: column;
+    gap:            6px;
+  }
+
+  .form-label {
+    font-family: var(--font-body);
+    font-size:   0.875rem;
+    font-weight: 500;
+    color:       #1A2530;
+  }
+
+  .form-required {
+    color:       #4A6580;
+    font-weight: 600;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form input[type="tel"],
+  .contact-form select,
+  .contact-form textarea {
+    width:         100%;
+    padding:       12px 14px;
+    font-family:   var(--font-body);
+    font-size:     0.95rem;
+    color:         #1A2530;
+    background:    #FFFFFF;
+    border:        1.5px solid rgba(26,37,48,0.12);
+    border-radius: 6px;
+    transition:    border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline:      none;
+    border-color: #4A6580;
+    box-shadow:   0 0 0 3px rgba(74,101,128,0.12);
+  }
+
+  .contact-form textarea {
+    resize:    vertical;
+    min-height: 140px;
+    font-family: var(--font-body);
+  }
+
+  .contact-form select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%234A6580' stroke-width='2'%3e%3cpolyline points='1 1.5 6 6.5 11 1.5'/%3e%3c/svg%3e");
+    background-repeat:   no-repeat;
+    background-position: right 14px center;
+    padding-right:       40px;
+  }
+
+  /* Case à cocher RGPD */
+  .form-checkbox {
+    display:     flex;
+    align-items: flex-start;
+    gap:         10px;
+    padding:     4px 0;
+    cursor:      pointer;
+  }
+
+  .form-checkbox input[type="checkbox"] {
+    flex-shrink:  0;
+    width:        18px;
+    height:       18px;
+    margin-top:   2px;
+    accent-color: #4A6580;
+    cursor:       pointer;
+  }
+
+  .form-checkbox span {
+    font-family: var(--font-body);
+    font-size:   0.85rem;
+    line-height: 1.55;
+    color:       rgba(26,37,48,0.75);
+  }
+
+  .form-checkbox a {
+    color:           #4A6580;
+    text-decoration: underline;
+  }
+
+  /* Bouton submit */
+  .contact-submit {
+    align-self: flex-start;
+    margin-top: 8px;
+    transition: opacity 200ms ease, background-color 200ms ease,
+                color 200ms ease, border-color 200ms ease;
+  }
+
+  /* État visuellement "inactif" tant que le formulaire n'est pas valide */
+  .contact-submit.is-inactive {
+    opacity:        0.4;
+    cursor:         not-allowed;
+  }
+
+  .contact-submit.is-inactive:hover {
+    background-color: var(--color-accent);
+    color:            #FFFFFF;
+    border-color:     var(--color-accent);
+  }
+
+  /* Champs explicitement marqués invalides par le JS */
+  .contact-form input.is-invalid,
+  .contact-form select.is-invalid,
+  .contact-form textarea.is-invalid {
+    border-color: #DC2626;
+    background:   rgba(220,38,38,0.03);
+  }
+
+  .contact-form input.is-invalid:focus,
+  .contact-form select.is-invalid:focus,
+  .contact-form textarea.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220,38,38,0.12);
+  }
+
+  /* Encadrement visuel pour la case RGPD non cochée */
+  .form-checkbox.is-invalid {
+    padding:       10px 12px;
+    border:        1px solid rgba(220,38,38,0.4);
+    border-radius: 6px;
+    background:    rgba(220,38,38,0.03);
+  }
+
+  /* Message sous le bouton si champs manquants */
+  .contact-validation-hint {
+    font-family:   var(--font-body);
+    font-size:     0.85rem;
+    color:         #DC2626;
+    margin:        10px 0 0;
+  }
+
+  /* Message d'erreur */
+  .contact-error {
+    padding:          12px 16px;
+    background:       rgba(220,38,38,0.08);
+    border:           1px solid rgba(220,38,38,0.3);
+    border-radius:    6px;
+    font-family:      var(--font-body);
+    font-size:        0.9rem;
+    color:            #991B1B;
+  }
+
+  .contact-error a {
+    color: #991B1B;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Message de succès */
+  .contact-success {
+    padding:         40px 32px;
+    background:      linear-gradient(180deg, rgba(74,101,128,0.06) 0%, rgba(74,101,128,0.02) 100%);
+    border:          1px solid rgba(74,101,128,0.2);
+    border-radius:   8px;
+    text-align:      center;
+  }
+
+  .contact-success-icon {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    width:           72px;
+    height:          72px;
+    background:      #4A6580;
+    color:           #FFFFFF;
+    border-radius:   50%;
+    margin-bottom:   20px;
+  }
+
+  .contact-success-title {
+    font-family:   var(--font-titre);
+    font-size:     1.4rem;
+    font-weight:   700;
+    color:         #1A2530;
+    margin-bottom: 12px;
+  }
+
+  .contact-success-text {
+    font-family: var(--font-body);
+    font-size:   1rem;
+    line-height: 1.75;
+    color:       rgba(26,37,48,0.7);
+    margin:      0;
+  }
+
+
+  /* ─── INFOS DE CONTACT ─────────────────────────────────────── */
+
+  .contact-info-col {
+    position: sticky;
+    top:      calc(var(--nav-height, 76px) + 20px);
+  }
+
+  .contact-info-list {
+    list-style: none;
+    padding:    0;
+    margin:     0;
+    display:    flex;
+    flex-direction: column;
+    gap:        14px;
+  }
+
+  .contact-info-card {
+    display:       flex;
+    align-items:   flex-start;
+    gap:           14px;
+    padding:       18px 20px;
+    background:    #FFFFFF;
+    border:        1px solid rgba(26,37,48,0.08);
+    border-radius: 8px;
+    transition:    border-color 200ms ease, transform 200ms ease;
+  }
+
+  .contact-info-card:hover {
+    border-color: rgba(74,101,128,0.3);
+    transform:    translateY(-2px);
+  }
+
+  .contact-info-icon {
+    flex-shrink:     0;
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    width:           40px;
+    height:          40px;
+    background:      rgba(74,101,128,0.1);
+    color:           #4A6580;
+    border-radius:   50%;
+  }
+
+  .contact-info-body {
+    display:        flex;
+    flex-direction: column;
+    gap:            2px;
+    min-width:      0;
+  }
+
+  .contact-info-label {
+    font-family:    var(--font-body);
+    font-size:      0.65rem;
+    font-weight:    600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color:          #4A6580;
+  }
+
+  .contact-info-value {
+    font-family:     var(--font-body);
+    font-size:       1rem;
+    font-weight:     600;
+    color:           #1A2530;
+    text-decoration: none;
+    word-break:      break-word;
+  }
+
+  a.contact-info-value:hover {
+    color: #4A6580;
+  }
+
+  .contact-info-sub {
+    font-family: var(--font-body);
+    font-size:   0.8rem;
+    color:       rgba(26,37,48,0.55);
+    margin-top:  2px;
+  }
+
+
+  /* ─── 3. CTA ALTERNATIF ────────────────────────────────────── */
+
+  .contact-alt-cta {
+    background-color: #F3F5F7;
+    padding:          48px 0;
+    border-top:       1px solid rgba(26,37,48,0.06);
+    text-align:       center;
+  }
+
+  .contact-alt-cta-text {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    color:         rgba(26,37,48,0.7);
+    margin-bottom: 20px;
+  }
+
+  .contact-alt-cta-actions {
+    display:         flex;
+    gap:             12px;
+    justify-content: center;
+    flex-wrap:       wrap;
+  }
+
+
+  /* ─── RESPONSIVE 900px ─────────────────────────────────────── */
+
+  @media (max-width: 900px) {
+
+    .contact-hero {
+      padding: 64px 0 32px;
+    }
+
+    .contact-main {
+      padding: 32px 0 80px;
+    }
+
+    .contact-main-inner {
+      grid-template-columns: 1fr;
+      gap:                   48px;
+    }
+
+    .contact-info-col {
+      position: static;
+    }
+  }
+
+
+  /* ─── RESPONSIVE 600px ─────────────────────────────────────── */
+
+  @media (max-width: 600px) {
+
+    .form-row--two-cols {
+      grid-template-columns: 1fr;
+      gap:                   18px;
+    }
+
+    .contact-submit {
+      width:           100%;
+      justify-content: center;
+    }
+
+    .contact-alt-cta-actions .btn-outline {
+      width:           100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+
+<!-- ============================================================
+     Script : soumission AJAX du formulaire (Netlify Forms)
+     ============================================================ -->
+<script>
+  (function () {
+    const form       = document.getElementById('contact-form') as HTMLFormElement | null;
+    const successEl  = document.getElementById('contact-success');
+    const errorEl    = document.getElementById('contact-error');
+    const submitBtn  = document.getElementById('contact-submit') as HTMLButtonElement | null;
+    const hintEl     = document.getElementById('contact-validation-hint');
+
+    if (!form || !successEl || !errorEl || !submitBtn || !hintEl) return;
+
+    /* ─── Helpers de validation ───────────────────────────────── */
+    const markInvalidFields = (): HTMLElement[] => {
+      const invalids: HTMLElement[] = [];
+      // Tous les inputs/selects/textareas requis
+      const fields = form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+        'input:not([type="hidden"]):not([name="bot-field"]), select, textarea'
+      );
+      fields.forEach((field) => {
+        if (!field.checkValidity()) {
+          field.classList.add('is-invalid');
+          // Pour la checkbox RGPD : marquer aussi le label parent
+          if (field.type === 'checkbox') {
+            const parent = field.closest('.form-checkbox');
+            if (parent) parent.classList.add('is-invalid');
+          }
+          invalids.push(field as HTMLElement);
+        } else {
+          field.classList.remove('is-invalid');
+          if (field.type === 'checkbox') {
+            const parent = field.closest('.form-checkbox');
+            if (parent) parent.classList.remove('is-invalid');
+          }
+        }
+      });
+      return invalids;
+    };
+
+    const clearFieldError = (field: HTMLElement) => {
+      field.classList.remove('is-invalid');
+      if ((field as HTMLInputElement).type === 'checkbox') {
+        const parent = field.closest('.form-checkbox');
+        if (parent) parent.classList.remove('is-invalid');
+      }
+    };
+
+    /* ─── Activation/desactivation visuelle du bouton ─────────── */
+    const updateSubmitState = () => {
+      if (form.checkValidity()) {
+        submitBtn.classList.remove('is-inactive');
+      } else {
+        submitBtn.classList.add('is-inactive');
+      }
+    };
+
+    // Ecoute tous les changements pour reevaluer la validite en temps reel
+    form.addEventListener('input', (e) => {
+      updateSubmitState();
+      // Retirer l'erreur du champ modifie si il est maintenant valide
+      const target = e.target as HTMLInputElement;
+      if (target && target.checkValidity()) {
+        clearFieldError(target);
+      }
+      // Cacher le message d'aide si plus aucun champ n'est invalide
+      if (form.querySelectorAll('.is-invalid').length === 0) {
+        hintEl.hidden = true;
+      }
+    });
+    form.addEventListener('change', (e) => {
+      updateSubmitState();
+      const target = e.target as HTMLInputElement;
+      if (target && target.checkValidity()) {
+        clearFieldError(target);
+      }
+      if (form.querySelectorAll('.is-invalid').length === 0) {
+        hintEl.hidden = true;
+      }
+    });
+    updateSubmitState(); // etat initial
+
+    /* ─── Soumission ──────────────────────────────────────────── */
+    form.addEventListener('submit', async (e: SubmitEvent) => {
+      e.preventDefault();
+
+      // Cacher messages precedents
+      errorEl.hidden = true;
+      hintEl.hidden  = true;
+
+      // Si formulaire invalide : marquer TOUS les champs manquants et stopper
+      if (!form.checkValidity()) {
+        const invalids = markInvalidFields();
+        hintEl.hidden = false;
+        // Focus sur le premier champ invalide
+        if (invalids.length > 0) invalids[0].focus();
+        return;
+      }
+
+      // Formulaire valide : envoi
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours…';
+
+      try {
+        const formData = new FormData(form);
+
+        // Netlify Forms attend un POST vers "/" avec les donnees urlencodees
+        const response = await fetch('/', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body:    new URLSearchParams(formData as any).toString(),
+        });
+
+        if (response.ok) {
+          form.hidden      = true;
+          successEl.hidden = false;
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Erreur HTTP ' + response.status);
+        }
+      } catch (err) {
+        console.error('Erreur envoi formulaire :', err);
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer ma demande →';
+      }
+    });
+  })();
+</script>

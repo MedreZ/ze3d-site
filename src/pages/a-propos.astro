@@ -1,0 +1,743 @@
+---
+/**
+ * a-propos.astro — Présentation d'Emmanuel Zerdoun et de ZE3D
+ * Structure : Hero + Qui suis-je + Expertise + Ma démarche + CTA
+ */
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="À propos — ZE3D | Emmanuel Zerdoun, expert BIM à Perpignan"
+  description="15 ans d'expertise en modélisation 3D et BIM Architecture. Emmanuel Zerdoun, fondateur de ZE3D, vous accompagne dans vos projets de relevé numérique, maquette BIM et rendu architectural à Perpignan et dans toute la France."
+>
+  <main>
+
+    <!-- ============================================================
+         1. HERO — fond blanc
+         ============================================================ -->
+    <section class="apropos-hero">
+      <div class="container apropos-hero-inner">
+
+        <!-- Colonne gauche : texte -->
+        <div class="apropos-hero-text">
+          <span class="section-label">À PROPOS</span>
+          <h1 class="apropos-hero-title">Emmanuel Zerdoun</h1>
+          <p class="apropos-hero-subtitle">
+            <em>15 ans d'expertise BIM à votre service</em>
+          </p>
+          <p class="apropos-hero-intro">
+            Spécialiste en modélisation 3D et BIM Architecture depuis plus de 15 ans,
+            je mets mon expertise technique au service des professionnels du bâtiment.
+            Installé à Perpignan, j'interviens en Occitanie et dans toute la France.
+          </p>
+        </div>
+
+        <!-- Colonne droite : photo -->
+        <div class="apropos-hero-photo">
+          <div class="apropos-hero-photo-wrap">
+            <img
+              src="/photo-emmanuel.JPG"
+              alt="Emmanuel Zerdoun — Fondateur de ZE3D"
+              loading="eager"
+              width="600"
+              height="700"
+            />
+            <div class="apropos-hero-badge">
+              <span class="apropos-hero-badge-number">15 ans</span>
+              <span class="apropos-hero-badge-label">d'expérience</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         2. QUI SUIS-JE — fond blanc
+         ============================================================ -->
+    <section class="apropos-parcours" aria-label="Mon parcours">
+      <div class="container apropos-parcours-inner">
+        <span class="section-label">MON PARCOURS</span>
+        <h2 class="apropos-section-title">
+          De la maîtrise d'œuvre parisienne à l'indépendance
+        </h2>
+
+        <div class="apropos-parcours-text">
+          <p>
+            <strong>Architecte de formation</strong>, j'ai débuté ma carrière en
+            cabinet de maîtrise d'œuvre parisien où j'ai occupé pendant plus de
+            15 ans les fonctions de dessinateur projeteur, puis de Responsable
+            du pôle 3D et de BIM Coordinateur. J'y ai piloté des projets
+            d'envergure pour des acteurs tels que la CNAV, la CAF, l'OFII,
+            Capgemini ou Optical Center.
+          </p>
+          <p>
+            Aujourd'hui, je crée <span class="brand-ze3d">ZE3D</span> pour mettre
+            cette expérience à disposition des professionnels du bâtiment de manière
+            indépendante. Installé à Perpignan, je privilégie une relation directe
+            et sur-mesure avec chaque client.
+          </p>
+          <p>
+            Ce qui me passionne : transformer les relevés terrain en Maquettes
+            Numériques précises, aider les architectes et bureaux d'études à
+            visualiser et coordonner leurs projets, et livrer des images qui
+            donnent vie aux projets avant même leur construction.
+          </p>
+        </div>
+
+        <!-- Bloc références clients -->
+        <div class="apropos-references-block">
+          <p class="apropos-references-label">
+            Une expérience acquise auprès d'acteurs reconnus :
+          </p>
+          <div class="apropos-logos">
+            <img src="/logos/cnav.png"           alt="CNAV"           class="apropos-logo" />
+            <img src="/logos/caf.svg"            alt="CAF"            class="apropos-logo" />
+            <img src="/logos/ofii.png"           alt="OFII"           class="apropos-logo" />
+            <img src="/logos/capgemini.svg"      alt="Capgemini"      class="apropos-logo" />
+            <img src="/logos/optical-center.svg" alt="Optical Center" class="apropos-logo" />
+            <img src="/logos/fujitsu.svg"        alt="Fujitsu"        class="apropos-logo" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. EXPERTISE — fond gris clair
+         ============================================================ -->
+    <section class="apropos-expertise" aria-label="Mon expertise technique">
+      <div class="container">
+        <div class="apropos-section-intro">
+          <span class="section-label">MON EXPERTISE</span>
+          <h2 class="apropos-section-title">
+            Des compétences techniques au service de vos projets
+          </h2>
+          <p class="apropos-section-subtitle">
+            Une expertise technique pointue combinée aux outils de référence de la
+            modélisation et du rendu architectural — pour couvrir l'ensemble de la
+            chaîne, du relevé sur site au rendu final.
+          </p>
+        </div>
+
+        <div class="expertise-grid">
+
+          <!-- Colonne 1 : Savoir-faire -->
+          <div class="expertise-col">
+            <h3 class="expertise-col-title">Mon savoir-faire</h3>
+            <ul class="expertise-list">
+              <li>
+                <span class="expertise-dot" aria-hidden="true"></span>
+                <span>Relevé laser 3D et traitement de nuages de points</span>
+              </li>
+              <li>
+                <span class="expertise-dot" aria-hidden="true"></span>
+                <span>Modélisation BIM sous Revit (LOD 100 à 400)</span>
+              </li>
+              <li>
+                <span class="expertise-dot" aria-hidden="true"></span>
+                <span>Rendu 3D photoréaliste et visualisation architecturale</span>
+              </li>
+              <li>
+                <span class="expertise-dot" aria-hidden="true"></span>
+                <span>Production de plans techniques (DWG, PDF)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Colonne 2 : Outils -->
+          <div class="expertise-col">
+            <h3 class="expertise-col-title">Mes outils</h3>
+            <ul class="expertise-tools-list">
+              <li>
+                <span class="tool-name">Autodesk Revit</span>
+                <span class="tool-badge">Modélisation</span>
+              </li>
+              <li>
+                <span class="tool-name">Enscape</span>
+                <span class="tool-badge">Rendu</span>
+              </li>
+              <li>
+                <span class="tool-name">Adobe Photoshop / Lightroom</span>
+                <span class="tool-badge">Retouche</span>
+              </li>
+              <li>
+                <span class="tool-name">Adobe After Effects</span>
+                <span class="tool-badge">Vidéo</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. MA DÉMARCHE — fond blanc
+         ============================================================ -->
+    <section class="apropos-demarche" aria-label="Ma démarche">
+      <div class="container">
+        <div class="apropos-section-intro">
+          <span class="section-label">MA DÉMARCHE</span>
+          <h2 class="apropos-section-title">
+            4 engagements au service de vos projets
+          </h2>
+        </div>
+
+        <div class="demarche-grid">
+
+          <!-- Engagement 1 : Proximité -->
+          <article class="demarche-card">
+            <span class="demarche-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <h3 class="demarche-title">Proximité</h3>
+            <p class="demarche-text">
+              Un seul interlocuteur, du relevé sur site jusqu'au rendu final —
+              votre projet passe par une seule paire de mains.
+            </p>
+          </article>
+
+          <!-- Engagement 2 : Sur-mesure -->
+          <article class="demarche-card">
+            <span class="demarche-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </span>
+            <h3 class="demarche-title">Sur-mesure</h3>
+            <p class="demarche-text">
+              Chaque projet est abordé selon ses spécificités. Le niveau de détail,
+              les livrables et la méthode sont adaptés à vos besoins réels, pas à
+              une offre standardisée.
+            </p>
+          </article>
+
+          <!-- Engagement 3 : Rigueur -->
+          <article class="demarche-card">
+            <span class="demarche-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <h3 class="demarche-title">Exigence</h3>
+            <p class="demarche-text">
+              La rigueur technique est non-négociable : des relevés précis
+              jusqu'aux maquettes BIM LOD 400 si le projet le requiert.
+            </p>
+          </article>
+
+          <!-- Engagement 4 : Transparence -->
+          <article class="demarche-card">
+            <span class="demarche-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </span>
+            <h3 class="demarche-title">Transparence</h3>
+            <p class="demarche-text">
+              Un devis clair et détaillé avant engagement. Un planning partagé
+              et tenu. Des livrables conformes au contrat. Une communication
+              ouverte en cas d'évolution du projet.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         5. CTA FINAL — fond gris clair
+         ============================================================ -->
+    <section class="apropos-cta" aria-label="Appel à l'action">
+      <div class="container apropos-cta-inner">
+        <span class="section-label">CONTACTEZ-NOUS</span>
+        <h2 class="apropos-cta-title">Parlons de votre projet</h2>
+        <p class="apropos-cta-text">
+          Je vous réponds sous 48 h avec un devis personnalisé.
+        </p>
+        <div class="apropos-cta-actions">
+          <a href="/contact" class="btn-primary">
+            Demander un devis →
+          </a>
+          <a href="/realisations" class="btn-outline">
+            Voir les réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+
+<style>
+  /* ============================================================
+     À PROPOS — Styles spécifiques à la page
+     ============================================================ */
+
+
+  /* ─── 1. HERO ─────────────────────────────────────────────── */
+
+  .apropos-hero {
+    background-color: #FFFFFF;
+    padding:          100px 0 80px;
+  }
+
+  .apropos-hero-inner {
+    display:               grid;
+    grid-template-columns: 60% 40%;
+    gap:                   60px;
+    align-items:           center;
+  }
+
+  .apropos-hero-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(2.6rem, 5vw, 4rem);
+    font-weight:   700;
+    line-height:   1.05;
+    color:         #1A2530;
+    margin:        12px 0 8px;
+  }
+
+  .apropos-hero-subtitle {
+    font-family:   var(--font-body);
+    font-size:     clamp(1.15rem, 1.8vw, 1.4rem);
+    font-weight:   400;
+    color:         #4A6580;
+    margin:        0 0 28px;
+  }
+
+  .apropos-hero-subtitle em {
+    font-style: italic;
+  }
+
+  .apropos-hero-intro {
+    font-family: var(--font-body);
+    font-size:   1.05rem;
+    line-height: 1.75;
+    color:       rgba(26,37,48,0.75);
+    max-width:   560px;
+    margin:      0;
+  }
+
+  /* Colonne photo */
+  .apropos-hero-photo {
+    position: relative;
+  }
+
+  .apropos-hero-photo-wrap {
+    position: relative;
+    max-width: 420px;
+    margin-left: auto;
+  }
+
+  .apropos-hero-photo-wrap img {
+    width:         100%;
+    height:        auto;
+    display:       block;
+    border-radius: 6px;
+    position:      relative;
+    z-index:       1;
+  }
+
+  .apropos-hero-badge {
+    position:       absolute;
+    bottom:         -16px;
+    right:          -16px;
+    background:     #4A6580;
+    border-radius:  6px;
+    padding:        14px 18px;
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            2px;
+    z-index:        2;
+  }
+
+  .apropos-hero-badge-number {
+    font-family: var(--font-titre);
+    font-size:   1.3rem;
+    font-weight: 700;
+    color:       #FFFFFF;
+    line-height: 1;
+  }
+
+  .apropos-hero-badge-label {
+    font-family:    var(--font-body);
+    font-size:      0.62rem;
+    font-weight:    500;
+    letter-spacing: 0.08em;
+    color:          rgba(255,255,255,0.75);
+  }
+
+
+  /* ─── 2. MON PARCOURS ─────────────────────────────────────── */
+
+  .apropos-parcours {
+    background-color: #FFFFFF;
+    padding:          80px 0;
+    border-top:       1px solid rgba(26,37,48,0.06);
+  }
+
+  .apropos-parcours-inner {
+    max-width: 780px;
+    margin:    0 auto;
+  }
+
+  .apropos-section-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(1.8rem, 3vw, 2.4rem);
+    font-weight:   700;
+    line-height:   1.2;
+    color:         #1A2530;
+    margin:        12px 0 32px;
+  }
+
+  .apropos-parcours-text p {
+    font-family:   var(--font-body);
+    font-size:     1.05rem;
+    line-height:   1.85;
+    color:         rgba(26,37,48,0.75);
+    margin-bottom: 20px;
+  }
+
+  .apropos-parcours-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .brand-ze3d {
+    font-family:    'Nasalization', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* Bloc références clients */
+  .apropos-references-block {
+    margin-top: 48px;
+    padding:    32px 0 0;
+    border-top: 1px solid rgba(26,37,48,0.08);
+  }
+
+  .apropos-references-label {
+    font-family:    var(--font-body);
+    font-size:      0.95rem;
+    font-weight:    500;
+    color:          rgba(26,37,48,0.65);
+    margin-bottom:  24px;
+  }
+
+  .apropos-logos {
+    display:     flex;
+    flex-wrap:   wrap;
+    align-items: center;
+    gap:         32px;
+  }
+
+  .apropos-logo {
+    height:     42px;
+    width:      auto;
+    filter:     grayscale(100%) opacity(0.5);
+    transition: filter 300ms ease;
+  }
+
+  .apropos-logo:hover {
+    filter: grayscale(0%) opacity(1);
+  }
+
+
+  /* ─── 3. MON EXPERTISE ────────────────────────────────────── */
+
+  .apropos-expertise {
+    background-color: #F3F5F7;
+    padding:          80px 0;
+  }
+
+  .apropos-section-intro {
+    max-width:     720px;
+    margin:        0 auto 56px;
+    text-align:    center;
+  }
+
+  .apropos-section-intro .apropos-section-title {
+    margin-bottom: 16px;
+  }
+
+  .apropos-section-subtitle {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    line-height:   1.75;
+    color:         rgba(26,37,48,0.65);
+    margin:        0;
+  }
+
+  .expertise-grid {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   48px;
+    max-width:             960px;
+    margin:                0 auto;
+  }
+
+  .expertise-col {
+    background:    #FFFFFF;
+    border-radius: 8px;
+    padding:       36px 32px;
+    box-shadow:    0 2px 8px rgba(26,37,48,0.04);
+  }
+
+  .expertise-col-title {
+    font-family:    var(--font-titre);
+    font-size:      1.2rem;
+    font-weight:    700;
+    color:          #1A2530;
+    margin-bottom:  24px;
+    padding-bottom: 14px;
+    border-bottom:  2px solid #4A6580;
+  }
+
+  /* Liste savoir-faire */
+  .expertise-list {
+    list-style: none;
+    padding:    0;
+    margin:     0;
+  }
+
+  .expertise-list li {
+    display:     flex;
+    align-items: flex-start;
+    gap:         12px;
+    padding:     10px 0;
+    font-family: var(--font-body);
+    font-size:   0.95rem;
+    line-height: 1.55;
+    color:       rgba(26,37,48,0.8);
+  }
+
+  .expertise-dot {
+    display:        inline-block;
+    width:          8px;
+    height:         8px;
+    min-width:      8px;
+    margin-top:     8px;
+    border-radius:  50%;
+    background:     #4A6580;
+  }
+
+  /* Liste des outils */
+  .expertise-tools-list {
+    list-style: none;
+    padding:    0;
+    margin:     0;
+  }
+
+  .expertise-tools-list li {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             12px;
+    padding:         12px 0;
+    border-bottom:   1px solid rgba(26,37,48,0.06);
+  }
+
+  .expertise-tools-list li:last-child {
+    border-bottom: none;
+  }
+
+  .expertise-tools-list .tool-name {
+    font-family: var(--font-body);
+    font-size:   0.95rem;
+    font-weight: 500;
+    color:       #1A2530;
+  }
+
+  .expertise-tools-list .tool-badge {
+    flex-shrink:    0;
+    background:     rgba(74,101,128,0.1);
+    border:         1px solid rgba(74,101,128,0.25);
+    font-family:    var(--font-body);
+    font-size:      0.72rem;
+    font-weight:    500;
+    letter-spacing: 0.02em;
+    color:          #4A6580;
+    border-radius:  4px;
+    padding:        4px 10px;
+  }
+
+
+  /* ─── 4. MA DÉMARCHE ──────────────────────────────────────── */
+
+  .apropos-demarche {
+    background-color: #FFFFFF;
+    padding:          80px 0;
+    border-top:       1px solid rgba(26,37,48,0.06);
+  }
+
+  .demarche-grid {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   20px;
+    max-width:             960px;
+    margin:                0 auto;
+  }
+
+  .demarche-card {
+    background:    #FFFFFF;
+    border:        1px solid rgba(26,37,48,0.08);
+    border-radius: 8px;
+    padding:       32px 28px;
+    transition:    transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  }
+
+  .demarche-card:hover {
+    transform:    translateY(-4px);
+    box-shadow:   0 8px 20px rgba(26,37,48,0.08);
+    border-color: rgba(74,101,128,0.3);
+  }
+
+  .demarche-icon {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    width:           56px;
+    height:          56px;
+    background:      rgba(74,101,128,0.1);
+    color:           #4A6580;
+    border-radius:   50%;
+    margin-bottom:   18px;
+  }
+
+  .demarche-title {
+    font-family:   var(--font-titre);
+    font-size:     1.25rem;
+    font-weight:   700;
+    color:         #1A2530;
+    margin-bottom: 12px;
+  }
+
+  .demarche-text {
+    font-family: var(--font-body);
+    font-size:   0.95rem;
+    line-height: 1.7;
+    color:       rgba(26,37,48,0.7);
+    margin:      0;
+  }
+
+
+  /* ─── 5. CTA FINAL ────────────────────────────────────────── */
+
+  .apropos-cta {
+    background-color: #F3F5F7;
+    padding:          80px 0 100px;
+    text-align:       center;
+    border-top:       1px solid rgba(26,37,48,0.06);
+  }
+
+  .apropos-cta-inner {
+    max-width: 640px;
+  }
+
+  .apropos-cta-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(1.8rem, 3vw, 2.4rem);
+    font-weight:   700;
+    color:         #1A2530;
+    margin:        12px 0 16px;
+    line-height:   1.2;
+  }
+
+  .apropos-cta-text {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    font-weight:   400;
+    line-height:   1.75;
+    color:         rgba(26,37,48,0.65);
+    margin-bottom: 32px;
+  }
+
+  .apropos-cta-actions {
+    display:         flex;
+    gap:             12px;
+    justify-content: center;
+    flex-wrap:       wrap;
+  }
+
+
+  /* ─── RESPONSIVE 900px ─────────────────────────────────────── */
+
+  @media (max-width: 900px) {
+
+    .apropos-hero {
+      padding: 64px 0 60px;
+    }
+
+    .apropos-hero-inner {
+      grid-template-columns: 1fr;
+      gap:                   40px;
+    }
+
+    .apropos-hero-photo-wrap {
+      max-width: 320px;
+      margin:    0 auto;
+    }
+
+    .apropos-parcours,
+    .apropos-expertise,
+    .apropos-demarche {
+      padding: 60px 0;
+    }
+
+    .expertise-grid {
+      grid-template-columns: 1fr;
+      gap:                   24px;
+    }
+
+    .demarche-grid {
+      grid-template-columns: 1fr 1fr;
+      gap:                   16px;
+    }
+  }
+
+
+  /* ─── RESPONSIVE 600px ─────────────────────────────────────── */
+
+  @media (max-width: 600px) {
+
+    .apropos-hero-photo-wrap {
+      max-width: 80%;
+    }
+
+    .expertise-col {
+      padding: 28px 24px;
+    }
+
+    .demarche-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .demarche-card {
+      padding: 28px 24px;
+    }
+
+    .apropos-cta-actions .btn-primary,
+    .apropos-cta-actions .btn-outline {
+      width:           100%;
+      justify-content: center;
+    }
+
+    .apropos-logos {
+      gap: 24px;
+    }
+  }
+</style>

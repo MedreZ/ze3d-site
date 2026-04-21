@@ -1,0 +1,927 @@
+---
+/**
+ * prestations.astro — Page détaillée des 3 pôles d'expertise ZE3D
+ * Layout split zigzag : image + texte alternés
+ */
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Nos prestations — ZE3D | Scan 3D, BIM & Visualisation"
+  description="Découvrez nos 3 pôles d'expertise : relevé numérique, modélisation BIM sous Revit et rendu 3D photoréaliste. ZE3D, spécialiste Scan-to-BIM à Perpignan, Occitanie."
+>
+  <main>
+
+    <!-- ============================================================
+         1. HERO PAGE — fond blanc
+         ============================================================ -->
+    <section class="prestations-hero">
+      <div class="container prestations-hero-inner">
+        <span class="section-label">NOS PRESTATIONS</span>
+        <h1 class="prestations-hero-title">
+          3 pôles d'expertise<br />
+          <em class="prestations-hero-accent">complémentaires</em>
+        </h1>
+        <p class="prestations-hero-subtitle">
+          De la capture terrain à la maquette numérique et jusqu'aux rendus graphiques
+          — une expertise complète, un seul interlocuteur pour l'ensemble de votre projet.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         1bis. PROCESS — Les étapes du projet (4 vignettes)
+         ============================================================ -->
+    <section class="process" aria-label="Les étapes du processus ZE3D">
+      <div class="container">
+        <div class="process-grid">
+
+          <!-- Étape 1 : Bâtiment existant -->
+          <figure class="process-step">
+            <div class="process-image-wrap">
+              <img src="/prestations/201.jpg" alt="Bâtiment existant — point de départ" loading="lazy" />
+            </div>
+            <figcaption class="process-step-caption">
+              <span class="process-step-label">EXISTANT</span>
+            </figcaption>
+          </figure>
+
+          <!-- Flèche 1 → 2 -->
+          <div class="process-arrow" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+
+          <!-- Étape 2 : Relevé -->
+          <figure class="process-step">
+            <div class="process-image-wrap">
+              <img src="/prestations/202.jpg" alt="Relevé numérique du bâtiment" loading="lazy" />
+            </div>
+            <figcaption class="process-step-caption">
+              <span class="process-step-label">RELEVÉ</span>
+            </figcaption>
+          </figure>
+
+          <!-- Flèche 2 → 3 -->
+          <div class="process-arrow" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+
+          <!-- Étape 3 : Modélisation -->
+          <figure class="process-step">
+            <div class="process-image-wrap">
+              <img src="/prestations/203.jpg" alt="Modélisation 3D et BIM" loading="lazy" />
+            </div>
+            <figcaption class="process-step-caption">
+              <span class="process-step-label">MODÉLISATION</span>
+            </figcaption>
+          </figure>
+
+          <!-- Flèche 3 → 4 -->
+          <div class="process-arrow" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+
+          <!-- Étape 4 : Rendu -->
+          <figure class="process-step">
+            <div class="process-image-wrap">
+              <img src="/prestations/204.jpg" alt="Rendu 3D final" loading="lazy" />
+            </div>
+            <figcaption class="process-step-caption">
+              <span class="process-step-label">RENDU</span>
+            </figcaption>
+          </figure>
+
+        </div>
+
+        <!-- ════════════════════════════════════════════════════
+             Slider avant / après (201 vs 204)
+             ════════════════════════════════════════════════════ -->
+        <div class="compare-wrap">
+          <p class="compare-label">
+            <span class="compare-label-text">DU BÂTIMENT EXISTANT AU RENDU FINAL</span>
+            <span class="compare-label-hint">— faites glisser le curseur —</span>
+          </p>
+
+          <div class="compare" id="compare" style="--pos: 50%;">
+            <!-- Image "après" (rendu final) — toujours visible en fond -->
+            <img src="/prestations/204.jpg" alt="Rendu 3D final" class="compare-img compare-img--after" />
+
+            <!-- Image "avant" (existant) — clipée à gauche du curseur -->
+            <img src="/prestations/201.jpg" alt="Bâtiment existant" class="compare-img compare-img--before" />
+
+            <!-- Curseur vertical -->
+            <div class="compare-handle" id="compare-handle">
+              <div class="compare-handle-circle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="10 6 4 12 10 18"/>
+                  <polyline points="14 6 20 12 14 18"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Labels dans les coins -->
+            <span class="compare-tag compare-tag--left">EXISTANT</span>
+            <span class="compare-tag compare-tag--right">MODÉLISATION</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         2. PÔLE 01 — RELEVÉ & CAPTURE (image gauche, fond blanc)
+         ============================================================ -->
+    <section class="pole pole--01" id="pole-1" aria-label="Pôle 1 — Relevé et capture numérique">
+      <div class="container pole-inner">
+
+        <!-- Image à gauche : équipements de relevé (mètre, télémètre, scanner laser) -->
+        <div class="pole-image-col">
+          <div class="pole-image-wrap pole-image-wrap--equipment">
+            <img
+              src="/prestations/100.png"
+              alt="Équipements de relevé — mètre, télémètre laser et scanner 3D"
+              class="pole-equipment-full"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Texte à droite -->
+        <div class="pole-text-col">
+          <span class="pole-number">01</span>
+          <h2 class="pole-title">Relevé & Capture numérique</h2>
+          <p class="pole-text">
+            Le relevé numérique est la première étape essentielle de tout projet de modélisation.
+            Selon la complexité du bâtiment, je m'adapte à vos besoins : mesures traditionnelles
+            au mètre et télémètre pour les petits relevés, ou scanner laser / LiDAR dernière
+            génération pour les projets complexes et les bâtiments patrimoniaux.
+          </p>
+          <p class="pole-text">
+            Chaque intervention est réalisée sur site avec une précision adaptée au niveau de détail
+            requis par votre projet. Les données capturées servent ensuite de base fiable pour la
+            modélisation, assurant la cohérence entre le bâti existant et la Maquette Numérique.
+          </p>
+
+          <p class="pole-meta">
+            <strong>Moyens mis en œuvre :</strong>
+            scanner laser 3D, LiDAR, télémètre laser, mètre, photographie 360°.
+          </p>
+
+          <hr class="pole-separator" />
+
+          <p class="pole-livrables-label">LIVRABLES :</p>
+          <div class="pole-badges">
+            <span class="badge">Nuage de points</span>
+            <span class="badge">RCP</span>
+            <span class="badge">E57</span>
+            <span class="badge">Panoramas 360°</span>
+            <span class="badge">Autres</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. PÔLE 02 — MODÉLISATION BIM (texte gauche, fond gris clair)
+         ============================================================ -->
+    <section class="pole pole--02" id="pole-2" aria-label="Pôle 2 — Modélisation 3D et BIM">
+      <div class="container pole-inner pole-inner--reverse">
+
+        <!-- Texte à gauche -->
+        <div class="pole-text-col">
+          <span class="pole-number">02</span>
+          <h2 class="pole-title">Modélisation 3D & BIM</h2>
+          <p class="pole-text">
+            À partir du relevé réalisé ou de vos sources (plans DAO, plans papier, documents
+            techniques), je réalise la Maquette Numérique 3D de votre bâtiment sous
+            <strong>Autodesk Revit</strong>.
+          </p>
+          <p class="pole-text">
+            De la maquette 3D simple destinée à la visualisation et aux études d'esquisse,
+            jusqu'à la maquette BIM structurée selon les standards internationaux (LOD 100 à 400,
+            export IFC pour l'interopérabilité) : j'adapte la modélisation à vos besoins et au
+            niveau d'exigence de votre projet.
+          </p>
+
+          <p class="pole-meta">
+            <strong>Outils &amp; standards :</strong>
+            Autodesk Revit, export IFC possible, plans 2D DWG/PDF générés depuis la maquette.
+          </p>
+
+          <hr class="pole-separator" />
+
+          <p class="pole-livrables-label">LIVRABLES :</p>
+          <div class="pole-badges">
+            <span class="badge">Maquette Revit</span>
+            <span class="badge">Export IFC</span>
+            <span class="badge">Plans DWG</span>
+            <span class="badge">Plans PDF</span>
+            <span class="badge">Autres</span>
+          </div>
+        </div>
+
+        <!-- Image à droite -->
+        <div class="pole-image-col">
+          <div class="pole-image-wrap">
+            <img
+              src="/prestations/403.jpg"
+              alt="Modélisation BIM 3D — vue maquette numérique"
+              class="pole-image"
+              loading="lazy"
+              width="1200"
+              height="800"
+            />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. PÔLE 03 — RENDU & VISUALISATION (image gauche, fond blanc)
+         ============================================================ -->
+    <section class="pole pole--03" id="pole-3" aria-label="Pôle 3 — Rendu et visualisation">
+      <div class="container pole-inner">
+
+        <!-- Image à gauche -->
+        <div class="pole-image-col">
+          <div class="pole-image-wrap">
+            <img
+              src="/prestations/506.jpg"
+              alt="Rendu 3D photoréaliste — visualisation architecturale"
+              class="pole-image"
+              loading="lazy"
+              width="1200"
+              height="800"
+            />
+          </div>
+        </div>
+
+        <!-- Texte à droite -->
+        <div class="pole-text-col">
+          <span class="pole-number">03</span>
+          <h2 class="pole-title">Rendu & Visualisation</h2>
+          <p class="pole-text">
+            La mise en image de votre Maquette Numérique permet de valoriser votre projet,
+            de convaincre vos clients et de présenter votre travail de manière professionnelle.
+            Intégration des matériaux, textures, éclairages et mise en scène : je transforme
+            la maquette technique en visuel impactant.
+          </p>
+          <p class="pole-text">
+            Du rendu 3D photoréaliste à la vidéo d'architecture, en passant par les panoramas
+            360° immersifs, j'adapte le livrable à votre contexte de présentation : dossier
+            d'étude, concours, promotion immobilière, communication client.
+          </p>
+
+          <p class="pole-meta">
+            <strong>Outils :</strong>
+            Enscape, Adobe Photoshop, Adobe Lightroom, Adobe After Effects.
+          </p>
+
+          <hr class="pole-separator" />
+
+          <p class="pole-livrables-label">LIVRABLES :</p>
+          <div class="pole-badges">
+            <span class="badge">Rendus 3D photoréalistes</span>
+            <span class="badge">Vidéos</span>
+            <span class="badge">Panoramas 360°</span>
+            <span class="badge">Visites virtuelles</span>
+            <span class="badge">Autres</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         5. CTA FINAL — fond gris clair
+         ============================================================ -->
+    <section class="prestations-cta" aria-label="Appel à l'action">
+      <div class="container prestations-cta-inner">
+        <span class="section-label">CONTACTEZ-NOUS</span>
+        <h2 class="prestations-cta-title">Un projet en tête ?</h2>
+        <p class="prestations-cta-text">
+          Parlons-en. Je vous réponds sous 48 h avec un devis personnalisé.
+        </p>
+        <div class="prestations-cta-actions">
+          <a href="/contact" class="btn-primary">
+            Demander un devis →
+          </a>
+          <a href="/realisations" class="btn-outline">
+            Voir les réalisations
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<!-- ============================================================
+     Script : slider avant / après
+     ============================================================ -->
+<script>
+  (function () {
+    const compare = document.getElementById('compare');
+    if (!compare) return;
+
+    let isDragging = false;
+
+    const setPos = (clientX: number) => {
+      const rect = compare.getBoundingClientRect();
+      let x = clientX - rect.left;
+      if (x < 0) x = 0;
+      if (x > rect.width) x = rect.width;
+      const pct = (x / rect.width) * 100;
+      compare.style.setProperty('--pos', pct + '%');
+    };
+
+    /* Drag via souris */
+    compare.addEventListener('mousedown', (e: MouseEvent) => {
+      isDragging = true;
+      setPos(e.clientX);
+    });
+
+    document.addEventListener('mousemove', (e: MouseEvent) => {
+      if (!isDragging) return;
+      setPos(e.clientX);
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    /* Drag via doigt (tactile) */
+    compare.addEventListener('touchstart', (e: TouchEvent) => {
+      isDragging = true;
+      setPos(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!isDragging) return;
+      setPos(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+  })();
+</script>
+
+<style>
+  /* ============================================================
+     PRESTATIONS — Styles spécifiques à la page
+     ============================================================ */
+
+
+  /* ─── 1. HERO PAGE ─────────────────────────────────────────── */
+
+  .prestations-hero {
+    background-color: #FFFFFF;
+    padding:          100px 0 80px;
+    text-align:       center;
+  }
+
+  .prestations-hero-inner {
+    max-width: 760px;
+  }
+
+  .prestations-hero-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight:   700;
+    line-height:   1.1;
+    color:         #1A2530;
+    margin:        12px 0 24px;
+  }
+
+  .prestations-hero-accent {
+    color:      #4A6580;
+    font-style: italic;
+  }
+
+  .prestations-hero-subtitle {
+    font-family: var(--font-body);
+    font-size:   1.0625rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color:       rgba(26,37,48,0.6);
+    max-width:   560px;
+    margin:      0 auto;
+  }
+
+
+  /* ─── 1bis. PROCESS — 4 vignettes ──────────────────────────── */
+
+  .process {
+    background-color: #FFFFFF;
+    padding:          0 0 80px;
+  }
+
+  .process-grid {
+    display:         flex;
+    align-items:     flex-start;
+    justify-content: center;
+    gap:             0;
+  }
+
+  .process-step {
+    margin:          0;
+    flex:            1;
+    max-width:       200px;
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    text-align:      center;
+  }
+
+  .process-arrow {
+    flex:            0 0 auto;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    color:           #4A6580;
+    padding-top:     50px; /* aligne avec le centre de l'image */
+    margin:          0 12px;
+  }
+
+  .process-image-wrap {
+    position:      relative;
+    width:         100%;
+    aspect-ratio:  3 / 2;
+    overflow:      hidden;
+    border-radius: 8px;
+    background:    #F3F5F7;
+    box-shadow:    0 2px 12px rgba(26,37,48,0.08);
+    transition:    transform 300ms ease, box-shadow 300ms ease;
+  }
+
+  .process-step:hover .process-image-wrap {
+    transform:  translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26,37,48,0.14);
+  }
+
+  .process-image-wrap img {
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+    display:    block;
+  }
+
+  .process-step-caption {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+    margin-top:     16px;
+  }
+
+  .process-step-label {
+    font-family:    var(--font-body);
+    font-size:      0.85rem;
+    font-weight:    700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color:          #4A6580;
+  }
+
+  .process-step-title {
+    font-family: var(--font-titre);
+    font-size:   1rem;
+    font-weight: 700;
+    color:       #1A2530;
+    line-height: 1.3;
+  }
+
+
+  /* ─── Slider comparaison avant/après ───────────────────────── */
+
+  .compare-wrap {
+    margin-top: 56px;
+    max-width:  960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .compare-label {
+    text-align:    center;
+    margin:        0 0 16px;
+    font-family:   var(--font-body);
+    font-size:     0.8rem;
+    font-weight:   500;
+    letter-spacing: 0.14em;
+  }
+
+  .compare-label-text {
+    color:          #4A6580;
+    text-transform: uppercase;
+    font-weight:    700;
+  }
+
+  .compare-label-hint {
+    color:      rgba(26,37,48,0.45);
+    font-style: italic;
+    font-weight: 400;
+    margin-left: 8px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .compare {
+    position:      relative;
+    width:         100%;
+    aspect-ratio:  3 / 2;
+    overflow:      hidden;
+    border-radius: 8px;
+    box-shadow:    0 4px 20px rgba(26,37,48,0.12);
+    user-select:   none;
+    cursor:        ew-resize;
+    background:    #F3F5F7;
+    --pos:         50%;
+    touch-action:  none;
+  }
+
+  .compare-img {
+    position:       absolute;
+    inset:          0;
+    width:          100%;
+    height:         100%;
+    object-fit:     cover;
+    display:        block;
+    pointer-events: none;
+  }
+
+  /* Image "avant" clipée selon la position du curseur */
+  .compare-img--before {
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  }
+
+  /* Curseur vertical — trait blanc + rond central */
+  .compare-handle {
+    position:       absolute;
+    top:            0;
+    bottom:         0;
+    left:           var(--pos);
+    width:          2px;
+    background:     #FFFFFF;
+    transform:      translateX(-50%);
+    pointer-events: none;
+    box-shadow:     0 0 8px rgba(0,0,0,0.25);
+  }
+
+  .compare-handle-circle {
+    position:        absolute;
+    top:             50%;
+    left:            50%;
+    transform:       translate(-50%, -50%);
+    width:           48px;
+    height:          48px;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    background:      #4A6580;
+    color:           #FFFFFF;
+    border-radius:   50%;
+    box-shadow:      0 4px 12px rgba(0,0,0,0.25);
+    pointer-events:  none;
+  }
+
+  .compare-tag {
+    position:       absolute;
+    top:            16px;
+    padding:        6px 12px;
+    font-family:    var(--font-body);
+    font-size:      0.7rem;
+    font-weight:    600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color:          #FFFFFF;
+    background:     rgba(26,37,48,0.75);
+    border-radius:  4px;
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+  }
+
+  .compare-tag--left {
+    left: 16px;
+  }
+
+  .compare-tag--right {
+    right: 16px;
+  }
+
+
+  /* ─── 2. PÔLE (commun aux 3 poles) ─────────────────────────── */
+
+  .pole {
+    padding: 100px 0;
+  }
+
+  .pole--01,
+  .pole--03 {
+    background-color: #FFFFFF;
+  }
+
+  .pole--02 {
+    background-color: #F3F5F7;
+  }
+
+  /* Séparateur subtil entre poles */
+  .pole + .pole {
+    border-top: 1px solid rgba(26,37,48,0.06);
+  }
+
+  .pole-inner {
+    display:               grid;
+    grid-template-columns: 55% 45%;
+    gap:                   64px;
+    align-items:           center;
+  }
+
+  /* Colonne image */
+  .pole-image-col {
+    width: 100%;
+  }
+
+  .pole-image-wrap {
+    position:      relative;
+    overflow:      hidden;
+    border-radius: 8px;
+    box-shadow:    0 4px 20px rgba(26,37,48,0.08);
+  }
+
+  .pole-image {
+    width:         100%;
+    height:        auto;
+    display:       block;
+    object-fit:    cover;
+    transition:    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pole-image-wrap:hover .pole-image {
+    transform: scale(1.03);
+  }
+
+  /* Variante "equipment" : fond gris + une image groupée des équipements */
+  .pole-image-wrap--equipment {
+    aspect-ratio:    3 / 2;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         32px;
+    background:      linear-gradient(180deg, #F3F5F7 0%, #E9ECEF 100%);
+    box-shadow:      inset 0 1px 0 rgba(255,255,255,0.6),
+                     0 4px 20px rgba(26,37,48,0.08);
+  }
+
+  .pole-equipment-full {
+    max-width:  88%;
+    max-height: 100%;
+    width:      auto;
+    height:     auto;
+    display:    block;
+    filter:     drop-shadow(0 12px 16px rgba(26,37,48,0.18));
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pole-image-wrap--equipment:hover .pole-equipment-full {
+    transform: translateY(-4px);
+  }
+
+  /* Colonne texte */
+  .pole-text-col {
+    padding-left:  8px;
+    padding-right: 8px;
+  }
+
+  .pole-number {
+    font-family:    var(--font-titre);
+    font-size:      3rem;
+    font-weight:    700;
+    letter-spacing: 0.02em;
+    color:          #4A6580;
+    line-height:    1;
+    display:        block;
+    margin-bottom:  16px;
+  }
+
+  .pole-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(1.8rem, 3vw, 2.4rem);
+    font-weight:   700;
+    color:         #1A2530;
+    line-height:   1.2;
+    margin-bottom: 24px;
+  }
+
+  .pole-text {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    font-weight:   400;
+    line-height:   1.75;
+    color:         rgba(26,37,48,0.7);
+    margin-bottom: 16px;
+  }
+
+  .pole-text strong {
+    color:       #1A2530;
+    font-weight: 600;
+  }
+
+  .pole-meta {
+    font-family:   var(--font-body);
+    font-size:     0.9375rem;
+    font-weight:   400;
+    line-height:   1.7;
+    color:         rgba(26,37,48,0.6);
+    margin-top:    16px;
+    margin-bottom: 0;
+  }
+
+  .pole-meta strong {
+    color:          #4A6580;
+    font-weight:    600;
+  }
+
+  .pole-separator {
+    border:     none;
+    border-top: 1px solid rgba(26,37,48,0.1);
+    margin:     28px 0 18px;
+  }
+
+  .pole-livrables-label {
+    font-family:    var(--font-body);
+    font-size:      0.7rem;
+    font-weight:    500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color:          rgba(26,37,48,0.5);
+    margin-bottom:  12px;
+  }
+
+  .pole-badges {
+    display:   flex;
+    flex-wrap: wrap;
+    gap:       6px;
+  }
+
+
+  /* ─── Inversion du layout pour pole 02 ───────────────────────── */
+
+  .pole-inner--reverse .pole-text-col {
+    order: 1;
+  }
+
+  .pole-inner--reverse .pole-image-col {
+    order: 2;
+  }
+
+
+  /* ─── 5. CTA FINAL ─────────────────────────────────────────── */
+
+  .prestations-cta {
+    background-color: #F3F5F7;
+    padding:          80px 0 100px;
+    text-align:       center;
+    border-top:       1px solid rgba(26,37,48,0.06);
+  }
+
+  .prestations-cta-inner {
+    max-width: 640px;
+  }
+
+  .prestations-cta-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(1.8rem, 3vw, 2.4rem);
+    font-weight:   700;
+    color:         #1A2530;
+    margin:        12px 0 16px;
+    line-height:   1.2;
+  }
+
+  .prestations-cta-text {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    font-weight:   400;
+    line-height:   1.75;
+    color:         rgba(26,37,48,0.65);
+    margin-bottom: 32px;
+  }
+
+  .prestations-cta-actions {
+    display:         flex;
+    gap:             12px;
+    justify-content: center;
+    flex-wrap:       wrap;
+  }
+
+
+  /* ─── RESPONSIVE 900px ─────────────────────────────────────── */
+
+  @media (max-width: 900px) {
+
+    .process {
+      padding: 0 0 60px;
+    }
+
+    .process-grid {
+      flex-wrap:       wrap;
+      justify-content: center;
+      gap:             20px;
+    }
+
+    .process-step {
+      flex:     0 0 calc(50% - 40px);
+      max-width: 240px;
+    }
+
+    .process-arrow {
+      display: none;
+    }
+
+    .pole {
+      padding: 64px 0;
+    }
+
+    /* Sur mobile : on aplatit la grille pour reordonner :
+       numero -> titre -> image -> paragraphes -> livrables */
+    .pole-inner,
+    .pole-inner--reverse {
+      display:        flex;
+      flex-direction: column;
+      gap:            20px;
+    }
+
+    .pole-image-col,
+    .pole-text-col {
+      display: contents;
+    }
+
+    .pole-text-col > .pole-number   { order: 1; }
+    .pole-text-col > .pole-title    { order: 2; margin-bottom: 0; }
+    .pole-image-col > .pole-image-wrap {
+      order:     3;
+      width:     100%;
+      margin:    8px 0;
+    }
+    .pole-text-col > .pole-text     { order: 4; }
+    .pole-text-col > .pole-meta     { order: 5; }
+    .pole-text-col > .pole-separator{ order: 6; }
+    .pole-text-col > .pole-livrables-label { order: 7; }
+    .pole-text-col > .pole-badges   { order: 8; }
+
+    /* Equipement : ajustements mobile */
+    .pole-image-wrap--equipment {
+      aspect-ratio: 4 / 3;
+      padding:      24px;
+    }
+
+    .pole-equipment-full {
+      max-width:  92%;
+      max-height: 95%;
+    }
+  }
+
+
+  /* ─── RESPONSIVE 480px ─────────────────────────────────────── */
+
+  @media (max-width: 480px) {
+
+    .prestations-hero {
+      padding: 60px 0 40px;
+    }
+
+    .process-step {
+      flex:      0 0 100%;
+      max-width: 280px;
+    }
+
+    .pole {
+      padding: 48px 0;
+    }
+
+    .prestations-cta {
+      padding: 60px 0 80px;
+    }
+
+    .prestations-cta-actions .btn-primary,
+    .prestations-cta-actions .btn-outline {
+      width:           100%;
+      justify-content: center;
+    }
+  }
+</style>

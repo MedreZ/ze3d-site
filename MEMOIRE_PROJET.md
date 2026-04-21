@@ -1,5 +1,5 @@
 # MEMOIRE PROJET — Site vitrine ZE3D
-# Derniere mise a jour : 3 avril 2026 — Session 2
+# Derniere mise a jour : 21 avril 2026 — Session 5
 
 ---
 
@@ -105,15 +105,16 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 
 ## 8. STRUCTURE DU SITE
 
-### Pages existantes
-- **Accueil (index.astro)** — Hero, Prestations, A propos, Stats, Realisations, CTA
+### Pages existantes (TOUTES CREEES)
+- **Accueil** (`index.astro`) — Hero, Prestations, A propos, Stats, Realisations, CTA
+- **Prestations** (`prestations.astro`) — Hero + Process 4 vignettes + Slider avant/apres + 3 poles detailles + CTA
+- **Realisations** (`realisations.astro`) — Hero + Filtres (Tout/2D/3D/Rendu) + Grille 22 images + Lightbox + CTA
+- **A propos** (`a-propos.astro`) — Hero + Mon parcours + Expertise (2 cols) + Ma demarche (4 engagements) + CTA
+- **Contact** (`contact.astro`) — Hero + Formulaire Netlify Forms (7 champs + RGPD) + Infos contact + CTA alternatif
+- **Mentions legales** (`mentions-legales.astro`) — 10 sections (Editeur, Hebergeur, Assurance, PI, RGPD, Cookies, etc.)
 
 ### Pages a creer
-- /prestations — Detail des 3 poles
-- /realisations — Galerie complete
-- /a-propos — Parcours du fondateur
-- /contact — Formulaire de devis
-- /mentions-legales — Obligations legales (SIRET, hebergeur, RGPD)
+Aucune — toutes les pages du site sont desormais creees.
 
 ### Composants
 - Navigation.astro — Nav fixe + hamburger mobile
@@ -136,7 +137,9 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 │   └── styles/global.css
 ├── public/                  (assets servis : images, fonts, logos)
 │   ├── fonts/Nasalization.otf
-│   ├── realisations/        (images de la galerie)
+│   ├── logos/               (logos clients references : CNAV, CAF, OFII, Capgemini, Optical Center, Fujitsu)
+│   ├── prestations/         (100, 201-204, 403, 506 pour la page Prestations)
+│   ├── realisations/        (22 images 301-305, 401-404, 501-513 pour la galerie)
 │   ├── logo-fond-clair.png
 │   ├── logo-fond-fonce.png
 │   └── photo-emmanuel.JPG
@@ -164,6 +167,20 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 ### Images selectionnees pour la page d'accueil (grille realisations)
 - 501, 502, 503, 505, 507, 513
 
+### Images de la page Prestations
+- Hero : pas d'image
+- Process 4 vignettes : 201 (existant) → 202 (releve) → 203 (modelisation) → 204 (rendu)
+- Slider avant/apres : 201 (existant) vs 204 (rendu)
+- Pole 01 : 100.png (equipements regroupes : metre, telemetre, scanner)
+- Pole 02 : 403.jpg (maquette BIM)
+- Pole 03 : 506.jpg (rendu photorealiste)
+
+### Images de la page Realisations (22 au total)
+Categorisation :
+- **2D (Releve)** : 301, 302, 303, 304, 305
+- **3D (BIM)**    : 401, 402, 403, 404
+- **Rendu**       : 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513
+
 ### Image Hero
 - 509.jpg (object-position: 18% center)
 
@@ -172,15 +189,85 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 ## 11. DECISIONS DE DESIGN PRISES
 
 - Hero : split 52/48 (texte/image), image 509.jpg, object-position 18% center
-- Texte "ZE3D" dans la nav : meme hauteur que le logo (font-size 4.2rem)
+- Hero mobile : image non cropee affichee juste apres le titre h1
+- Texte "ZE3D" dans la nav : meme hauteur que le logo (font-size 5.2rem)
 - Grille realisations : systeme 4x4 (16 cellules), images de tailles variees (1x1, 2x1, 1x2, 2x2), cellules vides pour dynamisme
   - Disposition : 513 (2x2) | vide | 507 (1x1) | 503 (2x1) | 501 (1x2) | vide | 505 (1x1) | 502 (2x2)
 - Stats : 5 blocs (15 ans / Revit Expert / BIM Modeleur / Releve 3D Scanner Laser / Perpignan & France entiere)
 - Cartes prestations : texte en flex:1 pour aligner les separateurs et livrables, min-height 62px sur badges
+- Section A propos :
+  - Photo Emmanuel reduite a 0.5fr sur desktop, alignee en haut (start) avec margin-top 48px
+  - Lisere autour de la photo supprime
+  - Photo mobile : affichee apres le titre "15 ans d'expertise", 80% largeur, centree
+  - Bloc references clients avec logos en niveaux de gris (couleur au hover)
+- Logos clients references : CNAV, CAF, OFII, Capgemini, Optical Center, Fujitsu
+  - Ce sont des references personnelles du fondateur (pas des clients ZE3D)
+  - Formulation : "Au cours de mes 15 ans d'experience, j'ai eu l'opportunite d'intervenir sur des projets pour des acteurs tels que :"
+  - Logos en grayscale 50% opacity, hauteur 42px, couleur au hover
 - Palette fond clair, accent #4A6580
 - Navigation : fond blanc semi-transparent avec blur
-- Footer : fond sombre #1A2530
+- Footer : fond sombre #1A2530 — textes en bleu clair #8FA6C0 pour lisibilite (et non #4A6580 qui serait trop sombre sur fond sombre)
 - Pas de ligne decorative sur l'image hero
+
+### Page Prestations (layout split zigzag)
+- Hero simple (titre + sous-titre, pas d'image)
+- Process 4 vignettes : images 201-204 reliees par des fleches bleues epaisses (stroke 2.5)
+- Slider avant/apres : 201 (existant) vs 204 (rendu), curseur draggable, tags "EXISTANT" et "MODELISATION"
+- 3 poles avec alternance image/texte (zigzag) : image a gauche (55%) pour 01 et 03, image a droite pour 02
+- Pole 01 : bloc equipement sur fond gris degrade (#F3F5F7 -> #E9ECEF), image 100.png taille 88% largeur
+- CTA final avec bouton "Demander un devis" et "Voir les realisations"
+- Sur mobile : numero + titre avant l'image, puis paragraphes + livrables
+
+### Page Realisations (grille filtrable + lightbox)
+- Hero simple avec label "NOS REALISATIONS" agrandi (1.1rem)
+- Filtres pill : Tout / 2D / 3D / Rendu avec compteurs entre parentheses
+- Grille 3 colonnes (desktop) / 2 (tablette) / 1 (mobile) avec `grid-auto-flow: dense`
+- Items "item-tall" et "item-wide" via modulo (i%7===2 / i%11===5) pour rythme visuel
+- Lightbox overlay plein ecran : ESC pour fermer, fleches clavier pour naviguer
+- Labels lightbox : "CATEGORIE - Titre" (avec tiret cadratin)
+- Legendes uniformisees entre home et realisations (voir section 12)
+- Images 503 et 504 (paire jour/nuit) : placees avant 502 dans le tableau pour qu'elles tombent naturellement cote a cote sur la meme ligne en 3 colonnes
+- CTA final : "Un projet en tete ?" (coherent avec la page Prestations)
+
+### Page A propos (5 sections, sans timeline)
+- Hero split 60/40 : texte + photo Emmanuel (avec badge "15 ans d'experience")
+- "Mon parcours" : 3 paragraphes narratifs + logos clients references
+- "Mon expertise" (fond gris) : 2 colonnes — Savoir-faire (liste a puces) + Outils (4 tools avec badges Modelisation/Rendu/Retouche/Video)
+- "Ma demarche" : 4 cartes (Proximite · Sur-mesure · Exigence · Transparence) avec icones SVG rondes
+- CTA final "Parlons de votre projet" avec boutons Devis/Realisations
+- **Mention "Architecte de formation"** dans le paragraphe 1 (formulation legale OK car "de formation" = non protege)
+
+### Page Contact (formulaire Netlify Forms)
+- Hero simple (label CONTACT + H1 "Parlons de votre projet" + sous-titre 48 h)
+- Split 60/40 : Formulaire (gauche) + Infos contact (droite, sticky)
+- **Netlify Forms** active : `data-netlify="true"` + `netlify-honeypot="bot-field"`
+- 7 champs : Nom* + Prenom* + Entreprise + Email* + Telephone + Type de projet* + Message (optionnel) + case RGPD*
+- Select "Type de projet" : Releve numerique / Modelisation 3D & BIM / Rendu & visualisation / Plusieurs / Autre
+- **Validation custom** : `novalidate` sur form, JS marque explicitement TOUS les champs invalides avec classe `.is-invalid` (bordure rouge) — fix pour que plusieurs champs soient marques simultanement
+- Bouton submit visuellement inactif (opacity 0.4) tant que le formulaire n'est pas valide
+- Soumission AJAX via `fetch` (pas de rechargement), message de succes avec scroll smooth
+- 3 cartes infos : Email / Zone d'intervention (**"France entiere"** sans mention Perpignan sur cette page pour ne pas limiter) / Delai de reponse
+- Honeypot anti-spam (champ cache off-screen)
+- Lien vers `/mentions-legales` depuis la case RGPD
+
+### Page Mentions legales (10 sections)
+- Hero simple avec date de mise a jour
+- 10 sections : Editeur / Hebergeur / Assurance / PI / RGPD / Cookies / Responsabilite / Liens externes / Droit applicable / Contact
+- `<dl>` pour infos structurees (fond gris clair `#F3F5F7`)
+- Max-width 820px pour lisibilite texte long
+- Pas de CTA (page legale, pas de conversion)
+- Accessible via footer (lien sur toutes les pages)
+
+### Modifications globales recentes
+- **`.section-label` globalement agrandi** : font-size 1.1rem, letter-spacing 0.22em (auparavant 0.7rem / 0.2em). Impact sur tous les labels de section du site.
+- **Footer bottom bar** : contrastes renforces (0.75 / 0.6 alpha au lieu de 0.4 / 0.3) pour meilleure lisibilite sur fond sombre
+- **Mentions legales** ajoutees au footer bottom (visible sur toutes les pages)
+- **Titres "Mes outils"** : 4 outils (Revit, Enscape, Photoshop/Lightroom, After Effects) avec badges — Faro Scene et AutoCAD retires
+- **Corrections legales** sur l'ensemble du site :
+  - "garantissant" -> "assurant" (pole 01)
+  - "Pas de sous-traitance" / "sans intermediaire ni sous-traitance" supprimes (engagement trop fort)
+  - "Des delais tenus / Pas de surprise en cours de route" -> formulation plus souple
+  - Mention "48 h" conservee (risque faible, usage courant)
 
 ---
 
@@ -205,6 +292,102 @@ Note : "Maquettes Numeriques" en majuscules = choix volontaire du fondateur.
 
 "Base a Perpignan, j'interviens sur site pour vos metres et releves numeriques et accompagne vos projets de modelisation 3D et de rendus graphiques sur toute la France."
 
+### Texte references clients
+"Au cours de mes 15 ans d'experience, j'ai eu l'opportunite d'intervenir sur des projets pour des acteurs tels que :"
+Note : ces references sont liees a l'experience personnelle du fondateur, pas a ZE3D.
+
+### Page A propos — Hero accroche
+"Specialiste en modelisation 3D et BIM Architecture depuis plus de 15 ans, je mets mon expertise technique au service des professionnels du batiment. Installe a Perpignan, j'interviens en Occitanie et dans toute la France."
+
+### Page A propos — Mon parcours (3 paragraphes)
+**P1 (avec mention legale "Architecte de formation") :**
+"**Architecte de formation**, j'ai debute ma carriere en cabinet de maitrise d'oeuvre parisien ou j'ai occupe pendant plus de 15 ans les fonctions de dessinateur projeteur, puis de Responsable du pole 3D et de BIM Coordinateur. J'y ai pilote des projets d'envergure pour des acteurs tels que la CNAV, la CAF, l'OFII, Capgemini ou Optical Center."
+
+**P2 (sans "sans intermediaire ni sous-traitance") :**
+"Aujourd'hui, je cree ZE3D pour mettre cette experience a disposition des professionnels du batiment de maniere independante. Installe a Perpignan, je privilegie une relation directe et sur-mesure avec chaque client."
+
+**P3 :**
+"Ce qui me passionne : transformer les releves terrain en Maquettes Numeriques precises, aider les architectes et bureaux d'etudes a visualiser et coordonner leurs projets, et livrer des images qui donnent vie aux projets avant meme leur construction."
+
+### Page A propos — 4 engagements
+1. **Proximite** : "Un seul interlocuteur, du releve sur site jusqu'au rendu final — votre projet passe par une seule paire de mains."
+2. **Sur-mesure** : "Chaque projet est aborde selon ses specificites. Le niveau de detail, les livrables et la methode sont adaptes a vos besoins reels, pas a une offre standardisee."
+3. **Exigence** (renomme depuis "Rigueur") : "La rigueur technique est non-negociable : des releves precis jusqu'aux maquettes BIM LOD 400 si le projet le requiert."
+4. **Transparence** (reformulee pour moins d'engagement legal) : "Un devis clair et detaille avant engagement. Un planning partage et tenu. Des livrables conformes au contrat. Une communication ouverte en cas d'evolution du projet."
+
+### Page Contact — Textes valides
+- H1 : "Parlons de votre projet"
+- Sous-titre : "Je vous reponds sous 48 h avec un devis personnalise adapte a vos besoins."
+- Titre colonne formulaire : "Demandez un devis"
+- Hint sous titre : "Les champs marques d'un * sont obligatoires."
+- Placeholder message : "Decrivez votre projet : type de batiment, surface, delai souhaite, niveau de detail attendu..."
+- Message validation : "Merci de remplir les champs obligatoires mis en evidence."
+- Message succes : "Merci pour votre message ! Votre demande a bien ete envoyee. Je vous reponds sous 48 h."
+- Message erreur : "Une erreur est survenue lors de l'envoi. Merci de reessayer ou de m'ecrire directement a contact@ze3d.fr."
+- RGPD : "J'accepte que mes donnees soient utilisees pour me recontacter dans le cadre de ma demande. En savoir plus [lien mentions legales]"
+- Carte Zone d'intervention : **"France entiere"** + "Deplacement possible selon le projet" (sans mention Perpignan pour ne pas limiter)
+
+### Informations legales du fondateur (pour mentions-legales.astro)
+- Nom : Emmanuel Zerdoun
+- Denomination : Emmanuel Zerdoun EI
+- Nom commercial : ZE3D
+- Siege : 47 rue Vivienne, 75002 Paris
+- SIRET : 812 525 103 00022
+- Telephone : 06 73 04 21 28
+- Email : contact@ze3d.fr
+- TVA intracommunautaire : en cours d'obtention
+- Assurance RC Pro : en cours d'obtention
+- Hebergeur : Netlify, Inc. (44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA)
+
+### Page Prestations — Hero
+H1 : "3 poles d'expertise complementaires"
+Sous-titre : "De la capture terrain a la maquette numerique et jusqu'aux rendus graphiques — une expertise complete, un seul interlocuteur pour l'ensemble de votre projet."
+
+### Page Prestations — Pole 01 (Releve & Capture numerique)
+"Le releve numerique est la premiere etape essentielle de tout projet de modelisation. Selon la complexite du batiment, je m'adapte a vos besoins : mesures traditionnelles au metre et telemetre pour les petits releves, ou scanner laser / LiDAR derniere generation pour les projets complexes et les batiments patrimoniaux."
+"Chaque intervention est realisee sur site avec une precision adaptee au niveau de detail requis par votre projet. Les donnees capturees servent ensuite de base fiable pour la modelisation, garantissant la coherence entre le bati existant et la Maquette Numerique."
+Moyens : scanner laser 3D, LiDAR, telemetre laser, metre, photographie 360°.
+
+### Page Prestations — Pole 02 (Modelisation 3D & BIM)
+"A partir du releve realise ou de vos sources (plans DAO, plans papier, documents techniques), je realise la Maquette Numerique 3D de votre batiment sous Autodesk Revit."
+"De la maquette 3D simple destinee a la visualisation et aux etudes d'esquisse, jusqu'a la maquette BIM structuree selon les standards internationaux (LOD 100 a 400, export IFC pour l'interoperabilite) : j'adapte la modelisation a vos besoins et au niveau d'exigence de votre projet."
+Note importante : le BIM est presente comme UNE OPTION, pas comme une obligation. Certains clients veulent juste une maquette 3D simple.
+
+### Page Prestations — Pole 03 (Rendu & Visualisation)
+"La mise en image de votre Maquette Numerique permet de valoriser votre projet, de convaincre vos clients et de presenter votre travail de maniere professionnelle. Integration des materiaux, textures, eclairages et mise en scene : je transforme la maquette technique en visuel impactant."
+"Du rendu 3D photorealiste a la video d'architecture, en passant par les panoramas 360° immersifs, j'adapte le livrable a votre contexte de presentation : dossier d'etude, concours, promotion immobiliere, communication client."
+Outils : Enscape, Adobe Photoshop, Adobe Lightroom, Adobe After Effects.
+
+### Page Realisations — Hero
+H1 : "Une selection de projets"
+Sous-titre : "Scanner 3D, maquettes numeriques, rendus architecturaux — un echantillon des projets auxquels j'ai contribue au fil des 15 dernieres annees."
+
+### Page Realisations — Titres des images (validés par le fondateur)
+- **301** : Elevation facade haussmannienne
+- **302** : Plans et coupes — longere renovee
+- **303** : Plan d'amenagement tertiaire
+- **304** : Plan d'appartement — duplex
+- **305** : Plan de masse
+- **401** : Complexe tertiaire
+- **402** : Complexe tertiaire
+- **403** : Immeuble de bureaux
+- **404** : Complexe scolaire
+- **501** : Immeuble de bureaux
+- **502** : Complexe tertiaire (retire le "Galilee")
+- **503** : Coupe — Immeuble de bureaux (vue de jour)
+- **504** : Coupe — Immeuble de bureaux (vue de nuit)
+- **505** : Vue aerienne — complexe scolaire
+- **506** : Complexe scolaire
+- **507** : Cour interieure — residence
+- **508** : Complexe tertiaire
+- **509** : Coupe — Immeuble de bureaux
+- **510** : Complexe tertiaire (de la 3D au rendu graphique)
+- **511** : Interieur plateau de bureau
+- **512** : Facade et details batiment haussmannien
+- **513** : Complexe scolaire (vue de nuit)
+
+Ces legendes sont repercutees aussi sur la grille de la page d'accueil pour coherence.
+
 ---
 
 ## 13. OBLIGATIONS LEGALES (A IMPLEMENTER)
@@ -222,12 +405,34 @@ Page mentions legales a creer avec :
 ## 14. HISTORIQUE GIT
 
 ```
+5c6ed93 Ajout logos clients, image mobile hero/apropos, stats enrichies, textes prestations
 e299b5a Refonte page accueil : textes, grille realisations 4x4, stats 5 blocs
 a6f80f1 Refonte design : palette Encre & Ardoise, logos, contenu editorial
 2f213f7 init: projet Astro ZE3D
 ```
 
-Premier deploiement test effectue le 3 avril 2026 sur https://ze3d-test.netlify.app
+Deploiements test effectues le 3 avril 2026 sur https://ze3d-test.netlify.app
+Aucun deploiement prod effectue pour le moment.
+
+Modifications en cours non-commitees (sessions 4 et 5 du 21 avril 2026) :
+- **Session 4** :
+  - Creation de la page `/prestations` (layout split zigzag, process, slider avant/apres)
+  - Creation de la page `/realisations` (grille filtrable + lightbox)
+  - Ajout des images 100, 201-204, 301-305, 401-404, 502, 504, 506, 508, 510 dans public/
+  - Corrections orthographiques et typographiques sur l'ensemble du site
+  - Uniformisation des legendes entre home et realisations
+  - Textes des poles 01, 02, 03 etoffes
+  - Footer : couleurs plus lisibles sur fond sombre (#8FA6C0 au lieu de #4A6580)
+- **Session 5** :
+  - Creation de la page `/a-propos` (5 sections : Hero, Parcours, Expertise, Demarche, CTA)
+  - Creation de la page `/contact` avec Netlify Forms (7 champs + RGPD + validation custom multi-champs)
+  - Creation de la page `/mentions-legales` (10 sections legales)
+  - `.section-label` globalement agrandi (0.7rem -> 1.1rem)
+  - Footer bottom bar : contraste renforce + ajout du lien "Mentions legales"
+  - Corrections legales : formulations adoucies (sous-traitance, garantie, delais tenus)
+  - Titre engagement "Rigueur" renomme en "Exigence"
+  - Carte Zone d'intervention Contact : "Perpignan" supprime pour ne pas limiter geographiquement
+  - Toutes les pages du site sont desormais creees — prochaine etape : commit + push + test Netlify
 
 ---
 
@@ -243,3 +448,42 @@ Premier deploiement test effectue le 3 avril 2026 sur https://ze3d-test.netlify.
 - Le fondateur prefere valider les textes avant application
 - Pour lancer le dev server : export PATH="/usr/local/bin:$PATH" && cd "/Users/emmanuelzerdoun/Documents/SITE WEB" && npm run dev
 - npm se trouve dans /usr/local/bin/npm (pas dans le PATH par defaut du shell Claude Code)
+- Pour acceder au site depuis un iPhone sur le meme Wi-Fi : http://192.168.0.13:4321 (avec --host)
+- Le dossier Sources/ n'est PAS commite dans git (trop volumineux), seuls les fichiers dans public/ le sont
+- Compte Netlify : MedreZ's team, authentification via npx netlify login dans le terminal Mac
+
+---
+
+## 16. REGLE — CORRECTION AUTOMATIQUE DES TEXTES
+
+**A chaque fois que le fondateur fournit un texte destine a etre integre au site** (titre,
+paragraphe, legende, bouton, meta-description, etc.), Claude DOIT :
+
+1. **Verifier systematiquement** :
+   - Orthographe (accents, lettres manquantes, fautes frappe)
+   - Accords (genre, nombre, conjugaison)
+   - Syntaxe (structure de phrase, clarte)
+   - Ponctuation (virgules, points, points-virgules)
+   - Typographie francaise :
+     - Apostrophes typographiques (' et non ')
+     - Espaces insecables avant `: ; ! ?` et `«»`
+     - Tirets cadratins `—` pour les incises (pas `-` simple)
+     - Guillemets francais `« »` plutot qu'anglais `" "`
+     - Majuscules accentuees (À, É, etc.) si necessaire
+   - Fluidite / naturel (eviter les lourdeurs, redondances)
+
+2. **Si des corrections sont necessaires** :
+   - Presenter la version corrigee au fondateur AVANT d'appliquer
+   - Expliquer brievement les corrections (ex: "\"retro ingineering\" -> \"retro-ingenierie\"")
+   - Attendre la validation du fondateur avant de modifier le fichier
+
+3. **Si le texte est parfait** :
+   - L'appliquer directement sans friction
+
+**Exceptions** (ne PAS corriger) :
+- Choix stylistiques volontaires deja identifies (ex: "Maquettes Numeriques" en majuscules)
+- Termes techniques BIM/3D specialises (Revit, BIM, LOD, IFC, Enscape, etc.)
+- Noms propres d'entreprises (meme si orthographe inhabituelle)
+
+**Important :** Cette regle s'applique a TOUS les textes destines au site, meme les petites
+modifications ponctuelles (une phrase changee dans un titre, un mot ajoute dans un badge, etc.).

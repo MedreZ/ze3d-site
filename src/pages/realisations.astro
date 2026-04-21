@@ -1,0 +1,784 @@
+---
+/**
+ * realisations.astro — Galerie complète des projets ZE3D
+ * Grille filtrable (Relevé / BIM / Rendu) + lightbox au clic
+ */
+import Layout from '../layouts/Layout.astro';
+
+/* Liste centralisée des projets : facile à modifier plus tard */
+const projects = [
+  /* ─── RELEVÉ (plans 2D, scans) ─────────────────────────────── */
+  { file: '301.jpg', cat: 'releve', title: 'Élévation façade haussmannienne' },
+  { file: '302.jpg', cat: 'releve', title: 'Plans et coupes — longère rénovée' },
+  { file: '303.jpg', cat: 'releve', title: 'Plan d\'aménagement tertiaire' },
+  { file: '304.jpg', cat: 'releve', title: 'Plan d\'appartement — duplex' },
+  { file: '305.jpg', cat: 'releve', title: 'Plan de masse' },
+
+  /* ─── BIM (modélisation 3D) ────────────────────────────────── */
+  { file: '401.jpg', cat: 'bim',    title: 'Complexe tertiaire' },
+  { file: '402.jpg', cat: 'bim',    title: 'Complexe tertiaire' },
+  { file: '403.jpg', cat: 'bim',    title: 'Immeuble de bureaux' },
+  { file: '404.jpg', cat: 'bim',    title: 'Complexe scolaire' },
+
+  /* ─── RENDU (visualisations photoréalistes) ────────────────── */
+  { file: '501.jpg', cat: 'rendu',  title: 'Immeuble de bureaux' },
+  /* 503 + 504 sont une paire jour/nuit : placees avant 502 pour
+     qu'elles tombent naturellement sur la meme ligne en 3 colonnes */
+  { file: '503.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux (vue de jour)' },
+  { file: '504.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux (vue de nuit)' },
+  { file: '502.jpg', cat: 'rendu',  title: 'Complexe tertiaire' },
+  { file: '505.jpg', cat: 'rendu',  title: 'Vue aérienne — complexe scolaire' },
+  { file: '506.jpg', cat: 'rendu',  title: 'Complexe scolaire' },
+  { file: '507.jpg', cat: 'rendu',  title: 'Cour intérieure — résidence' },
+  { file: '508.jpg', cat: 'rendu',  title: 'Complexe tertiaire' },
+  { file: '509.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux' },
+  { file: '510.jpg', cat: 'rendu',  title: 'Complexe tertiaire (de la 3D au rendu graphique)' },
+  { file: '511.jpg', cat: 'rendu',  title: 'Intérieur plateau de bureau' },
+  { file: '512.jpg', cat: 'rendu',  title: 'Façade et détails bâtiment haussmannien' },
+  { file: '513.jpg', cat: 'rendu',  title: 'Complexe scolaire (vue de nuit)' },
+];
+
+/* Labels lisibles pour les catégories — cohérents avec les filtres */
+const catLabel = {
+  releve: '2D',
+  bim:    '3D',
+  rendu:  'Rendu',
+};
+---
+
+<Layout
+  title="Nos réalisations — ZE3D | Scan 3D, BIM & Visualisation"
+  description="Découvrez une sélection de projets ZE3D — relevés numériques, maquettes BIM et rendus architecturaux. Portfolio de 15 années d'expertise en modélisation 3D."
+>
+  <main>
+
+    <!-- ============================================================
+         1. HERO
+         ============================================================ -->
+    <section class="realisations-hero">
+      <div class="container realisations-hero-inner">
+        <span class="section-label">NOS RÉALISATIONS</span>
+        <h1 class="realisations-hero-title">
+          Une sélection <em class="realisations-hero-accent">de projets</em>
+        </h1>
+        <p class="realisations-hero-subtitle">
+          Scanner 3D, maquettes numériques, rendus architecturaux — un échantillon
+          des projets auxquels j'ai contribué au fil des 15 dernières années.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         2. FILTRES
+         ============================================================ -->
+    <div class="filters-wrap">
+      <div class="container">
+        <div class="filters" role="tablist" aria-label="Filtrer par catégorie">
+          <button type="button" class="filter is-active" data-filter="all" role="tab" aria-selected="true">
+            Tout <span class="filter-count">({projects.length})</span>
+          </button>
+          <button type="button" class="filter" data-filter="releve" role="tab" aria-selected="false">
+            2D <span class="filter-count">({projects.filter(p => p.cat === 'releve').length})</span>
+          </button>
+          <button type="button" class="filter" data-filter="bim" role="tab" aria-selected="false">
+            3D <span class="filter-count">({projects.filter(p => p.cat === 'bim').length})</span>
+          </button>
+          <button type="button" class="filter" data-filter="rendu" role="tab" aria-selected="false">
+            Rendu <span class="filter-count">({projects.filter(p => p.cat === 'rendu').length})</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         3. GRILLE DES PROJETS
+         ============================================================ -->
+    <section class="gallery-section" aria-label="Galerie de projets">
+      <div class="container">
+        <div class="gallery" id="gallery">
+          {projects.map((p, i) => (
+            <button
+              type="button"
+              class="gallery-item"
+              data-category={p.cat}
+              data-index={i}
+              aria-label={`Agrandir : ${p.title}`}
+            >
+              <img
+                src={`/realisations/${p.file}`}
+                alt={p.title}
+                class="gallery-img"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="gallery-category">{catLabel[p.cat as keyof typeof catLabel]}</span>
+                <p class="gallery-title">{p.title}</p>
+              </div>
+              <span class="gallery-zoom" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  <line x1="11" y1="8" x2="11" y2="14"/>
+                  <line x1="8" y1="11" x2="14" y2="11"/>
+                </svg>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <!-- Message "aucun résultat" (caché par défaut) -->
+        <p class="gallery-empty" id="gallery-empty" hidden>
+          Aucun projet dans cette catégorie pour le moment.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. CTA FINAL
+         ============================================================ -->
+    <section class="realisations-cta" aria-label="Appel à l'action">
+      <div class="container realisations-cta-inner">
+        <span class="section-label">CONTACTEZ-NOUS</span>
+        <h2 class="realisations-cta-title">Un projet en tête ?</h2>
+        <p class="realisations-cta-text">
+          Parlons-en. Je vous réponds sous 48 h avec un devis personnalisé.
+        </p>
+        <div class="realisations-cta-actions">
+          <a href="/contact" class="btn-primary">
+            Demander un devis →
+          </a>
+          <a href="/prestations" class="btn-outline">
+            Voir les prestations
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         5. LIGHTBOX (overlay plein écran)
+         ============================================================ -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Agrandissement d'image">
+      <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Fermer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <button type="button" class="lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Image précédente">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+
+      <button type="button" class="lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Image suivante">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+
+      <figure class="lightbox-figure">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+        <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+      </figure>
+    </div>
+
+  </main>
+</Layout>
+
+
+<style>
+  /* ============================================================
+     RÉALISATIONS — Styles spécifiques à la page
+     ============================================================ */
+
+
+  /* ─── 1. HERO ─────────────────────────────────────────────── */
+
+  .realisations-hero {
+    background-color: #FFFFFF;
+    padding:          100px 0 60px;
+    text-align:       center;
+  }
+
+  .realisations-hero-inner {
+    max-width: 760px;
+  }
+
+  .realisations-hero-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight:   700;
+    line-height:   1.1;
+    color:         #1A2530;
+    margin:        12px 0 24px;
+  }
+
+  .realisations-hero-accent {
+    color:      #4A6580;
+    font-style: italic;
+  }
+
+  .realisations-hero-subtitle {
+    font-family: var(--font-body);
+    font-size:   1.0625rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color:       rgba(26,37,48,0.6);
+    max-width:   620px;
+    margin:      0 auto;
+  }
+
+
+  /* ─── 2. FILTRES ──────────────────────────────────────────── */
+
+  .filters-wrap {
+    background-color: #FFFFFF;
+    padding:          0 0 24px;
+  }
+
+  .filters {
+    display:         flex;
+    justify-content: center;
+    flex-wrap:       wrap;
+    gap:             8px;
+  }
+
+  .filter {
+    font-family:     var(--font-body);
+    font-size:       0.875rem;
+    font-weight:     500;
+    color:           rgba(26,37,48,0.65);
+    background:      transparent;
+    border:          1.5px solid rgba(26,37,48,0.12);
+    border-radius:   100px;
+    padding:         8px 20px;
+    cursor:          pointer;
+    transition:      background-color 200ms ease,
+                     border-color 200ms ease,
+                     color 200ms ease;
+  }
+
+  .filter:hover {
+    border-color: rgba(74,101,128,0.5);
+    color:        #1A2530;
+  }
+
+  .filter.is-active {
+    background-color: #4A6580;
+    border-color:     #4A6580;
+    color:            #FFFFFF;
+  }
+
+  .filter-count {
+    opacity:  0.65;
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+
+  /* ─── 3. GALERIE ──────────────────────────────────────────── */
+
+  .gallery-section {
+    background-color: #FFFFFF;
+    padding:          32px 0 100px;
+  }
+
+  .gallery {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows:        260px;
+    grid-auto-flow:        dense;
+    gap:                   14px;
+  }
+
+  .gallery-item {
+    position:       relative;
+    border:         none;
+    padding:        0;
+    margin:         0;
+    overflow:       hidden;
+    border-radius:  6px;
+    cursor:         zoom-in;
+    background:     #F3F5F7;
+    transition:     opacity 300ms ease, transform 300ms ease;
+  }
+
+  /* Items masqués par le filtre */
+  .gallery-item[hidden] {
+    display: none;
+  }
+
+  .gallery-img {
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+    display:    block;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.06);
+  }
+
+  .gallery-overlay {
+    position:        absolute;
+    inset:           0;
+    background:      linear-gradient(to top, rgba(26,37,48,0.88) 0%, rgba(26,37,48,0.2) 55%, transparent 100%);
+    display:         flex;
+    flex-direction:  column;
+    justify-content: flex-end;
+    padding:         20px;
+    opacity:         0;
+    transition:      opacity 300ms ease;
+    pointer-events:  none;
+  }
+
+  .gallery-item:hover .gallery-overlay,
+  .gallery-item:focus-visible .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-category {
+    position:       absolute;
+    top:            14px;
+    left:           14px;
+    background:     #4A6580;
+    font-family:    var(--font-body);
+    font-size:      0.62rem;
+    font-weight:    600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color:          white;
+    padding:        4px 9px;
+    border-radius:  3px;
+    pointer-events: none;
+  }
+
+  .gallery-title {
+    font-family:   var(--font-body);
+    font-size:     0.95rem;
+    font-weight:   700;
+    color:         white;
+    margin:        0;
+    line-height:   1.3;
+    text-shadow:   0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  /* Loupe en haut à droite */
+  .gallery-zoom {
+    position:        absolute;
+    top:             14px;
+    right:           14px;
+    width:           34px;
+    height:          34px;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    background:      rgba(255,255,255,0.92);
+    color:           #1A2530;
+    border-radius:   50%;
+    opacity:         0;
+    transform:       scale(0.85);
+    transition:      opacity 250ms ease, transform 250ms ease;
+    pointer-events:  none;
+  }
+
+  .gallery-item:hover .gallery-zoom,
+  .gallery-item:focus-visible .gallery-zoom {
+    opacity:   1;
+    transform: scale(1);
+  }
+
+  /* Items avec tailles particulières pour le rythme
+     (applique via data-index sur les items qui ne sont pas masqués) */
+  .gallery-item.item-tall {
+    grid-row: span 2;
+  }
+
+  .gallery-item.item-wide {
+    grid-column: span 2;
+  }
+
+
+  /* Message "vide" */
+  .gallery-empty {
+    text-align: center;
+    padding:    60px 20px;
+    font-family: var(--font-body);
+    color:       rgba(26,37,48,0.5);
+    font-size:   1rem;
+  }
+
+
+  /* ─── 4. CTA FINAL ────────────────────────────────────────── */
+
+  .realisations-cta {
+    background-color: #F3F5F7;
+    padding:          80px 0 100px;
+    text-align:       center;
+    border-top:       1px solid rgba(26,37,48,0.06);
+  }
+
+  .realisations-cta-inner {
+    max-width: 640px;
+  }
+
+  .realisations-cta-title {
+    font-family:   var(--font-titre);
+    font-size:     clamp(1.8rem, 3vw, 2.4rem);
+    font-weight:   700;
+    color:         #1A2530;
+    margin:        12px 0 16px;
+    line-height:   1.2;
+  }
+
+  .realisations-cta-text {
+    font-family:   var(--font-body);
+    font-size:     1rem;
+    font-weight:   400;
+    line-height:   1.75;
+    color:         rgba(26,37,48,0.65);
+    margin-bottom: 32px;
+  }
+
+  .realisations-cta-actions {
+    display:         flex;
+    gap:             12px;
+    justify-content: center;
+    flex-wrap:       wrap;
+  }
+
+
+  /* ─── 5. LIGHTBOX ──────────────────────────────────────────── */
+
+  .lightbox {
+    position:        fixed;
+    inset:           0;
+    z-index:         2000;
+    background:      rgba(10,16,24,0.94);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    padding:         40px 60px;
+    opacity:         0;
+    visibility:      hidden;
+    transition:      opacity 250ms ease, visibility 0s linear 250ms;
+  }
+
+  .lightbox.is-open {
+    opacity:    1;
+    visibility: visible;
+    transition: opacity 250ms ease, visibility 0s linear 0s;
+  }
+
+  .lightbox-figure {
+    margin:          0;
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    max-width:       100%;
+    max-height:      100%;
+  }
+
+  .lightbox-img {
+    max-width:      100%;
+    max-height:     calc(100vh - 140px);
+    width:          auto;
+    height:         auto;
+    object-fit:     contain;
+    border-radius:  4px;
+    box-shadow:     0 12px 40px rgba(0,0,0,0.4);
+  }
+
+  .lightbox-caption {
+    color:           rgba(255,255,255,0.9);
+    font-family:     var(--font-body);
+    font-size:       0.95rem;
+    margin-top:      20px;
+    text-align:      center;
+    padding:         0 20px;
+  }
+
+  .lightbox-caption .cat {
+    display:         inline-block;
+    background:      #4A6580;
+    color:           #FFFFFF;
+    padding:         3px 9px;
+    border-radius:   3px;
+    font-size:       0.62rem;
+    font-weight:     600;
+    letter-spacing:  0.12em;
+    text-transform:  uppercase;
+    margin-right:    10px;
+    vertical-align:  middle;
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    position:        absolute;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    background:      rgba(255,255,255,0.1);
+    color:           #FFFFFF;
+    border:          1px solid rgba(255,255,255,0.2);
+    border-radius:   50%;
+    cursor:          pointer;
+    transition:      background 200ms ease, border-color 200ms ease;
+    backdrop-filter: blur(6px);
+  }
+
+  .lightbox-close:hover,
+  .lightbox-nav:hover {
+    background:    rgba(255,255,255,0.22);
+    border-color:  rgba(255,255,255,0.4);
+  }
+
+  .lightbox-close {
+    top:    20px;
+    right:  20px;
+    width:  44px;
+    height: 44px;
+  }
+
+  .lightbox-nav {
+    top:       50%;
+    transform: translateY(-50%);
+    width:     52px;
+    height:    52px;
+  }
+
+  .lightbox-nav--prev { left:  24px; }
+  .lightbox-nav--next { right: 24px; }
+
+  .lightbox-nav[disabled] {
+    opacity:         0.25;
+    cursor:          not-allowed;
+    pointer-events:  none;
+  }
+
+
+  /* ─── RESPONSIVE 900px ─────────────────────────────────────── */
+
+  @media (max-width: 900px) {
+    .realisations-hero {
+      padding: 64px 0 40px;
+    }
+
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows:        220px;
+    }
+
+    .gallery-section {
+      padding: 20px 0 80px;
+    }
+
+    .lightbox {
+      padding: 60px 16px 80px;
+    }
+
+    .lightbox-nav {
+      width:  44px;
+      height: 44px;
+    }
+
+    .lightbox-nav--prev { left:  12px; }
+    .lightbox-nav--next { right: 12px; }
+  }
+
+
+  /* ─── RESPONSIVE 600px ─────────────────────────────────────── */
+
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+      grid-auto-rows:        240px;
+    }
+
+    /* sur mobile, pas d'items élargis */
+    .gallery-item.item-tall,
+    .gallery-item.item-wide {
+      grid-row:    auto;
+      grid-column: auto;
+    }
+
+    .filter {
+      padding:   6px 14px;
+      font-size: 0.8rem;
+    }
+
+    .realisations-cta {
+      padding: 60px 0 80px;
+    }
+
+    .realisations-cta-actions .btn-primary,
+    .realisations-cta-actions .btn-outline {
+      width:           100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+
+<!-- ============================================================
+     Scripts : filtres + lightbox
+     ============================================================ -->
+<script>
+  (function () {
+    /* ─── Données projets (dupliquées du frontmatter pour le JS) ─── */
+    type Project = { file: string; cat: 'releve' | 'bim' | 'rendu'; title: string };
+
+    const projectsData: Project[] = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('#gallery .gallery-item')
+    ).map((el) => ({
+      file: el.querySelector<HTMLImageElement>('.gallery-img')?.getAttribute('src')?.split('/').pop() ?? '',
+      cat:  (el.dataset.category as Project['cat']) ?? 'rendu',
+      title: el.querySelector<HTMLElement>('.gallery-title')?.textContent ?? '',
+    }));
+
+    const catLabel: Record<Project['cat'], string> = {
+      releve: '2D',
+      bim:    '3D',
+      rendu:  'Rendu',
+    };
+
+    /* ─── Ajout de tailles variées pour le rythme (CSS only-style) ── */
+    const items = Array.from(document.querySelectorAll<HTMLElement>('#gallery .gallery-item'));
+    /* Certaines images deviennent "tall" ou "wide" selon un motif
+       pour creer du rythme visuel */
+    items.forEach((item, i) => {
+      if (i % 7 === 2) item.classList.add('item-tall');
+      if (i % 11 === 5) item.classList.add('item-wide');
+    });
+
+    /* ─── FILTRES ──────────────────────────────────────────── */
+    const filters = document.querySelectorAll<HTMLButtonElement>('.filter');
+    const empty   = document.getElementById('gallery-empty');
+
+    filters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter ?? 'all';
+
+        /* état actif visuel */
+        filters.forEach((b) => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+
+        /* affichage / masquage des items */
+        let visibleCount = 0;
+        items.forEach((item) => {
+          const matches = filter === 'all' || item.dataset.category === filter;
+          if (matches) {
+            item.hidden = false;
+            visibleCount++;
+          } else {
+            item.hidden = true;
+          }
+        });
+
+        if (empty) empty.hidden = visibleCount > 0;
+      });
+    });
+
+    /* ─── LIGHTBOX ──────────────────────────────────────────── */
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightbox-img') as HTMLImageElement | null;
+    const lightboxCap  = document.getElementById('lightbox-caption');
+    const btnClose     = document.getElementById('lightbox-close');
+    const btnPrev      = document.getElementById('lightbox-prev') as HTMLButtonElement | null;
+    const btnNext      = document.getElementById('lightbox-next') as HTMLButtonElement | null;
+
+    if (!lightbox || !lightboxImg || !lightboxCap || !btnClose || !btnPrev || !btnNext) return;
+
+    let currentIndex = 0;
+
+    /* Retourne la liste des items actuellement visibles (respecte le filtre) */
+    const getVisibleItems = (): HTMLButtonElement[] => {
+      return items.filter((it) => !it.hidden) as HTMLButtonElement[];
+    };
+
+    const openLightbox = (clickedItem: HTMLButtonElement) => {
+      const visible = getVisibleItems();
+      currentIndex = visible.indexOf(clickedItem);
+      if (currentIndex === -1) currentIndex = 0;
+      renderLightbox();
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const renderLightbox = () => {
+      const visible = getVisibleItems();
+      if (visible.length === 0) return;
+
+      const item  = visible[currentIndex];
+      const img   = item.querySelector<HTMLImageElement>('.gallery-img');
+      const src   = img?.getAttribute('src') ?? '';
+      const cat   = (item.dataset.category as Project['cat']) ?? 'rendu';
+      const title = item.querySelector<HTMLElement>('.gallery-title')?.textContent ?? '';
+
+      lightboxImg.src = src;
+      lightboxImg.alt = title;
+      lightboxCap.textContent = `${catLabel[cat]} - ${title}`;
+
+      /* Disable prev/next si aux extrémités */
+      btnPrev.disabled = currentIndex === 0;
+      btnNext.disabled = currentIndex === visible.length - 1;
+    };
+
+    const goPrev = () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderLightbox();
+      }
+    };
+
+    const goNext = () => {
+      const visible = getVisibleItems();
+      if (currentIndex < visible.length - 1) {
+        currentIndex++;
+        renderLightbox();
+      }
+    };
+
+    /* Clic sur un item = ouvrir lightbox */
+    items.forEach((item) => {
+      item.addEventListener('click', () => openLightbox(item as HTMLButtonElement));
+    });
+
+    /* Fermer */
+    btnClose.addEventListener('click', closeLightbox);
+
+    /* Clic sur fond = fermer (mais pas sur l'image ni les boutons) */
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    /* Navigation */
+    btnPrev.addEventListener('click', goPrev);
+    btnNext.addEventListener('click', goNext);
+
+    /* Clavier */
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') goNext();
+    });
+  })();
+</script>
