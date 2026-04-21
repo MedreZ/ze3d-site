@@ -405,13 +405,23 @@ Page mentions legales a creer avec :
 ## 14. HISTORIQUE GIT
 
 ```
+deeff19 chore: redeploy to activate Netlify Forms detection
+21c96c1 Ajout pages Prestations, Realisations, A propos, Contact et Mentions legales
 5c6ed93 Ajout logos clients, image mobile hero/apropos, stats enrichies, textes prestations
 e299b5a Refonte page accueil : textes, grille realisations 4x4, stats 5 blocs
 a6f80f1 Refonte design : palette Encre & Ardoise, logos, contenu editorial
 2f213f7 init: projet Astro ZE3D
 ```
 
-Deploiements test effectues le 3 avril 2026 sur https://ze3d-test.netlify.app
+Deploiements effectues sur https://ze3d-test.netlify.app :
+- 3 avril 2026 : premier deploiement (session 3)
+- 21 avril 2026 : deploiement complet avec toutes les pages (session 5)
+
+**Site TEST desormais fonctionnel a 100%** :
+- Toutes les pages accessibles
+- Formulaire de contact operationnel avec notification email vers contact@ze3d.fr (configure sur Netlify)
+- Formulaire teste par le fondateur avec succes
+
 Aucun deploiement prod effectue pour le moment.
 
 Modifications en cours non-commitees (sessions 4 et 5 du 21 avril 2026) :
@@ -436,6 +446,25 @@ Modifications en cours non-commitees (sessions 4 et 5 du 21 avril 2026) :
 
 ---
 
+## 17. A FAIRE LORS DU DEPLOIEMENT EN PRODUCTION
+
+**Rappel important a transmettre au fondateur lors du merge develop -> main :**
+
+Le site prod (`ze3d-prod.netlify.app`) est un site Netlify SEPARE du site test. La configuration des notifications email Netlify Forms doit etre refaite sur le site prod :
+
+1. Aller sur https://app.netlify.com > site **ze3d-prod**
+2. Onglet **Forms** (ou Site settings > Forms)
+3. Cliquer sur le formulaire **contact**
+4. **Notifications** > **Add notification** > **Email notification**
+5. Destinataire : `contact@ze3d.fr`
+6. Save
+
+Sans cette etape, les demandes envoyees via le formulaire de la prod iront dans le dashboard mais pas dans la boite mail.
+
+Le fondateur a deja fait cette manipulation sur le site TEST (fonctionnel).
+
+---
+
 ## 15. NOTES POUR CLAUDE CODE
 
 - Le fondateur est expert BIM mais pas developpeur web : code lisible et explique
@@ -451,6 +480,8 @@ Modifications en cours non-commitees (sessions 4 et 5 du 21 avril 2026) :
 - Pour acceder au site depuis un iPhone sur le meme Wi-Fi : http://192.168.0.13:4321 (avec --host)
 - Le dossier Sources/ n'est PAS commite dans git (trop volumineux), seuls les fichiers dans public/ le sont
 - Compte Netlify : MedreZ's team, authentification via npx netlify login dans le terminal Mac
+- **Netlify Forms sur plan gratuit** : inclut les notifications email vers 1 ou 2 destinataires (pas besoin de Pro qui coute ~20$/mois). Seules les fonctionnalites avancees (Slack, webhooks multiples, etc.) sont payantes. Ne pas suggerer au fondateur de payer pour les notifications email basiques.
+- La configuration des notifications email est a refaire sur chaque site Netlify (TEST et PROD sont des sites separes) — voir section 17
 
 ---
 
