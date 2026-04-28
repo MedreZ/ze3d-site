@@ -1,0 +1,204 @@
+---
+/**
+ * SplashScreen.astro — Écran d'accueil immersif avec dissolve digital
+ *
+ * Affiché à CHAQUE chargement de la page d'accueil (pas de mémorisation : à chaque visite).
+ *
+ * - Fond plein écran #4A6580 forme par une grille de cellules.
+ * - Image centree /chargement.jpg (1200x1200) avec jauge circulaire blanche autour.
+ * - Jauge se remplit en 1750 ms (effet "chargement immersion").
+ * - Au declenchement du dissolve : chaque cellule disparait avec un delai aleatoire
+ *   (~600 ms total), tandis que le picto + jauge fade out + zoom leger.
+ * - Effet "dematerialisation digital" coherent avec l'univers scan-3D / BIM.
+ * - Pendant l'affichage, le scroll est desactive.
+ */
+---
+
+<div id="splash-screen" class="splash" aria-hidden="true">
+  <!-- Grille de cellules pour l'effet dissolve (peuplee par JS) -->
+  <div class="splash-grid"></div>
+
+  <div class="splash-loader">
+    <img
+      class="splash-img"
+      src="/chargement-logo.png"
+      alt=""
+      width="1500"
+      height="1500"
+      fetchpriority="high"
+      decoding="sync"
+    />
+    <svg class="splash-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+      <circle class="ring-track" cx="50" cy="50" r="47" />
+      <circle class="ring-progress" cx="50" cy="50" r="47" />
+    </svg>
+  </div>
+</div>
+
+<style>
+  .splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    /* Fond bleu de securite : si la grille n'est pas construite (JS lent),
+       on a au moins un overlay bleu plein ecran. Au moment du dissolve, on retire
+       ce fond pour laisser apparaitre le contenu derriere les cellules qui disparaissent. */
+    background: #4A6580;
+    transition: background-color 80ms linear;
+    pointer-events: auto;
+    overflow: hidden;
+  }
+  .splash.is-dissolving {
+    background-color: transparent;
+  }
+
+  /* Grille de cellules — couleur uniforme #4A6580 qui couvre tout l'ecran.
+     Chaque cellule individuelle peut disparaitre avec un delai random. */
+  .splash-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    /* Les colonnes/rangees sont definies par JS selon le viewport */
+  }
+
+  .splash-grid > div {
+    background: #4A6580;
+    transition: opacity 220ms ease-out;
+    will-change: opacity;
+  }
+
+  /* Conteneur image + jauge — centre, au-dessus de la grille */
+  .splash-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 350ms ease-out 500ms, transform 600ms ease-out 500ms;
+    will-change: opacity, transform;
+  }
+
+  .splash-img {
+    max-width: 80vmin;
+    max-height: 80vmin;
+    width: auto;
+    height: auto;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    position: relative;
+  }
+
+  /* Jauge circulaire — autour du picto */
+  .splash-ring {
+    position: absolute;
+    width: 96vmin;
+    height: 96vmin;
+    pointer-events: none;
+    transform: rotate(-90deg);
+    overflow: visible;
+  }
+
+  .ring-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 0.6;
+  }
+
+  .ring-progress {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 0.9;
+    stroke-linecap: round;
+    stroke-dasharray: 295.31;
+    stroke-dashoffset: 295.31;
+    animation: ring-fill 1750ms linear forwards;
+  }
+
+  @keyframes ring-fill {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* === Etat dissolve === */
+  .splash.is-dissolving .splash-grid > div {
+    opacity: 0;
+  }
+  .splash.is-dissolving .splash-loader {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
+  /* Accessibilite : utilisateurs sensibles aux animations */
+  @media (prefers-reduced-motion: reduce) {
+    .splash-grid > div,
+    .splash-loader {
+      transition: opacity 200ms ease-out !important;
+      transform: none !important;
+    }
+    .ring-progress {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var splash = document.getElementById('splash-screen');
+    if (!splash) return;
+
+    // Splash affiche a CHAQUE chargement de la home (pas de memorisation par session).
+
+    // === Construction de la grille pour le dissolve ===
+    var grid = splash.querySelector('.splash-grid');
+    var cellSize = 45; // taille approximative en px (adaptee au viewport)
+    var cols = Math.max(10, Math.ceil(window.innerWidth / cellSize));
+    var rows = Math.max(8, Math.ceil(window.innerHeight / cellSize));
+    grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+    grid.style.gridTemplateRows = 'repeat(' + rows + ', 1fr)';
+
+    var totalCells = cols * rows;
+    var dissolveDuration = 800; // ms — fenetre dans laquelle les cellules s'effacent
+    var fragments = document.createDocumentFragment();
+    for (var i = 0; i < totalCells; i++) {
+      var cell = document.createElement('div');
+      // IMPORTANT : on applique les styles en INLINE car les cellules creees en JS
+      // n'ont pas l'attribut data-astro-cid utilise par le CSS scope d'Astro.
+      cell.style.cssText =
+        'background-color:#4A6580;' +
+        'opacity:1;' +
+        'transition:opacity 220ms ease-out;' +
+        'transition-delay:' + Math.round(Math.random() * dissolveDuration) + 'ms;' +
+        'will-change:opacity;';
+      fragments.appendChild(cell);
+    }
+    grid.appendChild(fragments);
+
+    // Au declenchement du dissolve, on met opacity 0 sur toutes les cellules
+    // (la classe is-dissolving + le CSS scope ne marche pas pour les cellules dynamiques,
+    //  donc on applique directement via JS).
+    splash.addEventListener('transitionstart', function() {}, { once: true });
+
+    // Bloque le scroll pendant l'affichage
+    var prevOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+
+    // Au bout de 2000 ms : declenche le dissolve
+    setTimeout(function () {
+      splash.classList.add('is-dissolving');
+      // Force l'opacity 0 sur les cellules dynamiques (CSS scope d'Astro ne s'applique pas a elles)
+      var cells = grid.children;
+      for (var k = 0; k < cells.length; k++) {
+        cells[k].style.opacity = '0';
+      }
+      // Apres dissolve complet (~ 800 ms delay max + 220 ms transition + marge),
+      // on retire l'overlay et on retablit le scroll
+      setTimeout(function () {
+        document.documentElement.style.overflow = prevOverflow;
+        splash.parentNode && splash.parentNode.removeChild(splash);
+      }, 1100);
+    }, 1750);
+  })();
+</script>

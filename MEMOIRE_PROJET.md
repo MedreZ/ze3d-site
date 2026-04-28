@@ -1,5 +1,5 @@
 # MEMOIRE PROJET — Site vitrine ZE3D
-# Derniere mise a jour : 21 avril 2026 — Session 5
+# Derniere mise a jour : 23 avril 2026 — Session 6 (signatures mail Ionos)
 
 ---
 
@@ -142,8 +142,17 @@ Aucune — toutes les pages du site sont desormais creees.
 │   ├── realisations/        (22 images 301-305, 401-404, 501-513 pour la galerie)
 │   ├── logo-fond-clair.png
 │   ├── logo-fond-fonce.png
-│   └── photo-emmanuel.JPG
-├── Sources/                 (toutes les images sources — 33 fichiers)
+│   ├── photo-emmanuel.JPG
+│   ├── sig-ze3d-c16b6736.jpg  (image signature mail Ionos, nom obfusque)
+│   └── robots.txt             (interdit l'indexation des sig-ze3d-* par les moteurs)
+├── Sources/                 (images sources + ressources non servies par le site)
+│   ├── (33 images numerotees pour le site)
+│   ├── Signature mail ZE3D.jpg          (source originale de la signature)
+│   └── Signatures mail/                  (templates HTML pour Ionos — 4 fichiers)
+│       ├── signature-emmanuel.html       (rendu visuel + bandeau d'instructions)
+│       ├── signature-contact.html        (rendu visuel + bandeau d'instructions)
+│       ├── signature-emmanuel-CODE-HTML.txt  (code HTML brut a coller en mode <>)
+│       └── signature-contact-CODE-HTML.txt   (code HTML brut a coller en mode <>)
 ├── dist/                    (build)
 ├── .git/                    (historique)
 ├── CLAUDE_2.md              (contexte initial du projet)
@@ -405,6 +414,9 @@ Page mentions legales a creer avec :
 ## 14. HISTORIQUE GIT
 
 ```
+7974480 Ajout image signature mail (hebergée pour signatures Ionos)   ← session 6
+392bf95 Ajout page 404 personnalisée
+eed0dc4 Délai de réponse Contact : "48 h ouvrées" au lieu de "48 h en général"
 deeff19 chore: redeploy to activate Netlify Forms detection
 21c96c1 Ajout pages Prestations, Realisations, A propos, Contact et Mentions legales
 5c6ed93 Ajout logos clients, image mobile hero/apropos, stats enrichies, textes prestations
@@ -416,6 +428,7 @@ a6f80f1 Refonte design : palette Encre & Ardoise, logos, contenu editorial
 Deploiements effectues sur https://ze3d-test.netlify.app :
 - 3 avril 2026 : premier deploiement (session 3)
 - 21 avril 2026 : deploiement complet avec toutes les pages (session 5)
+- 23 avril 2026 : ajout image signature mail Ionos (session 6, commit 7974480)
 
 **Site TEST desormais fonctionnel a 100%** :
 - Toutes les pages accessibles
@@ -424,7 +437,23 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 
 Aucun deploiement prod effectue pour le moment.
 
-Modifications en cours non-commitees (sessions 4 et 5 du 21 avril 2026) :
+### Session 6 — 23 avril 2026 (signatures mail Ionos)
+
+**Realisations :**
+- Creation d'une image de signature mail commune aux 2 boites (logo picto + "ZE3D" en Nasalization + baseline "Scan-to-BIM · Modélisation 3D · Rendus")
+- Image fournie par le fondateur : `Sources/Signature mail ZE3D.jpg` (600x180 px, 68 Ko, JPG, couleur bleu accent harmonisee)
+- Hebergee dans `public/sig-ze3d-c16b6736.jpg` (nom obfusque pour discretion)
+- `public/robots.txt` cree pour bloquer l'indexation des fichiers `sig-ze3d-*` par Google
+- 2 templates HTML de signature dans `Sources/Signatures mail/` :
+  - `signature-emmanuel.html` : image + Emmanuel Zerdoun + tel + email + site (option C "epuree", pas de titre car "Fondateur" jugé trop pompeux pour une microentreprise solo)
+  - `signature-contact.html` : image + email contact@ + site (ultra epure, pas de nom ni tel ni redondance avec l'image)
+- Templates faits en HTML table inline-styles (compatible Outlook desktop), polices Arial/Helvetica fallback
+- URL d'image dans les templates : `https://ze3d-test.netlify.app/sig-ze3d-c16b6736.jpg` (TEMPORAIRE — voir section 17.2)
+
+**Commit + push develop : 7974480** ("Ajout image signature mail")
+
+### Detail des sessions 4 et 5 — 21 avril 2026 (deja commitees)
+
 - **Session 4** :
   - Creation de la page `/prestations` (layout split zigzag, process, slider avant/apres)
   - Creation de la page `/realisations` (grille filtrable + lightbox)
@@ -448,7 +477,9 @@ Modifications en cours non-commitees (sessions 4 et 5 du 21 avril 2026) :
 
 ## 17. A FAIRE LORS DU DEPLOIEMENT EN PRODUCTION
 
-**Rappel important a transmettre au fondateur lors du merge develop -> main :**
+**Rappels importants a transmettre au fondateur lors du merge develop -> main :**
+
+### 17.1 Notifications Netlify Forms (a refaire sur le site prod)
 
 Le site prod (`ze3d-prod.netlify.app`) est un site Netlify SEPARE du site test. La configuration des notifications email Netlify Forms doit etre refaite sur le site prod :
 
@@ -462,6 +493,30 @@ Le site prod (`ze3d-prod.netlify.app`) est un site Netlify SEPARE du site test. 
 Sans cette etape, les demandes envoyees via le formulaire de la prod iront dans le dashboard mais pas dans la boite mail.
 
 Le fondateur a deja fait cette manipulation sur le site TEST (fonctionnel).
+
+### 17.2 Mise a jour des signatures mail Ionos (IMPORTANT)
+
+**Etat actuel (session 6, 23 avril 2026) :**
+
+Le fondateur a installe **une version TEMPORAIRE TRONQUEE** de ses signatures dans Ionos :
+- L'image pointe vers `https://ze3d-test.netlify.app/sig-ze3d-c16b6736.jpg` (URL test temporaire)
+- **La ligne "Site : ze3d.fr" a ete SUPPRIMEE manuellement** par le fondateur dans Ionos, car le site prod n'est pas encore en ligne sur ze3d.fr
+
+**Lors du passage en prod, IL FAUT remplacer les signatures Ionos par la version DEFINITIVE :**
+
+1. Ouvrir les fichiers HTML deja prets : `Sources/Signatures mail/signature-emmanuel.html` et `signature-contact.html` (ou les versions `.txt` "CODE-HTML" pour copier le code brut)
+2. Mettre a jour les URLs de l'image dans ces fichiers : remplacer `ze3d-test.netlify.app` par la nouvelle URL (`ze3d-prod.netlify.app` puis `ze3d.fr` quand le domaine sera actif)
+3. Pour CHAQUE boite mail Ionos (emmanuel.zerdoun@ et contact@) :
+   - Se reconnecter a https://mail.ionos.fr
+   - Parametres > Email > Signatures
+   - **SUPPRIMER la signature temporaire actuelle** (sans la ligne site)
+   - **COLLER la signature definitive complete** (avec la ligne "Site : ze3d.fr") en mode "Source HTML" / `<>` (le copier-coller direct ne marche pas, il faut passer par le code source)
+   - Enregistrer
+4. Tester en s'envoyant un mail depuis chaque boite
+
+**Methode validee pour coller dans Ionos** : utiliser le bouton `<>` / "Source HTML" de l'editeur de signature, puis coller le contenu du fichier `.txt` "CODE-HTML". Le copier-coller depuis le rendu HTML dans le navigateur ne fonctionne pas dans Ionos.
+
+**Le fondateur a explicitement demande qu'on lui rappelle cette etape lors du passage en prod (session 6, 23 avril 2026).**
 
 ---
 
