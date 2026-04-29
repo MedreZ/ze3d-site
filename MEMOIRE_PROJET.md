@@ -1,5 +1,5 @@
 # MEMOIRE PROJET — Site vitrine ZE3D
-# Derniere mise a jour : 23 avril 2026 — Session 6 (signatures mail Ionos)
+# Derniere mise a jour : 29 avril 2026 — Session 7 (splash screen, corrections legales, harmonisation Je)
 
 ---
 
@@ -121,6 +121,7 @@ Aucune — toutes les pages du site sont desormais creees.
 - Navigation.astro — Nav fixe + hamburger mobile
 - Footer.astro — Footer sombre 3 colonnes
 - Layout.astro — Layout principal avec SEO/OG
+- SplashScreen.astro — Ecran d'accueil immersif (uniquement sur la home, voir section 11)
 
 ### Styles
 - global.css — Design system, variables, reset, utilitaires
@@ -245,7 +246,7 @@ Categorisation :
 - "Mon expertise" (fond gris) : 2 colonnes — Savoir-faire (liste a puces) + Outils (4 tools avec badges Modelisation/Rendu/Retouche/Video)
 - "Ma demarche" : 4 cartes (Proximite · Sur-mesure · Exigence · Transparence) avec icones SVG rondes
 - CTA final "Parlons de votre projet" avec boutons Devis/Realisations
-- **IMPORTANT — Le fondateur n'est PAS architecte (formation DPLG suivie mais memoire final non rendu, donc pas de diplome).** En consequence : ne JAMAIS utiliser le titre "Architecte" ni "Architecte DPLG" ni meme "Architecte de formation" (juge trop ambigu en contexte commercial — l'Ordre des architectes a fait retirer cette mention dans des cas similaires). Formulation validee : **"Issu d'une formation en ecole d'architecture"** (factuel, sans usurpation de titre). Decision prise en session 7 (28 avril 2026).
+- **IMPORTANT — Le fondateur n'est PAS architecte (formation DPLG suivie mais memoire final non rendu, donc pas de diplome).** En consequence : ne JAMAIS utiliser le titre "Architecte" ni "Architecte DPLG" ni meme "Architecte de formation" (juge trop ambigu en contexte commercial — l'Ordre des architectes a fait retirer cette mention dans des cas similaires). Formulation validee : **"Issu d'une formation en ecole d'Architecture"** (factuel, sans usurpation de titre). Decision prise en session 7 (28 avril 2026).
 
 ### Page Contact (formulaire Netlify Forms)
 - Hero simple (label CONTACT + H1 "Parlons de votre projet" + sous-titre 48 h)
@@ -311,7 +312,7 @@ Note : ces references sont liees a l'experience personnelle du fondateur, pas a 
 
 ### Page A propos — Mon parcours (3 paragraphes)
 **P1 (formulation legale validee — voir section 11) :**
-"**Issu d'une formation en ecole d'architecture**, j'ai debute ma carriere en cabinet de maitrise d'oeuvre parisien ou j'ai occupe pendant plus de 15 ans les fonctions de dessinateur projeteur, puis de Responsable du pole 3D et de BIM Coordinateur. J'y ai pilote des projets d'envergure pour des acteurs tels que la CNAV, la CAF, l'OFII, Capgemini ou Optical Center."
+"**Issu d'une formation en ecole d'Architecture**, j'ai debute ma carriere en cabinet de maitrise d'oeuvre parisien ou j'ai occupe pendant plus de 15 ans les fonctions de dessinateur projeteur, puis de Responsable du pole 3D et de BIM Coordinateur. J'y ai pilote des projets d'envergure pour des acteurs tels que la CNAV, la CAF, l'OFII, Capgemini ou Optical Center."
 
 **P2 (sans "sans intermediaire ni sous-traitance") :**
 "Aujourd'hui, je cree ZE3D pour mettre cette experience a disposition des professionnels du batiment de maniere independante. Installe a Perpignan, je privilegie une relation directe et sur-mesure avec chaque client."
@@ -415,7 +416,11 @@ Page mentions legales a creer avec :
 ## 14. HISTORIQUE GIT
 
 ```
-7974480 Ajout image signature mail (hebergée pour signatures Ionos)   ← session 6
+35a0494 Coherence editoriale : nettoyage complementaire (occurrences manquees)   ← session 7
+c622d09 Coherence editoriale : suppression des "Nous / Nos / Notre"               ← session 7
+ff2c87b Correction legale : retrait de "Architecte de formation"                  ← session 7
+4f1d002 Ajout splash screen immersif sur la page d'accueil                        ← session 7
+7974480 Ajout image signature mail (hebergée pour signatures Ionos)               ← session 6
 392bf95 Ajout page 404 personnalisée
 eed0dc4 Délai de réponse Contact : "48 h ouvrées" au lieu de "48 h en général"
 deeff19 chore: redeploy to activate Netlify Forms detection
@@ -430,6 +435,7 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - 3 avril 2026 : premier deploiement (session 3)
 - 21 avril 2026 : deploiement complet avec toutes les pages (session 5)
 - 23 avril 2026 : ajout image signature mail Ionos (session 6, commit 7974480)
+- 28-29 avril 2026 : splash screen + corrections legales + harmonisation Je (session 7)
 
 **Site TEST desormais fonctionnel a 100%** :
 - Toutes les pages accessibles
@@ -437,6 +443,47 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - Formulaire teste par le fondateur avec succes
 
 Aucun deploiement prod effectue pour le moment.
+
+### Session 7 — 28-29 avril 2026 (splash screen, corrections legales, harmonisation Je)
+
+**Realisations :**
+
+**1. Splash screen immersif sur la page d'accueil** (composant `SplashScreen.astro`) :
+- Overlay plein ecran fond bleu accent #4A6580
+- Logo PNG transparent centre (`/chargement-logo.png`, 1500x1500, version "fond fonce")
+- Jauge circulaire SVG blanche se remplissant en 1750 ms (sens horaire depuis 12h)
+- Transition de sortie : **dissolve digital** par grille de cellules ~45 px, delais aleatoires sur 800 ms
+- Affiche a CHAQUE chargement de la home (pas de memorisation par session)
+- Respect de `prefers-reduced-motion`
+- Image source `Sources/Chargement.jpg` (fournie par fondateur, fond bleu) → finalement remplacee par PNG transparent (fond bleu de l'image causait un carre visible au dissolve)
+
+**2. Correction legale critique sur le titre "Architecte"** :
+- Page A propos : "Architecte de formation" → "Issu d'une formation en ecole d'Architecture"
+- **Le fondateur n'est PAS architecte** : formation DPLG suivie mais memoire final non rendu, donc pas de diplome. Le titre est protege par la loi du 3 janvier 1977.
+- Memoire persistante creee : `legal-titre-architecte.md` pour rappel cross-conversation
+- Voir section 11 et section 12 (P1 page A propos)
+
+**3. Harmonisation editoriale "Je"** (microentreprise solo, eviter les "Nous" trompeurs) :
+- 2 passes de nettoyage (10 + 8 occurrences) sur 7 fichiers
+- Strategie B validee : pas de possessif sur les boutons/titres, "Je" dans les textes redactionnels
+- Boutons : "Nous contacter" → "Contact", "Nos prestations/realisations" → "Prestations/Realisations"
+- Labels CTA : "CONTACTEZ-NOUS" → "CONTACT" sur 4 pages (Home, A propos, Prestations, Realisations)
+- Mentions legales : "vous nous transmettez/contacter" → "vous me transmettez/contacter"
+- Aria-labels et titres meta SEO egalement nettoyes
+- Verification finale : `grep -rniE "\b(nous|notre|nos)\b" src/` → 0 resultat
+
+**4. Bug technique notable identifie** :
+- **Astro scoped CSS ne s'applique PAS aux elements crees dynamiquement en JavaScript** (ils n'ont pas le `data-astro-cid-xxx` que le selecteur attend). Symptome : background transparent + transition 0s sur les cellules de la grille du splash, donc dissolve invisible.
+- **Solution :** appliquer tous les styles necessaires en INLINE via `element.style.cssText = '...'` lors de la creation JS. Voir SplashScreen.astro pour exemple.
+- A retenir pour tout futur composant Astro avec des elements crees dynamiquement.
+
+**Commits + push develop :**
+- `4f1d002` Ajout splash screen immersif sur la page d'accueil
+- `ff2c87b` Correction legale : retrait de "Architecte de formation"
+- `c622d09` Coherence editoriale : suppression des "Nous / Nos / Notre"
+- `35a0494` Coherence editoriale : nettoyage complementaire (occurrences manquees)
+
+---
 
 ### Session 6 — 23 avril 2026 (signatures mail Ionos)
 
@@ -538,6 +585,7 @@ Le fondateur a installe **une version TEMPORAIRE TRONQUEE** de ses signatures da
 - Compte Netlify : MedreZ's team, authentification via npx netlify login dans le terminal Mac
 - **Netlify Forms sur plan gratuit** : inclut les notifications email vers 1 ou 2 destinataires (pas besoin de Pro qui coute ~20$/mois). Seules les fonctionnalites avancees (Slack, webhooks multiples, etc.) sont payantes. Ne pas suggerer au fondateur de payer pour les notifications email basiques.
 - La configuration des notifications email est a refaire sur chaque site Netlify (TEST et PROD sont des sites separes) — voir section 17
+- **Bug Astro scoped CSS** : le scoped CSS d'Astro (selecteurs `[data-astro-cid-xxx]`) ne s'applique PAS aux elements crees dynamiquement en JavaScript car ils n'ont pas l'attribut data-astro-cid. Symptome typique : styles invisibles, transitions a 0s. **Solution :** appliquer tous les styles necessaires en INLINE via `element.style.cssText = '...'` lors de la creation JS. Voir `SplashScreen.astro` pour exemple complet (bug rencontre en session 7).
 
 ---
 
