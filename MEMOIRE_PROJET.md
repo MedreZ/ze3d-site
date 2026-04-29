@@ -244,7 +244,7 @@ Categorisation :
 - "Mon expertise" (fond gris) : 2 colonnes — Savoir-faire (liste a puces) + Outils (4 tools avec badges Modelisation/Rendu/Retouche/Video)
 - "Ma demarche" : 4 cartes (Proximite · Sur-mesure · Exigence · Transparence) avec icones SVG rondes
 - CTA final "Parlons de votre projet" avec boutons Devis/Realisations
-- **Mention "Architecte de formation"** dans le paragraphe 1 (formulation legale OK car "de formation" = non protege)
+- **IMPORTANT — Le fondateur n'est PAS architecte (formation DPLG suivie mais memoire final non rendu, donc pas de diplome).** En consequence : ne JAMAIS utiliser le titre "Architecte" ni "Architecte DPLG" ni meme "Architecte de formation" (juge trop ambigu en contexte commercial — l'Ordre des architectes a fait retirer cette mention dans des cas similaires). Formulation validee : **"Issu d'une formation en ecole d'architecture"** (factuel, sans usurpation de titre). Decision prise en session 7 (28 avril 2026).
 
 ### Page Contact (formulaire Netlify Forms)
 - Hero simple (label CONTACT + H1 "Parlons de votre projet" + sous-titre 48 h)
@@ -309,8 +309,8 @@ Note : ces references sont liees a l'experience personnelle du fondateur, pas a 
 "Specialiste en modelisation 3D et BIM Architecture depuis plus de 15 ans, je mets mon expertise technique au service des professionnels du batiment. Installe a Perpignan, j'interviens en Occitanie et dans toute la France."
 
 ### Page A propos — Mon parcours (3 paragraphes)
-**P1 (avec mention legale "Architecte de formation") :**
-"**Architecte de formation**, j'ai debute ma carriere en cabinet de maitrise d'oeuvre parisien ou j'ai occupe pendant plus de 15 ans les fonctions de dessinateur projeteur, puis de Responsable du pole 3D et de BIM Coordinateur. J'y ai pilote des projets d'envergure pour des acteurs tels que la CNAV, la CAF, l'OFII, Capgemini ou Optical Center."
+**P1 (formulation legale validee — voir section 11) :**
+"**Issu d'une formation en ecole d'architecture**, j'ai debute ma carriere en cabinet de maitrise d'oeuvre parisien ou j'ai occupe pendant plus de 15 ans les fonctions de dessinateur projeteur, puis de Responsable du pole 3D et de BIM Coordinateur. J'y ai pilote des projets d'envergure pour des acteurs tels que la CNAV, la CAF, l'OFII, Capgemini ou Optical Center."
 
 **P2 (sans "sans intermediaire ni sous-traitance") :**
 "Aujourd'hui, je cree ZE3D pour mettre cette experience a disposition des professionnels du batiment de maniere independante. Installe a Perpignan, je privilegie une relation directe et sur-mesure avec chaque client."
