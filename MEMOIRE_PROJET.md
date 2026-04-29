@@ -69,6 +69,7 @@
 - **Ton :** Professionnel, direct, sobre. Pas de jargon inaccessible.
 - **Langue :** Francais uniquement
 - **Pas d'humour**, pas de formules marketing creuses
+- **Coherence "Je" partout** (microentreprise solo) : ne jamais ecrire "Nous", "Notre", "Nos" pour decrire l'entreprise. Pour les boutons et titres de section : retirer le possessif (ex: "Prestations" plutot que "Mes prestations" — plus pro/neutre). Pour les textes longs : "Je", "ma", "mon" assume. Decision validee en session 7 (28 avril 2026).
 - **Typographies :** DM Sans (corps) + Nasalization (marque ZE3D)
 - **Palette :** Fond clair (#FFFFFF), accent bleu ardoise (#4A6580), texte sombre (#1A2530)
 
