@@ -113,6 +113,7 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 - **A propos** (`a-propos.astro`) — Hero + Mon parcours + Expertise (2 cols) + Ma demarche (4 engagements) + CTA
 - **Contact** (`contact.astro`) — Hero + Formulaire Netlify Forms (7 champs + RGPD) + Infos contact + CTA alternatif
 - **Mentions legales** (`mentions-legales.astro`) — 10 sections (Editeur, Hebergeur, Assurance, PI, RGPD, Cookies, etc.)
+- **CGV** (`cgv.astro`) — Conditions Generales de Vente (B2B), 42 sections, redaction juridique pro
 
 ### Pages a creer
 Aucune — toutes les pages du site sont desormais creees.
@@ -586,6 +587,8 @@ Le fondateur a installe **une version TEMPORAIRE TRONQUEE** de ses signatures da
 - **Netlify Forms sur plan gratuit** : inclut les notifications email vers 1 ou 2 destinataires (pas besoin de Pro qui coute ~20$/mois). Seules les fonctionnalites avancees (Slack, webhooks multiples, etc.) sont payantes. Ne pas suggerer au fondateur de payer pour les notifications email basiques.
 - La configuration des notifications email est a refaire sur chaque site Netlify (TEST et PROD sont des sites separes) — voir section 17
 - **Bug Astro scoped CSS** : le scoped CSS d'Astro (selecteurs `[data-astro-cid-xxx]`) ne s'applique PAS aux elements crees dynamiquement en JavaScript car ils n'ont pas l'attribut data-astro-cid. Symptome typique : styles invisibles, transitions a 0s. **Solution :** appliquer tous les styles necessaires en INLINE via `element.style.cssText = '...'` lors de la creation JS. Voir `SplashScreen.astro` pour exemple complet (bug rencontre en session 7).
+- **Assurance RC Pro** : actuellement mentionnee "en cours d'obtention" dans les CGV (section 30) ET dans les mentions legales. Lors de la souscription effective, mettre a jour les 2 pages avec les references (assureur, n° contrat, plafonds, franchises).
+- **TVA intracommunautaire** : meme remarque, "en cours d'obtention" mentionne dans CGV (section 1) et mentions legales. A mettre a jour des attribution.
 
 ---
 
