@@ -1,5 +1,5 @@
 # MEMOIRE PROJET — Site vitrine ZE3D
-# Derniere mise a jour : 29 avril 2026 — Session 7 (splash screen, corrections legales, harmonisation Je)
+# Derniere mise a jour : 02 mai 2026 — Session 8 (QR codes design, page CGV, N° TVA obtenu)
 
 ---
 
@@ -113,7 +113,7 @@ Localhost (develop)  -->  GitHub  -->  Netlify TEST  -->  Netlify PROD
 - **A propos** (`a-propos.astro`) — Hero + Mon parcours + Expertise (2 cols) + Ma demarche (4 engagements) + CTA
 - **Contact** (`contact.astro`) — Hero + Formulaire Netlify Forms (7 champs + RGPD) + Infos contact + CTA alternatif
 - **Mentions legales** (`mentions-legales.astro`) — 10 sections (Editeur, Hebergeur, Assurance, PI, RGPD, Cookies, etc.)
-- **CGV** (`cgv.astro`) — Conditions Generales de Vente (B2B), 42 sections, redaction juridique pro
+- **CGV** (`cgv.astro`) — Conditions Generales de Vente (B2B), 42 sections. **Texte genere par ChatGPT** (pas par un juriste qualifie). Une revue juridique humaine reste recommandee a terme (notamment sur les clauses limitatives de responsabilite, sections 21-24 et 29).
 
 ### Pages a creer
 Aucune — toutes les pages du site sont desormais creees.
@@ -417,6 +417,9 @@ Page mentions legales a creer avec :
 ## 14. HISTORIQUE GIT
 
 ```
+90de168 CGV V2 + N° TVA intracommunautaire obtenu (FR47812525103)                 ← session 8
+8facf37 Ajout page CGV (Conditions Generales de Vente)                            ← session 8
+afeafff Page A propos : majuscule a "Architecture" ("ecole d'Architecture")       ← session 7
 35a0494 Coherence editoriale : nettoyage complementaire (occurrences manquees)   ← session 7
 c622d09 Coherence editoriale : suppression des "Nous / Nos / Notre"               ← session 7
 ff2c87b Correction legale : retrait de "Architecte de formation"                  ← session 7
@@ -437,6 +440,7 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - 21 avril 2026 : deploiement complet avec toutes les pages (session 5)
 - 23 avril 2026 : ajout image signature mail Ionos (session 6, commit 7974480)
 - 28-29 avril 2026 : splash screen + corrections legales + harmonisation Je (session 7)
+- 30 avril & 02 mai 2026 : QR codes design + page CGV + N° TVA obtenu (session 8)
 
 **Site TEST desormais fonctionnel a 100%** :
 - Toutes les pages accessibles
@@ -444,6 +448,55 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - Formulaire teste par le fondateur avec succes
 
 Aucun deploiement prod effectue pour le moment.
+
+### Session 8 — 30 avril & 02 mai 2026 (QR codes design, page CGV, N° TVA obtenu)
+
+**Realisations :**
+
+**1. QR codes generes** pour les 5 URLs principales :
+- `ze3d-accueil` (https://ze3d.fr)
+- `ze3d-contact` (https://ze3d.fr/contact)
+- `ze3d-realisations` (https://ze3d.fr/realisations)
+- `ze3d-mentions-legales` (https://ze3d.fr/mentions-legales)
+- `ze3d-cgv` (https://ze3d.fr/cgv)
+- **Style design** : barres verticales (modules) + yeux arrondis mi-doux (radius_ratio=0.5) + bleu accent ZE3D #4A6580
+- **Format double** : PNG (design colore, ~80-100 Ko) + SVG (vectoriel pur noir/blanc, ~7 Ko)
+- Niveau correction d'erreur : M (15%, sans logo central)
+- Script reutilisable : `scripts/generate-qr-codes.py` (Python + lib `qrcode[pil]`)
+- Stockage : `Sources/QR codes/` (non commite, comme le reste de Sources/)
+- Note : `ze3d.fr` pas encore actif → les QR fonctionneront des activation du domaine
+
+**2. Page CGV creee** (`/cgv`)
+- 42 sections juridiques B2B
+- **Texte genere par ChatGPT (pas par un juriste qualifie)** — revue juridique humaine recommandee a terme
+- Structure et style identiques a `mentions-legales.astro` (hero + sections numerotees + listes a puces)
+- Apostrophes typographiques appliquees partout
+- Email `contact@ze3d.fr` cliquable (sections RGPD et Reclamation)
+- Lien "CGV" ajoute au footer (a cote de "Mentions legales")
+- 2 versions : V1 (30 avril, commit 8facf37) puis V2 (02 mai, commit 90de168 — 10 ameliorations)
+- Cle de coherence : section 22 declare explicitement que le Prestataire **n'est pas architecte** (entre autres metiers) → coherent avec la decision legale prise en session 7
+
+**3. N° TVA intracommunautaire obtenu** : `FR47812525103`
+- Format administratif (sans espace)
+- Mis a jour dans CGV (sections 1 et 8) ET mentions legales
+- Date de mise a jour mentions legales : 02 mai 2026
+- Note section 8 CGV : ajout "a la date des presentes CGV" pour le regime fiscal (anticipe un eventuel changement sans rendre les CGV obsoletes)
+
+**Modifications cles V2 des CGV (commit 90de168) :**
+- Section 8 : N° TVA renseigne + "a la date des presentes CGV"
+- Section 10 : "60 % de solde sauf echeance differente prevue dans le devis"
+- Section 18 : ajout "la remise de fichiers natifs ne modifie pas la nature des livrables"
+- Section 21 : "plans visuels" → "plans, visuels" (separation)
+- Section 22 : "a partir des livrables" → "en lien avec les livrables" (plus protecteur)
+- Section 23 : "dans le cadre des presentes CGV" + "stipulation contraire dans le devis"
+- Section 24 : ajout final sur les releves indicatifs (pas certifies ni geometre-expert)
+- Section 29 : ajout "utilisation chantier sans validation" + "disposition legale imperative contraire"
+- Section 37 : ajout du droit de portabilite (article 20 RGPD)
+
+**Reste a faire :**
+- **Assurance RC Pro** : toujours mentionnee "en cours de souscription" dans CGV (section 30) et mentions legales. A mettre a jour des souscription effective avec : nom assureur, n° contrat, plafonds, franchises, exclusions.
+
+---
 
 ### Session 7 — 28-29 avril 2026 (splash screen, corrections legales, harmonisation Je)
 
