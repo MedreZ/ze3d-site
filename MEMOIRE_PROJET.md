@@ -717,8 +717,8 @@ modifications ponctuelles (une phrase changee dans un titre, un mot ajoute dans 
 - og:image = derivee d'un **rendu existant** (509).
 
 ### ⚠️ POINTS EN ATTENTE / A SURVEILLER (SEO)
-1. **INCOHERENCE ADRESSE LEGALE** : mentions-legales.astro ET cgv.astro affichent le siege **"47 rue Vivienne, 75002 Paris"** (+ SIRET 812 525 103 00022, tel +33 6 73 04 21 28), alors que le site + le JSON-LD ciblent **Perpignan**. C'est du **contenu legal visible (ligne rouge, non modifie)**. Le fondateur doit trancher : adresse qui fait foi ? Tant que les pages legales disent Paris et le JSON-LD dit Perpignan, il y a une incoherence NAP a clarifier.
-2. **Code postal Perpignan dans le JSON-LD = "66000" (PLACEHOLDER A CONFIRMER)** dans Layout.astro (orgLd.address.postalCode). A remplacer par le vrai code des que connu.
+1. **ADRESSE : RESOLU (01/06/2026)** — Le **siege social declare = "47 rue Vivienne, 75002 Paris"** (domiciliation legitime, affiche dans mentions-legales + CGV). Le **lieu d'activite = Perpignan** (utilise dans le JSON-LD LocalBusiness pour le SEO local). Le double affichage (legal = Paris / SEO = Perpignan) est **VOLONTAIRE et valide par le fondateur** — ce n'est PAS une incoherence a corriger. NE PAS modifier les pages legales. (Pour memoire : SIRET 812 525 103 00022, tel +33 6 73 04 21 28.)
+2. **Code postal Perpignan dans le JSON-LD = "66000" — CONFIRME par le fondateur le 01/06/2026** (orgLd.address.postalCode dans Layout.astro). OK definitif.
 3. **Telephone +33673042128 expose** dans le JSON-LD (le fondateur a valide "oui"). C'est son numero perso/pro.
 4. **sameAs (reseaux sociaux) = VIDE** : a ajouter dans orgLd (Layout) quand les comptes existeront.
 5. **AggregateRating (avis) = ABSENT** : a ajouter quand des avis verifiables existeront (societe en creation).
