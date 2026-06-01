@@ -4,11 +4,57 @@
  * Layout split zigzag : image + texte alternés
  */
 import Layout from '../layouts/Layout.astro';
+
+/* Données structurées : fil d'Ariane + les 3 services (alignés sur le texte visible) */
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil',     item: 'https://ze3d.fr/' },
+      { '@type': 'ListItem', position: 2, name: 'Prestations', item: 'https://ze3d.fr/prestations/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://ze3d.fr/prestations/#pole-1',
+    name: 'Relevé & Capture numérique',
+    serviceType: 'Relevé numérique et capture 3D',
+    url: 'https://ze3d.fr/prestations/#pole-1',
+    provider: { '@id': 'https://ze3d.fr/#organization' },
+    areaServed: { '@type': 'Country', name: 'France' },
+    description: 'Relevé numérique sur site : mesures au mètre et télémètre pour les petits relevés, ou scanner laser / LiDAR dernière génération pour les projets complexes et les bâtiments patrimoniaux.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://ze3d.fr/prestations/#pole-2',
+    name: 'Modélisation 3D & BIM',
+    serviceType: 'Modélisation BIM',
+    url: 'https://ze3d.fr/prestations/#pole-2',
+    provider: { '@id': 'https://ze3d.fr/#organization' },
+    areaServed: { '@type': 'Country', name: 'France' },
+    description: 'Maquette Numérique 3D sous Autodesk Revit, à partir du relevé ou de vos sources (plans DAO, papier) : de la maquette simple à la maquette BIM structurée (LOD 100 à 400, export IFC).',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://ze3d.fr/prestations/#pole-3',
+    name: 'Rendu & Visualisation',
+    serviceType: 'Visualisation architecturale et rendu 3D',
+    url: 'https://ze3d.fr/prestations/#pole-3',
+    provider: { '@id': 'https://ze3d.fr/#organization' },
+    areaServed: { '@type': 'Country', name: 'France' },
+    description: "Mise en image de la Maquette Numérique : rendu 3D photoréaliste, vidéo d'architecture et panoramas 360° immersifs (Enscape, Adobe Photoshop, Lightroom, After Effects).",
+  },
+];
 ---
 
 <Layout
   title="Prestations — ZE3D | Scan 3D, BIM & Visualisation"
   description="Découvrez mes 3 pôles d'expertise : relevé numérique, modélisation BIM sous Revit et rendu 3D photoréaliste. ZE3D, spécialiste Scan-to-BIM à Perpignan, Occitanie."
+  schemas={schemas}
 >
   <main>
 

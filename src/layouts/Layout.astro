@@ -18,6 +18,7 @@ interface Props {
   description?: string;
   image?:       string;
   noindex?:     boolean;   // true → page exclue de l'indexation (CGV, mentions, 404)
+  schemas?:     object[];  // données structurées JSON-LD propres à la page
 }
 
 const {
@@ -25,10 +26,79 @@ const {
   description = 'ZE3D — Spécialiste du scan 3D, modélisation BIM et visualisation architecturale à Perpignan, Occitanie.',
   image       = '/og-default.jpg',
   noindex     = false,
+  schemas     = [],
 } = Astro.props;
 
 /* URL canonique */
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://ze3d.fr');
+
+/* ────────────────────────────────────────────────────────────
+   Données structurées JSON-LD — socle présent sur TOUTES les pages
+   indexables (les pages noindex n'en reçoivent pas).
+   Aligné strictement sur le contenu visible — aucune donnée inventée.
+   ──────────────────────────────────────────────────────────── */
+
+/* Identité de l'entreprise (LocalBusiness / prestataire de services) */
+const orgLd = {
+  '@context':    'https://schema.org',
+  '@type':       'ProfessionalService',
+  '@id':         'https://ze3d.fr/#organization',
+  name:          'ZE3D',
+  description:   'Spécialiste du scan 3D, de la modélisation BIM (Revit) et de la visualisation architecturale. Relevé numérique, maquette numérique et rendu 3D photoréaliste à Perpignan et en France.',
+  url:           'https://ze3d.fr',
+  telephone:     '+33673042128',
+  email:         'contact@ze3d.fr',
+  image:         'https://ze3d.fr/og-default.jpg',
+  logo:          'https://ze3d.fr/logo-fond-clair.png',
+  foundingDate:  '2026-04-01',
+  founder: {
+    '@type': 'Person',
+    '@id':   'https://ze3d.fr/a-propos/#person',
+    name:    'Emmanuel Zerdoun',
+  },
+  address: {
+    '@type':          'PostalAddress',
+    addressLocality:  'Perpignan',
+    postalCode:       '66000',
+    addressRegion:    'Occitanie',
+    addressCountry:   'FR',
+  },
+  areaServed: [
+    { '@type': 'City',               name: 'Perpignan' },
+    { '@type': 'AdministrativeArea', name: 'Pyrénées-Orientales' },
+    { '@type': 'AdministrativeArea', name: 'Occitanie' },
+    { '@type': 'Country',            name: 'France' },
+  ],
+  knowsAbout: [
+    'Scan-to-BIM', 'Relevé numérique', 'Nuage de points', 'Scanner laser 3D / LiDAR',
+    'Modélisation BIM', 'Autodesk Revit', 'Maquette numérique', 'Export IFC',
+    'Visualisation architecturale', 'Rendu 3D photoréaliste',
+  ],
+  identifier: { '@type': 'PropertyValue', name: 'SIREN', value: '812525103' },
+  vatID:      'FR47812525103',
+  contactPoint: {
+    '@type':            'ContactPoint',
+    contactType:        'customer service',
+    telephone:          '+33673042128',
+    email:              'contact@ze3d.fr',
+    areaServed:         'FR',
+    availableLanguage:  'French',
+  },
+};
+
+/* Le site lui-même */
+const websiteLd = {
+  '@context':  'https://schema.org',
+  '@type':     'WebSite',
+  '@id':       'https://ze3d.fr/#website',
+  name:        'ZE3D',
+  url:         'https://ze3d.fr',
+  inLanguage:  'fr-FR',
+  publisher:   { '@id': 'https://ze3d.fr/#organization' },
+};
+
+/* Liste finale injectée dans le <head> (socle + schémas de la page) */
+const jsonLdBlocks = noindex ? [] : [orgLd, websiteLd, ...schemas];
 ---
 
 <!doctype html>
@@ -65,6 +135,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://ze3d.fr'
 
     <!-- ── Couleur thème navigateur mobile ──────────────────── -->
     <meta name="theme-color" content="#1A1A2E" />
+
+    <!-- ── Données structurées JSON-LD (SEO / GEO) ──────────── -->
+    {jsonLdBlocks.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
 
   <body>

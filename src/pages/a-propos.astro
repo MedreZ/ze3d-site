@@ -4,11 +4,46 @@
  * Structure : Hero + Qui suis-je + Expertise + Ma démarche + CTA
  */
 import Layout from '../layouts/Layout.astro';
+
+/* Données structurées : fil d'Ariane + fiche Personne (fondateur) + AboutPage.
+   jobTitle volontairement SANS le titre « Architecte » (formation sans diplôme).
+   Description alignée sur le parcours visible. */
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil',   item: 'https://ze3d.fr/' },
+      { '@type': 'ListItem', position: 2, name: 'À propos',  item: 'https://ze3d.fr/a-propos/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://ze3d.fr/a-propos/#person',
+    name: 'Emmanuel Zerdoun',
+    jobTitle: 'Expert BIM et modélisateur 3D',
+    image: 'https://ze3d.fr/photo-emmanuel.JPG',
+    worksFor: { '@id': 'https://ze3d.fr/#organization' },
+    description: "Issu d'une formation en école d'Architecture, Emmanuel Zerdoun a exercé plus de 15 ans en cabinet de maîtrise d'œuvre parisien (dessinateur projeteur, responsable du pôle 3D, BIM Coordinateur) avant de fonder ZE3D à Perpignan.",
+    knowsAbout: ['Scan-to-BIM', 'Autodesk Revit', 'Modélisation BIM', 'Relevé numérique', 'Rendu 3D photoréaliste'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': 'https://ze3d.fr/a-propos/#aboutpage',
+    url: 'https://ze3d.fr/a-propos/',
+    name: 'À propos — ZE3D',
+    isPartOf: { '@id': 'https://ze3d.fr/#website' },
+    mainEntity: { '@id': 'https://ze3d.fr/a-propos/#person' },
+  },
+];
 ---
 
 <Layout
   title="À propos — ZE3D | Emmanuel Zerdoun, expert BIM à Perpignan"
   description="15 ans d'expertise en modélisation 3D et BIM Architecture. Emmanuel Zerdoun, fondateur de ZE3D, vous accompagne dans vos projets de relevé numérique, maquette BIM et rendu architectural à Perpignan et dans toute la France."
+  schemas={schemas}
 >
   <main>
 

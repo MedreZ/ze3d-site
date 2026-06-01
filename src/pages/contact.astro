@@ -4,11 +4,34 @@
  * Formulaire Netlify Forms + infos de contact + CTA alternatif
  */
 import Layout from '../layouts/Layout.astro';
+
+/* Données structurées : fil d'Ariane + page de contact (rattachée à l'entreprise,
+   qui porte déjà le ContactPoint dans le socle global). */
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://ze3d.fr/' },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://ze3d.fr/contact/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': 'https://ze3d.fr/contact/#contactpage',
+    url: 'https://ze3d.fr/contact/',
+    name: 'Contact — ZE3D',
+    isPartOf: { '@id': 'https://ze3d.fr/#website' },
+    about: { '@id': 'https://ze3d.fr/#organization' },
+  },
+];
 ---
 
 <Layout
   title="Contact — ZE3D | Demandez un devis pour votre projet BIM"
   description="Contactez ZE3D pour votre projet de relevé numérique, modélisation BIM ou rendu architectural. Réponse sous 48 h avec un devis personnalisé. Perpignan et France entière."
+  schemas={schemas}
 >
   <main>
 

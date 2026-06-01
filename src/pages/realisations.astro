@@ -44,11 +44,48 @@ const catLabel = {
   bim:    '3D',
   rendu:  'Rendu',
 };
+
+/* Données structurées : fil d'Ariane + galerie (CollectionPage / ItemList)
+   construite automatiquement depuis le tableau `projects` ci-dessus. */
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil',      item: 'https://ze3d.fr/' },
+      { '@type': 'ListItem', position: 2, name: 'Réalisations', item: 'https://ze3d.fr/realisations/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': 'https://ze3d.fr/realisations/#collection',
+    name: 'Réalisations ZE3D',
+    url: 'https://ze3d.fr/realisations/',
+    isPartOf: { '@id': 'https://ze3d.fr/#website' },
+    about: { '@id': 'https://ze3d.fr/#organization' },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: projects.length,
+      itemListElement: projects.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'ImageObject',
+          name: p.title,
+          contentUrl: `https://ze3d.fr/realisations/${p.file}`,
+          creator: { '@id': 'https://ze3d.fr/#organization' },
+        },
+      })),
+    },
+  },
+];
 ---
 
 <Layout
   title="Réalisations — ZE3D | Scan 3D, BIM & Visualisation"
   description="Découvrez une sélection de projets ZE3D — relevés numériques, maquettes BIM et rendus architecturaux. Portfolio de 15 années d'expertise en modélisation 3D."
+  schemas={schemas}
 >
   <main>
 
