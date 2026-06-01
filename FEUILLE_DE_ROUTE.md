@@ -10,11 +10,10 @@ Dernière mise à jour : **01 juin 2026**
 ## 🚀 1. Déploiement PROD
 
 - [x] Merge `develop → main` (mise en ligne du chantier SEO/GEO)
-- [ ] Vérifier que le build **ze3d-prod** passe au vert sur [app.netlify.com](https://app.netlify.com)
-- [ ] **Reconfigurer les notifications Netlify Forms** sur le site **ze3d-prod**
-      (Forms → Form notifications → email vers `contact@ze3d.fr`).
-      ⚠️ Sans ça, les demandes du formulaire n'arrivent PAS dans la boîte mail.
-- [ ] Vérifier le site prod : toutes les pages, le formulaire de contact, le splash
+- [x] Vérifier que le build **ze3d-prod** passe au vert sur [app.netlify.com](https://app.netlify.com)
+- [x] **Notifications Netlify Forms** sur ze3d-prod : email → `contact@ze3d.fr`
+      (créée via l'API Netlify le 01/06/2026, réplique de la config test validée)
+- [ ] Test final : soumettre une fois le formulaire de contact en prod et vérifier la réception de l'email
 
 ## 🌐 2. Domaine ze3d.fr
 
