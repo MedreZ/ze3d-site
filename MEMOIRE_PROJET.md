@@ -443,7 +443,7 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - 28-29 avril 2026 : splash screen + corrections legales + harmonisation Je (session 7)
 - 30 avril & 02 mai 2026 : QR codes design + page CGV + N° TVA obtenu (session 8)
 - 01 juin 2026 : audit juridique CGV + date creation EI + **PREMIER DEPLOIEMENT PROD** (merge develop -> main)
-- 01 juin 2026 (session 9) : **AUDIT + OPTIMISATION SEO/GEO** (5 lots, voir section 18)
+- 01 juin 2026 (session 9) : **AUDIT + OPTIMISATION SEO/GEO** (5 lots, voir section 18) + **2e DEPLOIEMENT PROD** (merge develop -> main, cfd8292) + feuille de route partagee (FEUILLE_DE_ROUTE.md)
 
 **Site TEST desormais fonctionnel a 100%** :
 - Toutes les pages accessibles
