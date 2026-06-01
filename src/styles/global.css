@@ -138,6 +138,13 @@ img, video {
   display: block;
 }
 
+/* Les wrappers <picture> (ajoutés pour servir le WebP avec repli JPG) sont
+   rendus transparents : l'<img> à l'intérieur se comporte exactement comme
+   s'il était l'enfant direct de son conteneur — aucun impact visuel. */
+picture {
+  display: contents;
+}
+
 ul, ol {
   list-style: none;
 }

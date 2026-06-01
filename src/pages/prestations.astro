@@ -86,7 +86,7 @@ const schemas = [
           <!-- Étape 1 : Bâtiment existant -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/201.jpg" alt="Bâtiment existant — point de départ" width="3001" height="2000" loading="lazy" decoding="async" />
+              <picture><source srcset="/prestations/201.webp" type="image/webp" /><img src="/prestations/201.jpg" alt="Bâtiment existant — point de départ" width="3001" height="2000" loading="lazy" decoding="async" /></picture>
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">EXISTANT</span>
@@ -104,7 +104,7 @@ const schemas = [
           <!-- Étape 2 : Relevé -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/202.jpg" alt="Relevé numérique du bâtiment" width="3001" height="2000" loading="lazy" decoding="async" />
+              <picture><source srcset="/prestations/202.webp" type="image/webp" /><img src="/prestations/202.jpg" alt="Relevé numérique du bâtiment" width="3001" height="2000" loading="lazy" decoding="async" /></picture>
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">RELEVÉ</span>
@@ -122,7 +122,7 @@ const schemas = [
           <!-- Étape 3 : Modélisation -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/203.jpg" alt="Modélisation 3D et BIM" width="3001" height="2000" loading="lazy" decoding="async" />
+              <picture><source srcset="/prestations/203.webp" type="image/webp" /><img src="/prestations/203.jpg" alt="Modélisation 3D et BIM" width="3001" height="2000" loading="lazy" decoding="async" /></picture>
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">MODÉLISATION</span>
@@ -140,7 +140,7 @@ const schemas = [
           <!-- Étape 4 : Rendu -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/204.jpg" alt="Rendu 3D final" width="3001" height="2000" loading="lazy" decoding="async" />
+              <picture><source srcset="/prestations/204.webp" type="image/webp" /><img src="/prestations/204.jpg" alt="Rendu 3D final" width="3001" height="2000" loading="lazy" decoding="async" /></picture>
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">RENDU</span>
@@ -194,15 +194,18 @@ const schemas = [
         <!-- Image à gauche : équipements de relevé (mètre, télémètre, scanner laser) -->
         <div class="pole-image-col">
           <div class="pole-image-wrap pole-image-wrap--equipment">
-            <img
-              src="/prestations/100.png"
-              alt="Équipements de relevé — mètre, télémètre laser et scanner 3D"
-              class="pole-equipment-full"
-              width="1500"
-              height="1200"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="/prestations/100.webp" type="image/webp" />
+              <img
+                src="/prestations/100.png"
+                alt="Équipements de relevé — mètre, télémètre laser et scanner 3D"
+                class="pole-equipment-full"
+                width="1500"
+                height="1200"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
 
@@ -285,15 +288,18 @@ const schemas = [
         <!-- Image à droite -->
         <div class="pole-image-col">
           <div class="pole-image-wrap">
-            <img
-              src="/prestations/403.jpg"
-              alt="Modélisation BIM 3D — vue maquette numérique"
-              class="pole-image"
-              loading="lazy"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
+            <picture>
+              <source srcset="/prestations/403.webp" type="image/webp" />
+              <img
+                src="/prestations/403.jpg"
+                alt="Modélisation BIM 3D — vue maquette numérique"
+                class="pole-image"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </picture>
           </div>
         </div>
 
@@ -310,15 +316,18 @@ const schemas = [
         <!-- Image à gauche -->
         <div class="pole-image-col">
           <div class="pole-image-wrap">
-            <img
-              src="/prestations/506.jpg"
-              alt="Rendu 3D photoréaliste — visualisation architecturale"
-              class="pole-image"
-              loading="lazy"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
+            <picture>
+              <source srcset="/prestations/506.webp" type="image/webp" />
+              <img
+                src="/prestations/506.jpg"
+                alt="Rendu 3D photoréaliste — visualisation architecturale"
+                class="pole-image"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="800"
+              />
+            </picture>
           </div>
         </div>
 

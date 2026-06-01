@@ -146,15 +146,18 @@ const schemas = [
               data-index={i}
               aria-label={`Agrandir : ${p.title}`}
             >
-              <img
-                src={`/realisations/${p.file}`}
-                alt={p.title}
-                class="gallery-img"
-                width={p.w}
-                height={p.h}
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcset={`/realisations/${p.file.replace(/\.jpg$/, '.webp')}`} type="image/webp" />
+                <img
+                  src={`/realisations/${p.file}`}
+                  alt={p.title}
+                  class="gallery-img"
+                  width={p.w}
+                  height={p.h}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <div class="gallery-overlay">
                 <span class="gallery-category">{catLabel[p.cat as keyof typeof catLabel]}</span>
                 <p class="gallery-title">{p.title}</p>
