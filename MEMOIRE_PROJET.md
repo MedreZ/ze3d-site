@@ -443,6 +443,7 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - 28-29 avril 2026 : splash screen + corrections legales + harmonisation Je (session 7)
 - 30 avril & 02 mai 2026 : QR codes design + page CGV + N° TVA obtenu (session 8)
 - 01 juin 2026 : audit juridique CGV + date creation EI + **PREMIER DEPLOIEMENT PROD** (merge develop -> main)
+- 01 juin 2026 (session 9) : **AUDIT + OPTIMISATION SEO/GEO** (5 lots, voir section 18)
 
 **Site TEST desormais fonctionnel a 100%** :
 - Toutes les pages accessibles
@@ -695,3 +696,32 @@ paragraphe, legende, bouton, meta-description, etc.), Claude DOIT :
 
 **Important :** Cette regle s'applique a TOUS les textes destines au site, meme les petites
 modifications ponctuelles (une phrase changee dans un titre, un mot ajoute dans un badge, etc.).
+
+
+---
+
+## 18. SEO / GEO (session 9 — 01 juin 2026)
+
+**Audit complet (13 agents) puis optimisation en 5 lots, PERIMETRE STRICTEMENT INVISIBLE/TECHNIQUE** (jamais de modif du contenu visible, de l'UX ni du visuel). 5 commits sur develop (836c631 -> 6a457a3).
+
+### Ce qui a ete fait
+- **Lot 1 — Config technique** : `site: 'https://ze3d.fr'` + `@astrojs/sitemap` (sitemap auto, exclut cgv/mentions/404) ; prop `noindex` dans Layout -> CGV + mentions + 404 en `noindex,follow` ; `Sitemap:` dans robots.txt ; **`netlify.toml`** (cache assets/polices + en-tetes securite, PAS de CSP pour eviter tout blocage).
+- **Lot 2 — JSON-LD (GEO)** : socle global via Layout (`ProfessionalService` + `WebSite`) sur pages indexables uniquement ; par page : Prestations = BreadcrumbList + 3 Service ; Realisations = BreadcrumbList + CollectionPage/ItemList (22 projets) ; A propos = BreadcrumbList + Person (jobTitle **"Expert BIM"**, JAMAIS "Architecte") + AboutPage ; Contact = BreadcrumbList + ContactPage. Tout aligne sur le contenu visible, rien d'invente. Prop `schemas` du Layout.
+- **Lot 3 — Perf polices** : preconnect Google Fonts + preload Nasalization.otf (display:swap deja en place, pas touche au CSS).
+- **Lot 4 — Images anti-CLS** : width/height (dimensions reelles) + decoding="async" partout. Sans risque car toutes les images concernees sont en `object-fit:cover` (taille pilotee par CSS).
+- **Lot 5 — WebP** : 31 images de contenu converties en WebP q82 via `scripts/generate-webp.mjs` (sharp), originaux JPG/PNG **conserves** en repli. Wrapping `<picture><source webp>`. `global.css : picture { display: contents }` = wrapper transparent (verifie au rendu : layout intact, webp bien servi). **Poids images 89,6 Mo -> 15,8 Mo (-82%)**. + **`og-default.jpg` 1200x630** creee depuis le rendu 509 (aperçus sociaux repares).
+
+### Decisions du fondateur (session 9)
+- JSON-LD adresse = **Perpignan** (zone reelle), pas Paris.
+- WebP haute qualite **autorise** (originaux conserves).
+- og:image = derivee d'un **rendu existant** (509).
+
+### ⚠️ POINTS EN ATTENTE / A SURVEILLER (SEO)
+1. **INCOHERENCE ADRESSE LEGALE** : mentions-legales.astro ET cgv.astro affichent le siege **"47 rue Vivienne, 75002 Paris"** (+ SIRET 812 525 103 00022, tel +33 6 73 04 21 28), alors que le site + le JSON-LD ciblent **Perpignan**. C'est du **contenu legal visible (ligne rouge, non modifie)**. Le fondateur doit trancher : adresse qui fait foi ? Tant que les pages legales disent Paris et le JSON-LD dit Perpignan, il y a une incoherence NAP a clarifier.
+2. **Code postal Perpignan dans le JSON-LD = "66000" (PLACEHOLDER A CONFIRMER)** dans Layout.astro (orgLd.address.postalCode). A remplacer par le vrai code des que connu.
+3. **Telephone +33673042128 expose** dans le JSON-LD (le fondateur a valide "oui"). C'est son numero perso/pro.
+4. **sameAs (reseaux sociaux) = VIDE** : a ajouter dans orgLd (Layout) quand les comptes existeront.
+5. **AggregateRating (avis) = ABSENT** : a ajouter quand des avis verifiables existeront (societe en creation).
+6. **Analytics = AUCUN** : prevoir GA4 + Google Search Console + Bing Webmaster ulterieurement (le fondateur n'a rien pour l'instant).
+7. **A l'activation du domaine ze3d.fr** : soumettre le sitemap (`https://ze3d.fr/sitemap-index.xml`) a Google Search Console + Bing.
+8. Le script `scripts/generate-webp.mjs` est a relancer si de nouvelles images sont ajoutees a public/realisations ou public/prestations.
