@@ -8,6 +8,7 @@
 - **Entreprise :** ZE3D — Microentreprise
 - **Fondateur :** Emmanuel Zerdoun
 - **Activite :** Scan-to-BIM, Modelisation 3D, Rendu architectural
+- **Date de creation EI :** 01 avril 2026 (apres la loi du 14 fevrier 2022 → separation patrimoniale automatique + residence principale insaisissable par defaut, voir notes section 15)
 - **Localisation :** Perpignan (66), Occitanie
 - **Zone d'intervention :** Occitanie (terrain) + France entiere (teletravail)
 - **Objectif de revenu :** 3 000 EUR net/mois sous 6 a 8 mois
@@ -640,6 +641,19 @@ Le fondateur a installe **une version TEMPORAIRE TRONQUEE** de ses signatures da
 - **Netlify Forms sur plan gratuit** : inclut les notifications email vers 1 ou 2 destinataires (pas besoin de Pro qui coute ~20$/mois). Seules les fonctionnalites avancees (Slack, webhooks multiples, etc.) sont payantes. Ne pas suggerer au fondateur de payer pour les notifications email basiques.
 - La configuration des notifications email est a refaire sur chaque site Netlify (TEST et PROD sont des sites separes) — voir section 17
 - **Bug Astro scoped CSS** : le scoped CSS d'Astro (selecteurs `[data-astro-cid-xxx]`) ne s'applique PAS aux elements crees dynamiquement en JavaScript car ils n'ont pas l'attribut data-astro-cid. Symptome typique : styles invisibles, transitions a 0s. **Solution :** appliquer tous les styles necessaires en INLINE via `element.style.cssText = '...'` lors de la creation JS. Voir `SplashScreen.astro` pour exemple complet (bug rencontre en session 7).
+
+### Notes juridiques importantes (audit CGV session 8)
+
+- **Protection patrimoniale acquise par defaut** : EI creee le 01 avril 2026 → loi du 14 fevrier 2022 applicable → separation patrimoniale automatique (patrimoine perso protege des creanciers pros). Residence principale insaisissable (loi Macron 2015, automatique). **Ne jamais signer de renonciation a cette protection** (banquier, assureur, client).
+- **Pas de RC Pro souscrite a date** : aucun assureur n'a propose de RC Pro adaptee — uniquement de la decennale (refusee). Pistes a re-explorer : Hiscox / April / AssurUp / Verspieren (courtiers specialises digital, pas BTP). Bien se presenter comme "prestataire de services numeriques / production graphique", pas "ingenierie BTP" (le code APE 71.12B oriente faussement vers le BTP).
+- **Code APE 71.12B (Ingenierie, etudes techniques)** : positif pour la credibilite technique, negatif pour les assureurs qui assimilent au BTP. Eventuellement a reevaluer si necessite.
+- **Risques residuels CGV** :
+  - §29 — plafond au montant HT pourrait etre ecarte par juge (art. 1170 Code civil) si dommage >> prestation
+  - §23 — refus decennale pourrait etre ecarte si requalification en "MOE de fait" (art. 1792). Eviter dans les devis : "validation technique", "plans d'execution", "DCE"
+  - Acceptation CGV faible si pas de signature explicite client → renforcer via mention "Bon pour accord / lu et approuve CGV" sur chaque devis
+- **Recommandations CGV** (a appliquer si voulu) :
+  - §40 : specifier Tribunal de commerce de Paris (juridiction d'attache)
+  - Ajouter clause non-retractation B2B (article L.221-3 Code conso)
 - ~~**Assurance RC Pro** : actuellement mentionnee "en cours d'obtention" dans les CGV (section 30) ET dans les mentions legales. Lors de la souscription effective, mettre a jour les 2 pages avec les references (assureur, n° contrat, plafonds, franchises).~~ **CHANGEMENT DE POSITION (PDF du 02 mai, integre session 8)** : la position juridique a ete revue. CGV section 30 et mentions legales section 3 declarent maintenant explicitement que "les prestations ne sont pas couvertes par une assurance RC Pro specifique" et que le Prestataire "ne dispose pas d'assurance decennale". C'est une position plus transparente juridiquement. Si une RC Pro est souscrite ulterieurement, modifier les 2 pages pour mettre a jour.
 - ~~**TVA intracommunautaire** : meme remarque, "en cours d'obtention" mentionne dans CGV (section 1) et mentions legales. A mettre a jour des attribution.~~ **OBTENUE en session 8 (02 mai 2026) : FR47812525103**. Mise a jour effectuee dans CGV (sections 1, 8) et mentions legales.
 
