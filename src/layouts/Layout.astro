@@ -113,6 +113,14 @@ const jsonLdBlocks = noindex ? [] : [orgLd, websiteLd, ...schemas];
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
+    <!-- ── Performance polices ──────────────────────────────── -->
+    <!-- Préconnexion aux serveurs Google Fonts (DM Sans chargé via @import
+         dans global.css) : ouvre la connexion en avance, page plus rapide. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Préchargement de la police de marque locale (utilisée dès la nav). -->
+    <link rel="preload" as="font" type="font/otf" href="/fonts/Nasalization.otf" crossorigin />
+
     <!-- ── SEO ──────────────────────────────────────────────── -->
     <title>{title}</title>
     <meta name="description" content={description} />
