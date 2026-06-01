@@ -25,10 +25,12 @@ Dernière mise à jour : **01 juin 2026**
 
 ## ✉️ 3. Signatures mail Ionos *(rappel explicite demandé)*
 
-- [ ] Mettre à jour l'URL de l'image dans les 4 fichiers `Sources/Signatures mail/`
-      (`ze3d-test.netlify.app` → `ze3d.fr`)
-- [ ] Remplacer dans Ionos les signatures temporaires par les **versions définitives
-      complètes** (avec la ligne « Site »), via le mode Source HTML `<>`
+- [x] URL de l'image mise à jour dans les 4 fichiers `Sources/Signatures mail/`
+      (`ze3d-test.netlify.app` → `ze3d.fr`) — image vérifiée accessible (01/06/2026)
+- [ ] **Manu** : remplacer dans Ionos les 2 signatures par les **versions définitives
+      complètes** (fichiers `*-CODE-HTML.txt`), via le mode Source HTML `<>`
+      — `signature-emmanuel-CODE-HTML.txt` pour emmanuel.zerdoun@ze3d.fr
+      — `signature-contact-CODE-HTML.txt` pour contact@ze3d.fr
 
 ## 🔍 4. Référencement *(une fois ze3d.fr actif)*
 
