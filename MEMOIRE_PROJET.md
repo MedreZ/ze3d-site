@@ -347,7 +347,7 @@ Note : ces references sont liees a l'experience personnelle du fondateur, pas a 
 - SIRET : 812 525 103 00022
 - Telephone : 06 73 04 21 28
 - Email : contact@ze3d.fr
-- TVA intracommunautaire : FR47812525103 (obtenue, session 8 — 02 mai 2026)
+- TVA intracommunautaire : FR 47812525103 (obtenue, session 8 — 02 mai 2026 ; format avec espace selon PDF officiel)
 - Assurance RC Pro : en cours d'obtention
 - Hebergeur : Netlify, Inc. (44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA)
 
@@ -640,7 +640,7 @@ Le fondateur a installe **une version TEMPORAIRE TRONQUEE** de ses signatures da
 - **Netlify Forms sur plan gratuit** : inclut les notifications email vers 1 ou 2 destinataires (pas besoin de Pro qui coute ~20$/mois). Seules les fonctionnalites avancees (Slack, webhooks multiples, etc.) sont payantes. Ne pas suggerer au fondateur de payer pour les notifications email basiques.
 - La configuration des notifications email est a refaire sur chaque site Netlify (TEST et PROD sont des sites separes) — voir section 17
 - **Bug Astro scoped CSS** : le scoped CSS d'Astro (selecteurs `[data-astro-cid-xxx]`) ne s'applique PAS aux elements crees dynamiquement en JavaScript car ils n'ont pas l'attribut data-astro-cid. Symptome typique : styles invisibles, transitions a 0s. **Solution :** appliquer tous les styles necessaires en INLINE via `element.style.cssText = '...'` lors de la creation JS. Voir `SplashScreen.astro` pour exemple complet (bug rencontre en session 7).
-- **Assurance RC Pro** : actuellement mentionnee "en cours d'obtention" dans les CGV (section 30) ET dans les mentions legales. Lors de la souscription effective, mettre a jour les 2 pages avec les references (assureur, n° contrat, plafonds, franchises).
+- ~~**Assurance RC Pro** : actuellement mentionnee "en cours d'obtention" dans les CGV (section 30) ET dans les mentions legales. Lors de la souscription effective, mettre a jour les 2 pages avec les references (assureur, n° contrat, plafonds, franchises).~~ **CHANGEMENT DE POSITION (PDF du 02 mai, integre session 8)** : la position juridique a ete revue. CGV section 30 et mentions legales section 3 declarent maintenant explicitement que "les prestations ne sont pas couvertes par une assurance RC Pro specifique" et que le Prestataire "ne dispose pas d'assurance decennale". C'est une position plus transparente juridiquement. Si une RC Pro est souscrite ulterieurement, modifier les 2 pages pour mettre a jour.
 - ~~**TVA intracommunautaire** : meme remarque, "en cours d'obtention" mentionne dans CGV (section 1) et mentions legales. A mettre a jour des attribution.~~ **OBTENUE en session 8 (02 mai 2026) : FR47812525103**. Mise a jour effectuee dans CGV (sections 1, 8) et mentions legales.
 
 ---
