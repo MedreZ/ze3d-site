@@ -442,13 +442,16 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - 23 avril 2026 : ajout image signature mail Ionos (session 6, commit 7974480)
 - 28-29 avril 2026 : splash screen + corrections legales + harmonisation Je (session 7)
 - 30 avril & 02 mai 2026 : QR codes design + page CGV + N° TVA obtenu (session 8)
+- 01 juin 2026 : audit juridique CGV + date creation EI + **PREMIER DEPLOIEMENT PROD** (merge develop -> main)
 
 **Site TEST desormais fonctionnel a 100%** :
 - Toutes les pages accessibles
 - Formulaire de contact operationnel avec notification email vers contact@ze3d.fr (configure sur Netlify)
 - Formulaire teste par le fondateur avec succes
 
-Aucun deploiement prod effectue pour le moment.
+**PREMIER DEPLOIEMENT PROD effectue le 01 juin 2026** : merge `develop` -> `main` (fast-forward 2f213f7..f48fc82, 18 commits, tout le site) puis push origin main. Deploiement auto declenche sur Netlify (site ze3d-prod). Domaine `ze3d.fr` pas encore actif a date.
+
+**ACTIONS POST-PROD A FAIRE (voir section 17) :** verifier build Netlify ze3d-prod / RECONFIGURER notifications Netlify Forms sur le site prod (sites separes, non herite) / mettre a jour URL image signatures Ionos (ze3d-test -> ze3d-prod puis ze3d.fr) + remplacer signatures temporaires par versions definitives / connecter domaine ze3d.fr (les QR codes pointent deja vers ze3d.fr).
 
 ### Session 8 — 30 avril & 02 mai 2026 (QR codes design, page CGV, N° TVA obtenu)
 
