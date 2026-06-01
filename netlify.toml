@@ -1,0 +1,32 @@
+# ============================================================
+# netlify.toml — Configuration de déploiement ZE3D (Astro statique)
+# ============================================================
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# ── Cache long pour les assets versionnés (hash dans le nom) ──
+# Astro place ses JS/CSS compilés dans /_astro/ avec un hash :
+# on peut les mettre en cache « pour toujours » sans risque.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Polices locales (Nasalization) — stables, cache long.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── En-têtes de sécurité de base ──
+# (Pas de Content-Security-Policy ici : elle nécessiterait des tests
+#  approfondis pour ne pas bloquer Google Fonts / scripts Astro.)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"

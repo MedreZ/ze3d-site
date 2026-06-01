@@ -17,12 +17,14 @@ interface Props {
   title:        string;
   description?: string;
   image?:       string;
+  noindex?:     boolean;   // true → page exclue de l'indexation (CGV, mentions, 404)
 }
 
 const {
   title,
   description = 'ZE3D — Spécialiste du scan 3D, modélisation BIM et visualisation architecturale à Perpignan, Occitanie.',
   image       = '/og-default.jpg',
+  noindex     = false,
 } = Astro.props;
 
 /* URL canonique */
@@ -44,6 +46,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://ze3d.fr'
     <!-- ── SEO ──────────────────────────────────────────────── -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- ── Open Graph / Twitter Card ───────────────────────── -->
