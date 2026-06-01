@@ -36,6 +36,7 @@ import SplashScreen from '../components/SplashScreen.astro';
               src="/509.jpg"
               alt="Coupe immeuble de bureaux — rendu 3D"
               loading="eager"
+              decoding="async"
               width="800"
               height="450"
             />
@@ -69,6 +70,7 @@ import SplashScreen from '../components/SplashScreen.astro';
               alt="Coupe immeuble de bureaux — rendu 3D"
               class="hero-image"
               loading="eager"
+              decoding="async"
               width="800"
               height="900"
             />
@@ -192,6 +194,7 @@ import SplashScreen from '../components/SplashScreen.astro';
                 alt="Emmanuel Zerdoun — Expert BIM ZE3D"
                 class="apropos-image"
                 loading="lazy"
+                decoding="async"
                 width="600"
                 height="700"
               />
@@ -214,6 +217,7 @@ import SplashScreen from '../components/SplashScreen.astro';
                   src="/photo-emmanuel.JPG"
                   alt="Emmanuel Zerdoun — Expert BIM ZE3D"
                   loading="lazy"
+                  decoding="async"
                   width="600"
                   height="700"
                 />
@@ -240,12 +244,12 @@ import SplashScreen from '../components/SplashScreen.astro';
                 Au cours de mes 15 ans d'expérience, j'ai eu l'opportunité d'intervenir sur des projets pour des acteurs tels que :
               </p>
               <div class="apropos-logos">
-                <img src="/logos/cnav.png" alt="CNAV" class="apropos-logo" />
-                <img src="/logos/caf.svg" alt="CAF" class="apropos-logo" />
-                <img src="/logos/ofii.png" alt="OFII" class="apropos-logo" />
-                <img src="/logos/capgemini.svg" alt="Capgemini" class="apropos-logo" />
-                <img src="/logos/optical-center.svg" alt="Optical Center" class="apropos-logo" />
-                <img src="/logos/fujitsu.svg" alt="Fujitsu" class="apropos-logo" />
+                <img src="/logos/cnav.png" alt="CNAV" class="apropos-logo" loading="lazy" decoding="async" />
+                <img src="/logos/caf.svg" alt="CAF" class="apropos-logo" loading="lazy" decoding="async" />
+                <img src="/logos/ofii.png" alt="OFII" class="apropos-logo" loading="lazy" decoding="async" />
+                <img src="/logos/capgemini.svg" alt="Capgemini" class="apropos-logo" loading="lazy" decoding="async" />
+                <img src="/logos/optical-center.svg" alt="Optical Center" class="apropos-logo" loading="lazy" decoding="async" />
+                <img src="/logos/fujitsu.svg" alt="Fujitsu" class="apropos-logo" loading="lazy" decoding="async" />
               </div>
             </div>
 
@@ -358,7 +362,7 @@ import SplashScreen from '../components/SplashScreen.astro';
           <!-- 513 — École nocturne — 2x2 (col 1-2, row 1-2) -->
           <div class="realisation-item grid-large" style="grid-column: 1 / 3; grid-row: 1 / 3;">
             <div class="realisation-inner">
-              <img src="/realisations/513.jpg" alt="Complexe scolaire — vue de nuit" loading="lazy" />
+              <img src="/realisations/513.jpg" alt="Complexe scolaire — vue de nuit" width="3200" height="1800" loading="lazy" decoding="async" />
               <div class="realisation-overlay">
                 <span class="realisation-category">RENDU 3D</span>
                 <p class="realisation-title">Complexe scolaire (vue de nuit)</p>
@@ -369,7 +373,7 @@ import SplashScreen from '../components/SplashScreen.astro';
           <!-- 507 — Cour résidence — 1x1 (col 4, row 1) -->
           <div class="realisation-item grid-small" style="grid-column: 4; grid-row: 1;">
             <div class="realisation-inner">
-              <img src="/realisations/507.jpg" alt="Cour intérieure — résidence" loading="lazy" />
+              <img src="/realisations/507.jpg" alt="Cour intérieure — résidence" width="3200" height="1800" loading="lazy" decoding="async" />
               <div class="realisation-overlay">
                 <span class="realisation-category">RENDU 3D</span>
                 <p class="realisation-title">Cour intérieure — résidence</p>
@@ -380,7 +384,7 @@ import SplashScreen from '../components/SplashScreen.astro';
           <!-- 503 — Bâtiment tertiaire — 2x1 (col 3-4, row 2) -->
           <div class="realisation-item grid-wide" style="grid-column: 3 / 5; grid-row: 2;">
             <div class="realisation-inner">
-              <img src="/realisations/503.jpg" alt="Coupe — Immeuble de bureaux (vue de jour)" loading="lazy" />
+              <img src="/realisations/503.jpg" alt="Coupe — Immeuble de bureaux (vue de jour)" width="2180" height="1227" loading="lazy" decoding="async" />
               <div class="realisation-overlay">
                 <span class="realisation-category">RENDU 3D</span>
                 <p class="realisation-title">Coupe — Immeuble de bureaux (vue de jour)</p>
@@ -391,7 +395,7 @@ import SplashScreen from '../components/SplashScreen.astro';
           <!-- 501 — Immeuble de bureaux — 1x2 (col 1, row 3-4) -->
           <div class="realisation-item grid-tall" style="grid-column: 1; grid-row: 3 / 5;">
             <div class="realisation-inner">
-              <img src="/realisations/501.jpg" alt="Immeuble de bureaux — rendu 3D" loading="lazy" />
+              <img src="/realisations/501.jpg" alt="Immeuble de bureaux — rendu 3D" width="2400" height="1350" loading="lazy" decoding="async" />
               <div class="realisation-overlay">
                 <span class="realisation-category">RENDU 3D</span>
                 <p class="realisation-title">Immeuble de bureaux</p>
@@ -402,7 +406,7 @@ import SplashScreen from '../components/SplashScreen.astro';
           <!-- 505 — Vue aérienne — 1x1 (col 2, row 4) -->
           <div class="realisation-item grid-small" style="grid-column: 2; grid-row: 4;">
             <div class="realisation-inner">
-              <img src="/realisations/505.jpg" alt="Vue aérienne — complexe scolaire" loading="lazy" />
+              <img src="/realisations/505.jpg" alt="Vue aérienne — complexe scolaire" width="3200" height="1800" loading="lazy" decoding="async" />
               <div class="realisation-overlay">
                 <span class="realisation-category">VUE AÉRIENNE</span>
                 <p class="realisation-title">Vue aérienne — complexe scolaire</p>
@@ -413,7 +417,7 @@ import SplashScreen from '../components/SplashScreen.astro';
           <!-- 502 — Galilée — 2x2 (col 3-4, row 3-4) -->
           <div class="realisation-item grid-large" style="grid-column: 3 / 5; grid-row: 3 / 5;">
             <div class="realisation-inner">
-              <img src="/realisations/502.jpg" alt="Complexe tertiaire" loading="lazy" />
+              <img src="/realisations/502.jpg" alt="Complexe tertiaire" width="3200" height="1800" loading="lazy" decoding="async" />
               <div class="realisation-overlay">
                 <span class="realisation-category">RENDU 3D</span>
                 <p class="realisation-title">Complexe tertiaire</p>

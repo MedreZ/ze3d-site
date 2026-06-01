@@ -86,7 +86,7 @@ const schemas = [
           <!-- Étape 1 : Bâtiment existant -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/201.jpg" alt="Bâtiment existant — point de départ" loading="lazy" />
+              <img src="/prestations/201.jpg" alt="Bâtiment existant — point de départ" width="3001" height="2000" loading="lazy" decoding="async" />
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">EXISTANT</span>
@@ -104,7 +104,7 @@ const schemas = [
           <!-- Étape 2 : Relevé -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/202.jpg" alt="Relevé numérique du bâtiment" loading="lazy" />
+              <img src="/prestations/202.jpg" alt="Relevé numérique du bâtiment" width="3001" height="2000" loading="lazy" decoding="async" />
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">RELEVÉ</span>
@@ -122,7 +122,7 @@ const schemas = [
           <!-- Étape 3 : Modélisation -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/203.jpg" alt="Modélisation 3D et BIM" loading="lazy" />
+              <img src="/prestations/203.jpg" alt="Modélisation 3D et BIM" width="3001" height="2000" loading="lazy" decoding="async" />
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">MODÉLISATION</span>
@@ -140,7 +140,7 @@ const schemas = [
           <!-- Étape 4 : Rendu -->
           <figure class="process-step">
             <div class="process-image-wrap">
-              <img src="/prestations/204.jpg" alt="Rendu 3D final" loading="lazy" />
+              <img src="/prestations/204.jpg" alt="Rendu 3D final" width="3001" height="2000" loading="lazy" decoding="async" />
             </div>
             <figcaption class="process-step-caption">
               <span class="process-step-label">RENDU</span>
@@ -160,10 +160,10 @@ const schemas = [
 
           <div class="compare" id="compare" style="--pos: 50%;">
             <!-- Image "après" (rendu final) — toujours visible en fond -->
-            <img src="/prestations/204.jpg" alt="Rendu 3D final" class="compare-img compare-img--after" />
+            <img src="/prestations/204.jpg" alt="Rendu 3D final" class="compare-img compare-img--after" width="3001" height="2000" decoding="async" />
 
             <!-- Image "avant" (existant) — clipée à gauche du curseur -->
-            <img src="/prestations/201.jpg" alt="Bâtiment existant" class="compare-img compare-img--before" />
+            <img src="/prestations/201.jpg" alt="Bâtiment existant" class="compare-img compare-img--before" width="3001" height="2000" decoding="async" />
 
             <!-- Curseur vertical -->
             <div class="compare-handle" id="compare-handle">
@@ -198,7 +198,10 @@ const schemas = [
               src="/prestations/100.png"
               alt="Équipements de relevé — mètre, télémètre laser et scanner 3D"
               class="pole-equipment-full"
+              width="1500"
+              height="1200"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -287,6 +290,7 @@ const schemas = [
               alt="Modélisation BIM 3D — vue maquette numérique"
               class="pole-image"
               loading="lazy"
+              decoding="async"
               width="1200"
               height="800"
             />
@@ -311,6 +315,7 @@ const schemas = [
               alt="Rendu 3D photoréaliste — visualisation architecturale"
               class="pole-image"
               loading="lazy"
+              decoding="async"
               width="1200"
               height="800"
             />

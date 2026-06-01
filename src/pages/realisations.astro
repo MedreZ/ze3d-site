@@ -6,36 +6,39 @@
 import Layout from '../layouts/Layout.astro';
 
 /* Liste centralisée des projets : facile à modifier plus tard */
+/* w/h = dimensions réelles des fichiers (ratio correct → anti-CLS).
+   L'affichage reste contrôlé par la CSS (grille 260px + object-fit:cover),
+   ces attributs ne changent donc RIEN au visuel. */
 const projects = [
   /* ─── RELEVÉ (plans 2D, scans) ─────────────────────────────── */
-  { file: '301.jpg', cat: 'releve', title: 'Élévation façade haussmannienne' },
-  { file: '302.jpg', cat: 'releve', title: 'Plans et coupes — longère rénovée' },
-  { file: '303.jpg', cat: 'releve', title: 'Plan d\'aménagement tertiaire' },
-  { file: '304.jpg', cat: 'releve', title: 'Plan d\'appartement — duplex' },
-  { file: '305.jpg', cat: 'releve', title: 'Plan de masse' },
+  { file: '301.jpg', cat: 'releve', title: 'Élévation façade haussmannienne', w: 2400, h: 1600 },
+  { file: '302.jpg', cat: 'releve', title: 'Plans et coupes — longère rénovée', w: 3510, h: 4000 },
+  { file: '303.jpg', cat: 'releve', title: 'Plan d\'aménagement tertiaire', w: 6000, h: 3000 },
+  { file: '304.jpg', cat: 'releve', title: 'Plan d\'appartement — duplex', w: 2000, h: 2500 },
+  { file: '305.jpg', cat: 'releve', title: 'Plan de masse', w: 3200, h: 1800 },
 
   /* ─── BIM (modélisation 3D) ────────────────────────────────── */
-  { file: '401.jpg', cat: 'bim',    title: 'Complexe tertiaire' },
-  { file: '402.jpg', cat: 'bim',    title: 'Complexe tertiaire' },
-  { file: '403.jpg', cat: 'bim',    title: 'Immeuble de bureaux' },
-  { file: '404.jpg', cat: 'bim',    title: 'Complexe scolaire' },
+  { file: '401.jpg', cat: 'bim',    title: 'Complexe tertiaire', w: 3200, h: 1800 },
+  { file: '402.jpg', cat: 'bim',    title: 'Complexe tertiaire', w: 3000, h: 2000 },
+  { file: '403.jpg', cat: 'bim',    title: 'Immeuble de bureaux', w: 3000, h: 2000 },
+  { file: '404.jpg', cat: 'bim',    title: 'Complexe scolaire', w: 3200, h: 1800 },
 
   /* ─── RENDU (visualisations photoréalistes) ────────────────── */
-  { file: '501.jpg', cat: 'rendu',  title: 'Immeuble de bureaux' },
+  { file: '501.jpg', cat: 'rendu',  title: 'Immeuble de bureaux', w: 2400, h: 1350 },
   /* 503 + 504 sont une paire jour/nuit : placees avant 502 pour
      qu'elles tombent naturellement sur la meme ligne en 3 colonnes */
-  { file: '503.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux (vue de jour)' },
-  { file: '504.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux (vue de nuit)' },
-  { file: '502.jpg', cat: 'rendu',  title: 'Complexe tertiaire' },
-  { file: '505.jpg', cat: 'rendu',  title: 'Vue aérienne — complexe scolaire' },
-  { file: '506.jpg', cat: 'rendu',  title: 'Complexe scolaire' },
-  { file: '507.jpg', cat: 'rendu',  title: 'Cour intérieure — résidence' },
-  { file: '508.jpg', cat: 'rendu',  title: 'Complexe tertiaire' },
-  { file: '509.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux' },
-  { file: '510.jpg', cat: 'rendu',  title: 'Complexe tertiaire (de la 3D au rendu graphique)' },
-  { file: '511.jpg', cat: 'rendu',  title: 'Intérieur plateau de bureau' },
-  { file: '512.jpg', cat: 'rendu',  title: 'Façade et détails bâtiment haussmannien' },
-  { file: '513.jpg', cat: 'rendu',  title: 'Complexe scolaire (vue de nuit)' },
+  { file: '503.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux (vue de jour)', w: 2180, h: 1227 },
+  { file: '504.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux (vue de nuit)', w: 2180, h: 1227 },
+  { file: '502.jpg', cat: 'rendu',  title: 'Complexe tertiaire', w: 3200, h: 1800 },
+  { file: '505.jpg', cat: 'rendu',  title: 'Vue aérienne — complexe scolaire', w: 3200, h: 1800 },
+  { file: '506.jpg', cat: 'rendu',  title: 'Complexe scolaire', w: 3840, h: 2160 },
+  { file: '507.jpg', cat: 'rendu',  title: 'Cour intérieure — résidence', w: 3200, h: 1800 },
+  { file: '508.jpg', cat: 'rendu',  title: 'Complexe tertiaire', w: 3200, h: 1800 },
+  { file: '509.jpg', cat: 'rendu',  title: 'Coupe — Immeuble de bureaux', w: 3200, h: 1800 },
+  { file: '510.jpg', cat: 'rendu',  title: 'Complexe tertiaire (de la 3D au rendu graphique)', w: 2400, h: 2700 },
+  { file: '511.jpg', cat: 'rendu',  title: 'Intérieur plateau de bureau', w: 3200, h: 1800 },
+  { file: '512.jpg', cat: 'rendu',  title: 'Façade et détails bâtiment haussmannien', w: 3200, h: 1800 },
+  { file: '513.jpg', cat: 'rendu',  title: 'Complexe scolaire (vue de nuit)', w: 3200, h: 1800 },
 ];
 
 /* Labels lisibles pour les catégories — cohérents avec les filtres */
@@ -147,7 +150,10 @@ const schemas = [
                 src={`/realisations/${p.file}`}
                 alt={p.title}
                 class="gallery-img"
+                width={p.w}
+                height={p.h}
                 loading="lazy"
+                decoding="async"
               />
               <div class="gallery-overlay">
                 <span class="gallery-category">{catLabel[p.cat as keyof typeof catLabel]}</span>
