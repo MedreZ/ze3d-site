@@ -17,9 +17,10 @@ Dernière mise à jour : **01 juin 2026**
 
 ## 🌐 2. Domaine ze3d.fr
 
-- [ ] Connecter **ze3d.fr** au site Netlify prod (+ certificat HTTPS auto)
-- [ ] Choisir la forme principale : apex `ze3d.fr` ou `www.ze3d.fr` → règle de redirection
-- [ ] Vérifier que canonical / sitemap / JSON-LD pointent bien vers le domaine final
+- [x] Côté Netlify : `ze3d.fr` ajouté comme domaine principal de ze3d-prod + alias `www.ze3d.fr` (via API, 01/06/2026)
+- [~] Côté Ionos (DNS) : enregistrement **A `@` → 75.2.60.5** + **CNAME `www` → ze3d-prod.netlify.app** *(en cours, fait par Manu)*
+- [ ] Vérifier la résolution DNS + provisioning du certificat HTTPS (Netlify, auto)
+- [x] Forme principale = apex `ze3d.fr` (cohérent avec canonical/sitemap/JSON-LD déjà en `https://ze3d.fr`), www redirige vers apex
 
 ## ✉️ 3. Signatures mail Ionos *(rappel explicite demandé)*
 
