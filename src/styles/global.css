@@ -22,13 +22,13 @@
   --color-bg-alt:       #F3F5F7;
   --color-text:         #1A2530;
   --color-text-light:   rgba(26,37,48,0.55);
-  --color-accent:       #4A6580;
-  --color-accent-light: rgba(74,101,128,0.08);
+  --color-accent:       #3C5E7C;
+  --color-accent-light: rgba(60,94,124,0.08);
   --color-border:       rgba(26,37,48,0.08);
   --color-footer-bg:    #1A2530;
 
-  /* Alias pour compatibilité avec composants existants */
-  --color-accent-or:    #4A6580;
+  /* Doré de marque (accents décoratifs : labels, filets, survols) */
+  --color-accent-or:    #DFAC65;
   --color-white:        #FFFFFF;
 
   /* Typographie — DM Sans pour tout */
@@ -183,7 +183,7 @@ ul, ol {
   font-weight:    500;
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  color:          var(--color-accent);
+  color:          var(--color-accent-or);
   margin-bottom:  var(--space-2);
 }
 

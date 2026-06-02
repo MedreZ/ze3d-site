@@ -4,7 +4,7 @@
  *
  * Affiché à CHAQUE chargement de la page d'accueil (pas de mémorisation : à chaque visite).
  *
- * - Fond plein écran #4A6580 forme par une grille de cellules.
+ * - Fond plein écran #3C5E7C forme par une grille de cellules.
  * - Image centree /chargement.jpg (1200x1200) avec jauge circulaire blanche autour.
  * - Jauge se remplit en 1750 ms (effet "chargement immersion").
  * - Au declenchement du dissolve : chaque cellule disparait avec un delai aleatoire
@@ -43,7 +43,7 @@
     /* Fond bleu de securite : si la grille n'est pas construite (JS lent),
        on a au moins un overlay bleu plein ecran. Au moment du dissolve, on retire
        ce fond pour laisser apparaitre le contenu derriere les cellules qui disparaissent. */
-    background: #4A6580;
+    background: #3C5E7C;
     transition: background-color 80ms linear;
     pointer-events: auto;
     overflow: hidden;
@@ -52,7 +52,7 @@
     background-color: transparent;
   }
 
-  /* Grille de cellules — couleur uniforme #4A6580 qui couvre tout l'ecran.
+  /* Grille de cellules — couleur uniforme #3C5E7C qui couvre tout l'ecran.
      Chaque cellule individuelle peut disparaitre avec un delai random. */
   .splash-grid {
     position: absolute;
@@ -62,7 +62,7 @@
   }
 
   .splash-grid > div {
-    background: #4A6580;
+    background: #3C5E7C;
     transition: opacity 220ms ease-out;
     will-change: opacity;
   }
@@ -167,7 +167,7 @@
       // IMPORTANT : on applique les styles en INLINE car les cellules creees en JS
       // n'ont pas l'attribut data-astro-cid utilise par le CSS scope d'Astro.
       cell.style.cssText =
-        'background-color:#4A6580;' +
+        'background-color:#3C5E7C;' +
         'opacity:1;' +
         'transition:opacity 220ms ease-out;' +
         'transition-delay:' + Math.round(Math.random() * dissolveDuration) + 'ms;' +
