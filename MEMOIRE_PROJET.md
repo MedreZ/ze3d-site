@@ -446,6 +446,7 @@ Deploiements effectues sur https://ze3d-test.netlify.app :
 - 30 avril & 02 mai 2026 : QR codes design + page CGV + N° TVA obtenu (session 8)
 - 01 juin 2026 : audit juridique CGV + date creation EI + **PREMIER DEPLOIEMENT PROD** (merge develop -> main)
 - 01 juin 2026 (session 9) : **AUDIT + OPTIMISATION SEO/GEO** (5 lots, voir section 18) + **2e DEPLOIEMENT PROD** (merge develop -> main, cfd8292) + feuille de route partagee (FEUILLE_DE_ROUTE.md)
+- 02 juin 2026 (session 10) : **REFONTE IDENTITE** (nouveaux logos nav/footer/splash + favicon + typo de marque ZE3D scaleX 0.75 + couleurs site bleu #3C5E7C + nouvelle signature mail) + **3e DEPLOIEMENT PROD** (merge develop -> main, f36ab70, 18 commits). Domaine ze3d.fr actif (DNS Ionos + HTTPS OK depuis le 01/06).
 
 **Site TEST desormais fonctionnel a 100%** :
 - Toutes les pages accessibles
