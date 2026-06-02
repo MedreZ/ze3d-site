@@ -79,7 +79,8 @@ Dernière mise à jour : **01 juin 2026**
 - [x] **Signature mail** : nouvelle image fournie par Manu (`Signature mail ZE3D new.jpg`, 420×180), hébergée sous `sig-ze3d-ab24dbed.jpg`, 4 fichiers mis à jour (affichage **210×90**, aligné à gauche). Ancienne image conservée.
 - [ ] **APRÈS merge prod** : recoller les 2 signatures définitives dans Ionos (l'image n'est live sur ze3d.fr qu'une fois la prod déployée). Fichiers : `Sources/Signatures mail/*-CODE-HTML.txt`.
 - [x] **Typographie de marque** : style du logo (Nasalization, scaleX 0.6, tracking 0, MAJ) appliqué à toutes les mentions visibles « ZE3D » (classe `.brand-ze3d`) — nav, footer, corps, pages légales. 02/06/2026
-- [ ] **Couleur du site (CSS) + QR codes** : à revoir ensuite (décision Manu) — actuellement le site reste en bleu ardoise `#4A6580`
+- [x] **Couleur du site (CSS)** : bleu accent `#4A6580` → **`#3C5E7C`** (bleu du logo) partout + footer `#8FA6C0` → `#82AFD6`. Doré testé puis **retiré** (site en bleu uniquement, choix Manu). 02/06/2026
+- [ ] **QR codes** : encore sur l'ancien bleu `#4A6580` — à régénérer si on veut aligner sur `#3C5E7C` (non prioritaire)
 
 ---
 
