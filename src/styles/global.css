@@ -149,11 +149,20 @@ ul, ol {
   list-style: none;
 }
 
-/* --- Classe marque ZE3D --- */
+/* --- Classe marque ZE3D : reproduit EXACTEMENT la typo du logo officiel ---
+   Nasalization Regular, MAJUSCULES, échelle horizontale 60 % (verticale 100 %),
+   tracking 0. Le scaleX(0.6) ne réduit pas la boîte de mise en page : on compense
+   par une marge négative = 40 % de la largeur réelle de "ZE3D" (2.85em → 1.14em). */
 .brand-ze3d {
-  font-family:    'Nasalization', sans-serif;
-  line-height:    1.5;
-  letter-spacing: 0.05em;
+  font-family:      'Nasalization', sans-serif;
+  font-weight:      normal;
+  text-transform:   uppercase;
+  letter-spacing:   normal;
+  display:          inline-block;
+  transform:        scaleX(0.6);
+  transform-origin: left center;
+  margin-right:     -1.14em;
+  vertical-align:   baseline;
 }
 
 /* --- Classes utilitaires --- */
