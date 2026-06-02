@@ -61,6 +61,24 @@ Dernière mise à jour : **01 juin 2026**
       se présenter comme « prestataire de services numériques », pas « ingénierie BTP »
 - [ ] (rappel) **Revue juridique humaine des CGV** (rédigées par ChatGPT, pas un juriste)
 
+## 🎨 8. Refonte logo & charte couleurs *(en cours, 02/06/2026)*
+
+**Nouvelle palette de marque** (fournie par Manu) :
+| Rôle | Hex |
+|---|---|
+| Jaune principal | `#FCC982` |
+| Jaune secondaire 1 | `#FFDFB2` |
+| Jaune secondaire 2 | `#DFAC65` |
+| Bleu principal | `#6795BB` |
+| Bleu secondaire 1 | `#82AFD6` |
+| Bleu secondaire 2 | `#3C5E7C` |
+
+- [x] Nouveaux logos verticaux fournis (`Sources/Logo/logo-new-fond-clair.png` + `-fonce.png`, 608×1105, transparents)
+- [x] **nav** (`logo-fond-clair.png`) + **footer** (`logo-fond-fonce.png`) + **splash** (`chargement-logo.png` recomposé) → mis à jour et déployés sur develop
+- [ ] **Favicon** : en attente d'un **symbole carré** de Manu (specs données) → je génère favicon.svg + .ico + apple-touch-icon
+- [ ] **Signature mail** : en attente d'une **version HORIZONTALE** du logo (la signature est un lockup horizontal, les fichiers fournis sont verticaux) → ensuite je recompose `sig-ze3d-*.jpg` (+ nouveau nom pour casser le cache mail + maj des 4 fichiers + recoller dans Ionos)
+- [ ] **Couleur du site (CSS) + QR codes** : à revoir ensuite (décision Manu) — actuellement le site reste en bleu ardoise `#4A6580`
+
 ---
 
 ### Notes de contexte
