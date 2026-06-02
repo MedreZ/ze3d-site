@@ -76,7 +76,7 @@ Dernière mise à jour : **01 juin 2026**
 - [x] Nouveaux logos verticaux fournis (`Sources/Logo/logo-new-fond-clair.png` + `-fonce.png`, 608×1105, transparents)
 - [x] **nav** (`logo-fond-clair.png`) + **footer** (`logo-fond-fonce.png`) + **splash** (`chargement-logo.png` recomposé) → mis à jour et déployés sur develop
 - [ ] **Favicon** : en attente d'un **symbole carré** de Manu (specs données) → je génère favicon.svg + .ico + apple-touch-icon
-- [ ] **Signature mail** : en attente d'une **version HORIZONTALE** du logo (la signature est un lockup horizontal, les fichiers fournis sont verticaux) → ensuite je recompose `sig-ze3d-*.jpg` (+ nouveau nom pour casser le cache mail + maj des 4 fichiers + recoller dans Ionos)
+- [ ] **Signature mail** : **Manu refait l'image lui-même** (specs : 600×180, JPG fond blanc < 100 Ko). Ensuite : soit Option A = il me donne l'image → je l'héberge sous un nouveau nom + maj des 4 fichiers + il recolle dans Ionos ; soit Option B = il l'uploade directement dans Ionos (les 4 fichiers du repo deviennent alors obsolètes). Choix à confirmer.
 - [ ] **Couleur du site (CSS) + QR codes** : à revoir ensuite (décision Manu) — actuellement le site reste en bleu ardoise `#4A6580`
 
 ---
