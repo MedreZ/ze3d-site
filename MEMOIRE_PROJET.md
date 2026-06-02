@@ -72,6 +72,7 @@
 - **Pas d'humour**, pas de formules marketing creuses
 - **Coherence "Je" partout** (microentreprise solo) : ne jamais ecrire "Nous", "Notre", "Nos" pour decrire l'entreprise. Pour les boutons et titres de section : retirer le possessif (ex: "Prestations" plutot que "Mes prestations" — plus pro/neutre). Pour les textes longs : "Je", "ma", "mon" assume. Decision validee en session 7 (28 avril 2026).
 - **Typographies :** DM Sans (corps) + Nasalization (marque ZE3D)
+- **REGLE DE MARQUE "ZE3D" (02 juin 2026)** : TOUTE mention VISIBLE de "ZE3D" doit utiliser `<span class="brand-ze3d">ZE3D</span>` (style logo officiel centralise dans global.css : Nasalization Regular, MAJUSCULES, echelle horizontale 60% via scaleX(0.6), tracking 0, + margin-right de compensation -1.14em). NE PAS styliser les "ZE3D" dans les title/meta/alt/aria/JSON-LD (non stylables / accessibilite) — ils restent en texte simple. Applique partout (nav, footer, corps, pages legales). Pour toute nouvelle page/texte : penser a wrapper "ZE3D".
 - **Palette SITE actuelle :** Fond clair (#FFFFFF), accent bleu ardoise (#4A6580), texte sombre (#1A2530)
 - **NOUVELLE PALETTE DE MARQUE (logo refondu, 02 juin 2026)** : Jaune principal #FCC982 / Jaune sec.1 #FFDFB2 / Jaune sec.2 #DFAC65 / Bleu principal #6795BB / Bleu sec.1 #82AFD6 / Bleu sec.2 #3C5E7C. **Le logo a ete refondu (bleus + dores). La couleur d'accent du SITE (#4A6580) et les QR codes n'ont PAS encore ete alignes dessus — decision "a revoir ensuite" (Manu).** Nouveaux logos verticaux dans Sources/Logo/. Voir FEUILLE_DE_ROUTE.md section 8.
 
