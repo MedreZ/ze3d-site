@@ -81,7 +81,7 @@ Dernière mise à jour : **01 juin 2026**
 - [ ] **Manu — À FAIRE MAINTENANT** : recoller les 2 signatures dans Ionos (mode Source HTML `<>`) — `signature-emmanuel-CODE-HTML.txt` → emmanuel.zerdoun@ze3d.fr · `signature-contact-CODE-HTML.txt` → contact@ze3d.fr.
 - [x] **Typographie de marque** : style du logo (Nasalization, scaleX 0.6, tracking 0, MAJ) appliqué à toutes les mentions visibles « ZE3D » (classe `.brand-ze3d`) — nav, footer, corps, pages légales. 02/06/2026
 - [x] **Couleur du site (CSS)** : bleu accent `#4A6580` → **`#3C5E7C`** (bleu du logo) partout + footer `#8FA6C0` → `#82AFD6`. Doré testé puis **retiré** (site en bleu uniquement, choix Manu). 02/06/2026
-- [ ] **QR codes** : encore sur l'ancien bleu `#4A6580` — à régénérer si on veut aligner sur `#3C5E7C` (non prioritaire)
+- [x] **QR codes** : régénérés en `#3C5E7C` (02/06/2026) — 5 × PNG (bleu) + SVG (noir/blanc) dans `Sources/QR codes/`. Pas sur le site (fichiers externes : impression, carte de visite…).
 
 ---
 

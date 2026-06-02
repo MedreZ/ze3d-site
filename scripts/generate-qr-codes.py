@@ -3,7 +3,7 @@
 Génération des QR codes ZE3D — design final.
 
 Style : barres verticales + yeux à coins arrondis (mi-doux).
-Couleur : bleu accent ZE3D #4A6580 sur fond blanc.
+Couleur : bleu accent ZE3D #3C5E7C sur fond blanc.
 
 PNG : design styled (pour usage standard, web, impression).
 SVG : version vectorielle pure noir/blanc (max compatibilité scan, impression haute qualité).
@@ -34,7 +34,7 @@ URLS = {
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR   = os.path.join(PROJECT_ROOT, "Sources", "QR codes")
 
-ZE3D_BLUE = (74, 101, 128)   # #4A6580
+ZE3D_BLUE = (60, 94, 124)   # #3C5E7C
 WHITE     = (255, 255, 255)
 
 # Niveau de correction d'erreur : M = 15% (suffisant sans logo central)
