@@ -75,8 +75,9 @@ Dernière mise à jour : **01 juin 2026**
 
 - [x] Nouveaux logos verticaux fournis (`Sources/Logo/logo-new-fond-clair.png` + `-fonce.png`, 608×1105, transparents)
 - [x] **nav** (`logo-fond-clair.png`) + **footer** (`logo-fond-fonce.png`) + **splash** (`chargement-logo.png` recomposé) → mis à jour et déployés sur develop
-- [ ] **Favicon** : en attente d'un **symbole carré** de Manu (specs données) → je génère favicon.svg + .ico + apple-touch-icon
-- [ ] **Signature mail** : **Manu refait l'image lui-même** (specs : 600×180, JPG fond blanc < 100 Ko). Ensuite : soit Option A = il me donne l'image → je l'héberge sous un nouveau nom + maj des 4 fichiers + il recolle dans Ionos ; soit Option B = il l'uploade directement dans Ionos (les 4 fichiers du repo deviennent alors obsolètes). Choix à confirmer.
+- [x] **Favicon** : régénéré depuis le logo complet (choix Manu « A ») — favicon.ico (16/32/48) + favicon-32/16.png + apple-touch-icon (180) + icon-512 (PWA). Ancien favicon.svg supprimé.
+- [x] **Signature mail** : nouvelle image fournie par Manu (`Signature mail ZE3D new.jpg`, 420×180), hébergée sous `sig-ze3d-ab24dbed.jpg`, 4 fichiers mis à jour (affichage **210×90**, aligné à gauche). Ancienne image conservée.
+- [ ] **APRÈS merge prod** : recoller les 2 signatures définitives dans Ionos (l'image n'est live sur ze3d.fr qu'une fois la prod déployée). Fichiers : `Sources/Signatures mail/*-CODE-HTML.txt`.
 - [x] **Typographie de marque** : style du logo (Nasalization, scaleX 0.6, tracking 0, MAJ) appliqué à toutes les mentions visibles « ZE3D » (classe `.brand-ze3d`) — nav, footer, corps, pages légales. 02/06/2026
 - [ ] **Couleur du site (CSS) + QR codes** : à revoir ensuite (décision Manu) — actuellement le site reste en bleu ardoise `#4A6580`
 
