@@ -27,8 +27,8 @@
   --color-border:       rgba(26,37,48,0.08);
   --color-footer-bg:    #1A2530;
 
-  /* Doré de marque (accents décoratifs : labels, filets, survols) */
-  --color-accent-or:    #DFAC65;
+  /* Alias pour compatibilité avec composants existants */
+  --color-accent-or:    #3C5E7C;
   --color-white:        #FFFFFF;
 
   /* Typographie — DM Sans pour tout */
@@ -183,7 +183,7 @@ ul, ol {
   font-weight:    500;
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  color:          var(--color-accent-or);
+  color:          var(--color-accent);
   margin-bottom:  var(--space-2);
 }
 
