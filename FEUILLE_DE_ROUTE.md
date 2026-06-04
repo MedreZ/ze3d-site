@@ -34,11 +34,11 @@ Dernière mise à jour : **01 juin 2026**
 
 ## 🔍 4. Référencement *(une fois ze3d.fr actif)*
 
-- [ ] Créer / valider **Google Search Console** → soumettre `https://ze3d.fr/sitemap-index.xml`
+- [x] **Google Search Console** : déjà configuré par Yoan (ami, hébergement). Sitemap `sitemap-index.xml` soumis (2 juin), lu (3 juin), état « Opération effectuée », **5 pages découvertes** (= les 5 pages indexables ; noindex bien exclues). Données structurées détectées (Fils d'Ariane, Métadonnées image). Google explore activement (165 demandes/90j). **Manu = utilisateur ajouté par Yoan, PAS propriétaire confirmé.**
+- [ ] (option, autonomie) **Manu devenir propriétaire confirmé** de la propriété GSC → via DNS TXT chez Ionos. Pas urgent.
 - [ ] Créer **Bing Webmaster Tools** → soumettre le sitemap
-- [ ] Tester le JSON-LD (Google Rich Results Test + validator.schema.org)
-- [ ] Vérifier les **QR codes** (ils pointent déjà vers `ze3d.fr`)
 - [ ] (option) Créer une fiche **Google Business Profile** (Perpignan) — booste fort le SEO local
+- [x] Vérifier les **QR codes** (pointent vers `ze3d.fr`) — OK
 
 ## 📊 5. Analytics & mesure
 
