@@ -37,7 +37,7 @@ Dernière mise à jour : **01 juin 2026**
 - [x] **Google Search Console** : déjà configuré par Yoan (ami, hébergement). Sitemap `sitemap-index.xml` soumis (2 juin), lu (3 juin), état « Opération effectuée », **5 pages découvertes** (= les 5 pages indexables ; noindex bien exclues). Données structurées détectées (Fils d'Ariane, Métadonnées image). Google explore activement (165 demandes/90j). **Manu = utilisateur ajouté par Yoan, PAS propriétaire confirmé.**
 - [ ] (option, autonomie) **Manu devenir propriétaire confirmé** de la propriété GSC → via DNS TXT chez Ionos. Pas urgent.
 - [ ] Créer **Bing Webmaster Tools** → soumettre le sitemap
-- [ ] (option) Créer une fiche **Google Business Profile** (Perpignan) — booste fort le SEO local
+- [x] **Google Business Profile CRÉÉE (02/06/2026)** : entreprise de zone de service (Perpignan/66/Occitanie), catégorie « Agence de design », 8 services (Modélisation 3D, BIM, Scan to BIM, relevé, nuage de points, rendu 3D, visualisation, plans 2D), description optimisée, horaires L-V, photos = rendus optimisés (`Sources/GBP photos/`). Tél NON renseigné (perso). Validée auto. **À FAIRE (Manu, dashboard)** : ajouter le logo, ajouter catégorie secondaire « Graphiste », et SURTOUT collecter des **avis clients** (levier n°1 SEO local).
 - [x] Vérifier les **QR codes** (pointent vers `ze3d.fr`) — OK
 
 ## 📊 5. Analytics & mesure
