@@ -39,6 +39,7 @@ Dernière mise à jour : **01 juin 2026**
 - [ ] Créer **Bing Webmaster Tools** → soumettre le sitemap
 - [x] **Google Business Profile CRÉÉE (02/06/2026)** : entreprise de zone de service (Perpignan/66/Occitanie), catégorie « Agence de design », 8 services (Modélisation 3D, BIM, Scan to BIM, relevé, nuage de points, rendu 3D, visualisation, plans 2D), description optimisée, horaires L-V, photos = rendus optimisés (`Sources/GBP photos/`). Tél NON renseigné (perso). Validée auto. **À FAIRE (Manu, dashboard)** : ajouter le logo, ajouter catégorie secondaire « Graphiste », et SURTOUT collecter des **avis clients** (levier n°1 SEO local).
 - [x] Vérifier les **QR codes** (pointent vers `ze3d.fr`) — OK
+- [x] **og:image dédiée par page (02/06)** : carte de marque carrée 1200×1200 (`og-ze3d-card.jpg`, depuis `Sources/ze3d-card.png`) pour accueil/à-propos/contact + rendus 509/502 (1200×630) pour prestations/réalisations. URL absolue. LIVE. *(Google rafraîchit les miniatures sous quelques jours.)*
 
 ## 📊 5. Analytics & mesure
 
