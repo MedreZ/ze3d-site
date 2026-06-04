@@ -55,7 +55,7 @@ Dernière mise à jour : **01 juin 2026**
 
 ## 🛡️ 7. Sécurité & juridique
 
-- [~] **Token GitHub** : ✅ migré en **SSH** (02/06/2026) — clé ed25519 « Mac », token retiré de `.git/config`, push/fetch SSH OK. **RESTE (Manu)** : révoquer l'ancien token sur github.com/settings/tokens.
+- [x] **Token GitHub SÉCURISÉ (02/06/2026)** : migré en **SSH** (clé ed25519 « Mac ») + **ancien token « Mac mini ZE3D » révoqué** sur GitHub. Plus aucun token en clair ; auth par clé SSH (trousseau). Vérifié OK après révocation.
 - ℹ️ **RC Pro : ÉTAT DE FAIT, pas un chantier.** Manu a exploré à fond → aucun assureur ne propose de RC Pro pour cette activité (uniquement décennale, refusée). Position assumée et déclarée dans les CGV/mentions. Ne PAS remettre ce sujet sur la liste.
 - ℹ️ **Revue juridique CGV : Manu a décidé de NE PAS la faire** (sauf nécessité absolue). CGV rédigées par ChatGPT. Risque résiduel concentré sur les clauses limitatives de responsabilité — à reconsidérer uniquement en cas de litige ou de gros contrat.
 
