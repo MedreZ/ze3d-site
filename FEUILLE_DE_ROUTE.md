@@ -74,7 +74,7 @@ Dernière mise à jour : **01 juin 2026**
 
 - [x] Nouveaux logos verticaux fournis (`Sources/Logo/logo-new-fond-clair.png` + `-fonce.png`, 608×1105, transparents)
 - [x] **nav** (`logo-fond-clair.png`) + **footer** (`logo-fond-fonce.png`) + **splash** (`chargement-logo.png` recomposé) → mis à jour et déployés sur develop
-- [x] **Favicon** : régénéré depuis le logo complet (choix Manu « A ») — favicon.ico (16/32/48) + favicon-32/16.png + apple-touch-icon (180) + icon-512 (PWA). Ancien favicon.svg supprimé.
+- [x] **Favicon** : monogramme (`Sources/favicon.png`, choix final 02/06) — favicon.ico (16/32/48) + favicon-32/16.png + apple-touch-icon (180) + icon-512 (PWA). LIVE sur ze3d.fr. Ancien favicon.svg supprimé.
 - [x] **Signature mail** : nouvelle image fournie par Manu (`Signature mail ZE3D new.jpg`, 420×180), hébergée sous `sig-ze3d-ab24dbed.jpg`, 4 fichiers mis à jour (affichage **210×90**, aligné à gauche). Ancienne image conservée.
 - [x] **PROD déployée le 02/06/2026** (refonte identité complète) — image signature `sig-ze3d-9f8c8305.jpg` LIVE sur ze3d.fr (vérifié HTTP 200).
 - [x] **Signatures Ionos collées (02/06/2026)** : les 2 boîtes mises à jour (image cliquable → ze3d.fr, libellés en #3C5E7C). Testées OK.
