@@ -706,6 +706,40 @@ modifications ponctuelles (une phrase changee dans un titre, un mot ajoute dans 
 
 ---
 
+## 19. 🔴 REGLE — COHERENCE AVEC LES MENTIONS LEGALES & LES CGV (demande explicite 04/06/2026)
+
+**AVANT de mettre en place QUOI QUE CE SOIT** sur le site, dans les outils ou dans la
+communication (script tiers, cookie, outil de mesure, integration externe, nouvelle fonctionnalite,
+formulaire, paiement, partenaire, mention marketing, etc.), Claude DOIT **systematiquement
+verifier que cela ne contredit PAS** ce qui est ecrit dans :
+- `src/pages/mentions-legales.astro`
+- `src/pages/cgv.astro`
+
+C'est une **responsabilite de Claude, pas du fondateur** (« ta memoire est censee etre meilleure
+que la mienne »). Le fondateur n'a pas a se souvenir de chaque clause — Claude doit faire le
+controle de coherence **de lui-meme** et alerter AVANT d'agir.
+
+**Points de vigilance connus a re-verifier a chaque fois :**
+- **§6 Cookies (mentions legales)** : le site declare « **n'utilise aucun cookie de tracage, de
+  mesure d'audience ou de publicite. Aucun outil d'analyse tiers (Google Analytics, Meta Pixel,
+  etc.) n'est integre** ». → Interdit d'ajouter GA4, Meta Pixel, Hotjar, ou tout tracker/cookie
+  sans **reformuler cette section ET** prevoir le consentement RGPD si besoin.
+- **§ RGPD / collecte de donnees** : tout nouveau champ de formulaire ou nouvelle finalite de
+  traitement doit etre couvert par la politique RGPD affichee.
+- **CGV** : tout nouveau service, mode de paiement, delai, garantie ou clause commerciale annoncee
+  sur le site doit etre coherent avec les CGV (et inversement).
+
+**Procedure si conflit detecte :** STOP → expliquer le conflit au fondateur (citer le passage exact)
+→ proposer les options (renoncer / choisir une alternative conforme / modifier la page legale) →
+attendre sa decision AVANT d'implementer.
+
+**Cas resolu (04/06/2026) :** demande GA4 → conflit avec §6 Cookies detecte → GA4 **abandonne pour
+l'instant**. On reste sur **Google Search Console** (deja en place, aucun cookie, aucune modif
+legale). Si mesure d'audience souhaitee plus tard → outil **sans cookie** (Plausible/Netlify) +
+reformulation legale, PAS GA4 standard (qui imposerait un bandeau de consentement).
+
+---
+
 ## 18. SEO / GEO (session 9 — 01 juin 2026)
 
 **Audit complet (13 agents) puis optimisation en 5 lots, PERIMETRE STRICTEMENT INVISIBLE/TECHNIQUE** (jamais de modif du contenu visible, de l'UX ni du visuel). 5 commits sur develop (836c631 -> 6a457a3).

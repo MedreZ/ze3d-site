@@ -27,25 +27,23 @@ Dernière mise à jour : **01 juin 2026**
 
 - [x] URL de l'image mise à jour dans les 4 fichiers `Sources/Signatures mail/`
       (`ze3d-test.netlify.app` → `ze3d.fr`) — image vérifiée accessible (01/06/2026)
-- [ ] **Manu** : remplacer dans Ionos les 2 signatures par les **versions définitives
-      complètes** (fichiers `*-CODE-HTML.txt`), via le mode Source HTML `<>`
-      — `signature-emmanuel-CODE-HTML.txt` pour emmanuel.zerdoun@ze3d.fr
-      — `signature-contact-CODE-HTML.txt` pour contact@ze3d.fr
+- [x] **Les 2 signatures Ionos mises à jour et VÉRIFIÉES (04/06/2026)** : versions définitives
+      complètes collées (image cliquable → ze3d.fr, libellés #3C5E7C) pour emmanuel.zerdoun@ze3d.fr
+      et contact@ze3d.fr. ✅ Plus rien à faire côté signatures.
 
 ## 🔍 4. Référencement *(une fois ze3d.fr actif)*
 
 - [x] **Google Search Console** : déjà configuré par Yoan (ami, hébergement). Sitemap `sitemap-index.xml` soumis (2 juin), lu (3 juin), état « Opération effectuée », **5 pages découvertes** (= les 5 pages indexables ; noindex bien exclues). Données structurées détectées (Fils d'Ariane, Métadonnées image). Google explore activement (165 demandes/90j). **Manu = utilisateur ajouté par Yoan, PAS propriétaire confirmé.**
 - [ ] (option, autonomie) **Manu devenir propriétaire confirmé** de la propriété GSC → via DNS TXT chez Ionos. Pas urgent.
-- [ ] Créer **Bing Webmaster Tools** → soumettre le sitemap
-- [x] **Google Business Profile CRÉÉE (02/06/2026)** : entreprise de zone de service (Perpignan/66/Occitanie), catégorie « Agence de design », 8 services (Modélisation 3D, BIM, Scan to BIM, relevé, nuage de points, rendu 3D, visualisation, plans 2D), description optimisée, horaires L-V, photos = rendus optimisés (`Sources/GBP photos/`). Tél NON renseigné (perso). Validée auto. **À FAIRE (Manu, dashboard)** : ajouter le logo, ajouter catégorie secondaire « Graphiste », et SURTOUT collecter des **avis clients** (levier n°1 SEO local).
+- [x] **Bing Webmaster Tools créé (04/06/2026)** : site `ze3d.fr` importé en 1 clic depuis Google Search Console (compte Google `zerdoun.emmanuel@gmail.com`, rôle Lire/Modifier — pas de vérification technique nécessaire) + **sitemap `https://ze3d.fr/sitemap-index.xml` soumis** (statut « Traitement »). Compte Microsoft `emmazer@gmail.com`. Couvre aussi l'indexation pour les IA (ChatGPT Search, Copilot, DuckDuckGo) → renforce le volet GEO. Aucun cookie/script ajouté au site (conforme mentions légales).
+- [x] **Google Business Profile CRÉÉE (02/06/2026) + FINALISÉE (04/06/2026)** : entreprise de zone de service (Perpignan/66/Occitanie), catégorie principale « Agence de design » **+ secondaire « Graphiste »**, 8 services (Modélisation 3D, BIM, Scan to BIM, relevé, nuage de points, rendu 3D, visualisation, plans 2D), description optimisée, horaires L-V, photos = rendus optimisés (`Sources/GBP photos/`). Tél NON renseigné (perso). Validée auto. **Logo ajouté** (logo ZE3D vertical complet, `Sources/GBP photos/logo-gbp.jpg` = copie de `Sources/Logo/logo-new-fond-clair.jpg`, 1200×1200 fond blanc) + **photo de couverture** ajoutée. Catégorie « Graphiste » + logo + bannière **en attente de validation Google** (normal, qq heures à 2-3 j). **RESTE le levier n°1** : collecter des **avis clients** (bouton « Demander des avis » → lien court à envoyer après chaque mission).
 - [x] Vérifier les **QR codes** (pointent vers `ze3d.fr`) — OK
 - [x] **og:image dédiée par page (02/06)** : carte de marque carrée 1200×1200 (`og-ze3d-card.jpg`, depuis `Sources/ze3d-card.png`) pour accueil/à-propos/contact + rendus 509/502 (1200×630) pour prestations/réalisations. URL absolue. LIVE. *(Google rafraîchit les miniatures sous quelques jours.)*
 
 ## 📊 5. Analytics & mesure
 
-- [ ] Créer un compte **GA4** → me communiquer l'ID `G-XXXXXXX` → je l'intègre proprement
-- [ ] (option) Google Tag Manager si besoin de plusieurs tags
-- [ ] Lier GA4 ↔ Search Console
+- [x] **GA4 : décision 04/06/2026 → ABANDONNÉ pour l'instant.** Conflit avec les mentions légales §6 Cookies (« aucun outil d'analyse tiers… GA4 »). GA4 imposerait aussi un bandeau de consentement (non exempté CNIL). On reste sur **Google Search Console** (déjà en place, 0 cookie, 0 modif légale).
+- [ ] (plus tard, SI besoin de voir le trafic) Outil de mesure **SANS cookie** (Plausible / Netlify Analytics) + reformulation légère des mentions légales. **Jamais GA4 standard.**
 
 ## 🧩 6. Enrichissement SEO / GEO *(quand les éléments existeront)*
 
