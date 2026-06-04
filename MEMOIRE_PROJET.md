@@ -651,6 +651,9 @@ Le fondateur a installe **une version TEMPORAIRE TRONQUEE** de ses signatures da
 
 ### Notes juridiques importantes (audit CGV session 8)
 
+- 🔴 **MENTION OBLIGATOIRE SUR CHAQUE DEVIS (decision 02 juin 2026, reperage CGV)** — pour rendre les CGV OPPOSABLES au client, inscrire sur TOUT devis la mention exacte :
+  > « Le Client reconnaît avoir pris connaissance et accepté sans réserve les Conditions Générales de Vente du Prestataire, disponibles sur ze3d.fr/cgv et jointes au présent devis. »
+  Ideale + case « Bon pour accord, lu et approuvé » datee/signee. **Sans cette mention, toutes les clauses protectrices des CGV (§21-30) risquent d'etre INOPPOSABLES** — c'est le point juridique n°1 (le reperage a confirme que les CGV elles-memes sont bien redigees ; la faille est l'acceptation).
 - **Protection patrimoniale acquise par defaut** : EI creee le 01 avril 2026 → loi du 14 fevrier 2022 applicable → separation patrimoniale automatique (patrimoine perso protege des creanciers pros). Residence principale insaisissable (loi Macron 2015, automatique). **Ne jamais signer de renonciation a cette protection** (banquier, assureur, client).
 - **Pas de RC Pro souscrite a date** : aucun assureur n'a propose de RC Pro adaptee — uniquement de la decennale (refusee). Pistes a re-explorer : Hiscox / April / AssurUp / Verspieren (courtiers specialises digital, pas BTP). Bien se presenter comme "prestataire de services numeriques / production graphique", pas "ingenierie BTP" (le code APE 71.12B oriente faussement vers le BTP).
 - **Code APE 71.12B (Ingenierie, etudes techniques)** : positif pour la credibilite technique, negatif pour les assureurs qui assimilent au BTP. Eventuellement a reevaluer si necessite.
