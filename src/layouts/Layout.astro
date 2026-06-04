@@ -31,6 +31,8 @@ const {
 
 /* URL canonique */
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://ze3d.fr');
+/* og:image en URL absolue (requis pour les aperçus LinkedIn/WhatsApp/Facebook) */
+const ogImageURL = new URL(image, Astro.site ?? 'https://ze3d.fr').href;
 
 /* ────────────────────────────────────────────────────────────
    Données structurées JSON-LD — socle présent sur TOUTES les pages
@@ -134,14 +136,14 @@ const jsonLdBlocks = noindex ? [] : [orgLd, websiteLd, ...schemas];
     <meta property="og:url"         content={canonicalURL} />
     <meta property="og:title"       content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image"       content={image} />
+    <meta property="og:image"       content={ogImageURL} />
     <meta property="og:locale"      content="fr_FR" />
     <meta property="og:site_name"   content="ZE3D" />
 
     <meta name="twitter:card"        content="summary_large_image" />
     <meta name="twitter:title"       content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image"       content={image} />
+    <meta name="twitter:image"       content={ogImageURL} />
 
     <!-- ── Couleur thème navigateur mobile ──────────────────── -->
     <meta name="theme-color" content="#1A1A2E" />
