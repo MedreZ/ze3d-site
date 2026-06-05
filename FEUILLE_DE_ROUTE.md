@@ -82,6 +82,16 @@ Dernière mise à jour : **01 juin 2026**
 
 ---
 
+## 🎨 9. Refonte charte graphique (05/06/2026)
+
+- [x] **Sources canoniques** : `Sources/Charte graphique/` (logotype, logotype FF, nom, phrase, LN, LNP, favicon, signature) = seule source de vérité.
+- [x] **Assets site régénérés** (`scripts/rebuild-brand-assets.py`) : header `logo-ln.png`, footer logotype FF, splash (halo doux), favicon « ZE », `og-ze3d-card` (LNP), signature `sig-ze3d-886c4914.jpg`. Dimensions calées = **aucun changement visible** (hors favicon/og/splash, voulus).
+- [x] **Ménage** sources/projet obsolètes + `Sources/` réorganisé + `CLAUDE_2.md` supprimé.
+- [x] **Document charte graphique** (identité + site, 12 p., sommaire cliquable) : `Sources/Charte graphique/charte-graphique-ZE3D.html` → **PDF** `Charte graphique - ZE3D.pdf`. Fichier **local**. *(Règle : régénérer à chaque modif d'identité/site — voir MEMOIRE §20.)*
+- [ ] **DÉPLOYER** la refonte (dev puis prod) — en attente du feu vert.
+- [ ] 🔵 **Manu — après prod** : **réuploader le nouveau logo** sur la fiche Google Business.
+- [ ] 🔵 **Manu — après prod** : **recoller les 2 signatures** dans Ionos (image `sig-ze3d-886c4914.jpg`).
+
 ### Notes de contexte
 - **main = production**, **develop = test (ze3d-test)**. Ne jamais merger vers main sans validation.
 - **Adresse** : siège déclaré = 47 rue Vivienne, 75002 Paris (domiciliation, pages légales) /

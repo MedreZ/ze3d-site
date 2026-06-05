@@ -20,16 +20,15 @@ const navLinks = [
 <header class="nav-header" id="nav-header">
   <nav class="nav-inner container" aria-label="Navigation principale">
 
-    <!-- Logo + Nom ZE3D -->
+    <!-- Logo ZE3D (logotype + nom assemblés — source charte « Logo ZE3D - LN ») -->
     <a href="/" class="nav-logo" aria-label="ZE3D — Retour à l'accueil">
       <img
-        src="/logo-fond-clair.png"
+        src="/logo-ln.png"
         alt="ZE3D"
         class="nav-logo-img"
-        width="140"
-        height="48"
+        width="281"
+        height="68"
       />
-      <span class="nav-brand-name brand-ze3d">ZE3D</span>
     </a>
 
     <!-- Liens de navigation — desktop -->
@@ -149,22 +148,8 @@ const navLinks = [
     transition: opacity 200ms ease;
   }
 
-  .nav-brand-name {
-    font-family:    'Nasalization', sans-serif;
-    font-size:      5.2rem;
-    line-height:    1;
-    font-weight:    normal;
-    color:          #3C5E7C;
-    margin-left:    20px;
-    transition:     color 200ms ease;
-  }
-
   .nav-logo:hover .nav-logo-img {
     opacity: 0.8;
-  }
-
-  .nav-logo:hover .nav-brand-name {
-    color: #3C5E7C;
   }
 
   /* --- Liens desktop --- */

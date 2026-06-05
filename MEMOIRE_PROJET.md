@@ -765,3 +765,43 @@ reformulation legale, PAS GA4 standard (qui imposerait un bandeau de consentemen
 6. **Analytics = AUCUN** : prevoir GA4 + Google Search Console + Bing Webmaster ulterieurement (le fondateur n'a rien pour l'instant).
 7. **A l'activation du domaine ze3d.fr** : soumettre le sitemap (`https://ze3d.fr/sitemap-index.xml`) a Google Search Console + Bing.
 8. Le script `scripts/generate-webp.mjs` est a relancer si de nouvelles images sont ajoutees a public/realisations ou public/prestations.
+
+---
+
+## 20. REFONTE CHARTE GRAPHIQUE (05/06/2026)
+
+### Source canonique UNIQUE de l'identite
+**`Sources/Charte graphique/`** est desormais la **seule source de verite** graphique (site, cartes de visite, factures, signatures). Contenu :
+- **4 elements de base** : `Logo ZE3D - Logotype.png` (fond clair, liseré noir) · `Logo ZE3D - Logotype FF.png` (fond fonce, liseré blanc) · `Logo ZE3D - Nom.png` (« ZE3D » Nasalization, tracking 0, V100/H75, #3C5E7C) · `Logo ZE3D - Phrase.png` (« Scan-to-BIM · Modélisation · Rendus »).
+- **Assemblages** : `LN` (logotype+nom) · `LNP` (logotype+nom+phrase) (+ versions FF).
+- **Favicon** : `Logo ZE3D - Favicon.png` (recadrage « ZE » sur cercle blanc) — NOUVEAU favicon (remplace l'ancien monogramme cartouche).
+- **Signature** : `Logo ZE3D - Signature.jpg` (1500x550, = LNP HD).
+
+### Generation des assets du site
+**`scripts/rebuild-brand-assets.py`** (Python/PIL) regenere TOUT depuis Charte graphique, a dimensions calees (rendu identique) :
+- `public/logo-ln.png` (header, depuis LN) · `public/logo-fond-fonce.png` (footer, depuis Logotype FF) · `public/chargement-logo.png` (splash : logotype centre 1500x1500 + **halo blanc doux** flou=100 / opacite plafond=128 ≈ 50%).
+- Favicons (favicon.ico 16/32/48, favicon-16/32.png, apple-touch-icon 180, icon-512) depuis Favicon.png.
+- `public/og-ze3d-card.jpg` (1200x1200, LNP centre sur blanc).
+- **Relancer ce script apres toute modif des sources Charte graphique.**
+
+### Modifs site (sur develop, NON encore deployees au 05/06)
+- **Header** (`Navigation.astro`) : montage (img logotype + texte) remplace par 1 seule image `/logo-ln.png` (h 68px). Span `.nom-brand-name` + son CSS supprimes. `.brand-ze3d` conservee (utilisee ailleurs).
+- **Footer** : `logo-fond-fonce.png` (nouveau logotype FF), attrs 63x120.
+- **JSON-LD** (`Layout.astro`) : `logo` -> `/logo-ln.png`.
+- **Signature** : nouveau fichier `public/sig-ze3d-886c4914.jpg` (490x180, affichage 245x90). Les 4 fichiers `Sources/Signatures mail/` mis a jour.
+- **Favicon change** (ancien monogramme -> nouveau « ZE »).
+
+### Menage effectue (05/06)
+Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour fond clair/fonce.png`, `favicon.png`, `512x512.png`, `ze3d-card.png`, `Chargement.jpg`, `simulation-google-serp.png`, anciennes signatures), `Sources/GBP photos/logo-gbp*`, `public/logo-fond-clair.png`, anciens `public/sig-ze3d-9f8c8305.jpg` + `-c16b6736.jpg`. `CLAUDE_2.md` (brief initial, dépassé) supprime. `.DS_Store` + `start-dev.sh` (cassé) supprimes.
+`Sources/` reorganise : `Charte graphique/` · `Rendus/` (30 rendus numerotes) · `GBP photos/` · `QR codes/` · `Signatures mail/` · `Photos/`.
+
+### Document charte graphique
+- **`Sources/Charte graphique/charte-graphique-ZE3D.html`** = source du document (12 pages : couverture + sommaire cliquable + Partie A identite + Partie B charte du site, extraite de `global.css`). Police = **DM Sans** (comme le site) ; « ZE3D » en `.ze3d` (Nasalization H75) ; `ze3d.fr` = texte normal.
+- **PDF** : `Sources/Charte graphique/Charte graphique - ZE3D.pdf` — genere via Chrome headless :
+  `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="Charte graphique - ZE3D.pdf" "file://.../charte-graphique-ZE3D.html"` (liens du sommaire cliquables dans le PDF).
+- **Hebergement** : fichier LOCAL uniquement (choix fondateur, pas de page en ligne).
+- 🔴 **REGLE DE MISE A JOUR** : a CHAQUE modif d'identite (sources) ou de design du site (global.css), **mettre a jour le HTML de charte + regenerer le PDF**. C'est la version « dynamiquement a jour » en mode local.
+
+### 🔵 RAPPELS MANUELS pour le fondateur (apres deploiement)
+1. **Reuploader le nouveau logo** sur la fiche Google Business (l'ancien `logo-gbp.jpg` a ete supprime ; repartir de `Sources/Charte graphique/`).
+2. **Recoller les 2 signatures** dans Ionos (nouvelle image `sig-ze3d-886c4914.jpg`) — uniquement APRES deploiement prod (sinon l'image n'existe pas encore en ligne).
