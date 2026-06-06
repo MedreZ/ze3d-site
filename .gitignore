@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# marqueur local de génération des PDF juridiques
+scripts/.legal-pdf.stamp

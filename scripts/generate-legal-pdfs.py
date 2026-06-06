@@ -15,7 +15,7 @@ relancer ce script. L'ancienne version du fichier est déplacée dans
 
 Usage : python3 scripts/generate-legal-pdfs.py
 """
-import re, shutil, subprocess, datetime
+import re, shutil, subprocess, datetime, sys
 from pathlib import Path
 from PIL import Image
 import fitz  # PyMuPDF
@@ -121,21 +121,32 @@ def extract(astro: Path):
     content = content.replace('href="/', 'href="https://ze3d.fr/')
     return lastupd, content
 
-def archive_if_needed(final: Path):
-    if not final.exists():
-        return None
-    arch = final.parent / "00 - ARCHIVES"
-    arch.mkdir(exist_ok=True)
-    target = arch / final.name
-    if target.exists():
-        n = 1
-        while (arch / f"{final.stem} ({n}){final.suffix}").exists():
-            n += 1
-        target = arch / f"{final.stem} ({n}){final.suffix}"
-    shutil.move(str(final), str(target))
-    return target
+FORCE = "--force" in sys.argv
+
+def latest_pdf(folder: Path):
+    pdfs = list(folder.glob("*.pdf"))
+    return max(pdfs, key=lambda p: p.stat().st_mtime) if pdfs else None
+
+def archive_all(folder: Path):
+    """Déplace toutes les versions actuelles du dossier vers 00 - ARCHIVES (indice si collision de nom)."""
+    arch = folder / "00 - ARCHIVES"; arch.mkdir(exist_ok=True)
+    moved = []
+    for p in list(folder.glob("*.pdf")):
+        target = arch / p.name
+        if target.exists():
+            n = 1
+            while (arch / f"{p.stem} ({n}){p.suffix}").exists():
+                n += 1
+            target = arch / f"{p.stem} ({n}){p.suffix}"
+        shutil.move(str(p), str(target)); moved.append(target.name)
+    return moved
 
 for d in DOCS:
+    folder = d["folder"]; folder.mkdir(parents=True, exist_ok=True)
+    cur = latest_pdf(folder)
+    if cur and not FORCE and d["astro"].stat().st_mtime <= cur.stat().st_mtime:
+        print(f"• {d['base']}.pdf : déjà à jour — ignoré")
+        continue
     lastupd, content = extract(d["astro"])
     css = (CSS.replace("%%FONT%%", furl(FONT))
               .replace("%%FOOTMARK%%", furl(FOOTMARK))
@@ -173,13 +184,12 @@ for d in DOCS:
         mh = th * 1.02; mw = mh * (NW / NH)
         page.insert_image(fitz.Rect(x0, cy - mh/2, x0 + mw, cy + mh/2),
                           filename=str(FOOTMARK), keep_proportion=True)
-    final = d["folder"] / f"{d['base']}.pdf"
-    final.parent.mkdir(parents=True, exist_ok=True)
-    archived = archive_if_needed(final)
+    final = folder / f"{d['base']}.pdf"
+    moved = archive_all(folder)
     pdf.save(str(final)); pdf.close()
     pdf_tmp.unlink(missing_ok=True)
     print(f"✓ {final.name}")
     print(f"   → {final}")
-    if archived:
-        print(f"   ↪ ancienne version archivée : {archived.name}")
+    for m in moved:
+        print(f"   ↪ archivé : {m}")
 print("Terminé.")

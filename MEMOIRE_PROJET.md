@@ -819,3 +819,27 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 - **« ZE3D » en typo de marque partout** : en-tete/corps via `.brand-ze3d` (Nasalization + ratio H75) ; pied de page via une **image tamponnee** (PyMuPDF) derivee de `Sources/Charte graphique/Logo ZE3D - Nom.png` (proportions exactes), car Chrome ne rend pas d'image dans les margin-boxes. Reste du pied en **DM Sans**.
 - **Dependances du script** : Pillow (PIL) + PyMuPDF (`fitz`) — `pip3 install pillow pymupdf`.
 - Verifie le 06/06/2026 : Mentions 4 p., CGV 18 p., mise en page officielle OK (en-tete logo, dates, pied + numerotation).
+
+### Automatisation (mise a jour + archivage auto) — 06/06/2026
+- **Hook `Stop`** (`.claude/settings.local.json`) → `scripts/auto-legal-pdf.sh` : a la fin de chaque tour, SI `mentions-legales.astro` ou `cgv.astro` a ete modifie (compare au marqueur `scripts/.legal-pdf.stamp`), relance `generate-legal-pdfs.py`.
+- Le script ne regenere QUE le document dont la source a change (mtime source > mtime PDF), et **archive automatiquement** la version precedente dans `00 - ARCHIVES` (indice ` (n)` si collision). `--force` pour tout regenerer.
+- Regeneration manuelle : `python3 scripts/generate-legal-pdfs.py`.
+- Note : le hook se declenche dans une session Claude Code ; si la source est editee hors session, la regeneration aura lieu au tour suivant (auto-rattrapage).
+
+---
+
+## 22. 🎨 STANDARD DE PRESENTATION DES DOCUMENTS OFFICIELS ZE3D
+
+**Tout document officiel genere pour ZE3D (mentions, CGV, et a venir : devis, factures, attestations, courriers…) DOIT suivre cette presentation** (reference : `scripts/generate-legal-pdfs.py`) :
+
+- **Police** : **DM Sans** (corps + titres), comme le site. Mono `SF Mono/Menlo` uniquement pour code/valeurs techniques.
+- **« ZE3D »** : TOUJOURS en typo de marque (Nasalization, MAJ, ratio **H 75 %**, tracking 0). Jamais en police normale.
+  - En-tete / corps / titres → classe `.brand-ze3d` (Nasalization + `scaleX(.75)` + `margin-right:-.71em`).
+  - Pieds de page / zones « margin-box » PDF (ou le CSS transform est impossible) → **image** tamponnee via PyMuPDF depuis `Sources/Charte graphique/Logo ZE3D - Nom.png` (proportions exactes).
+  - **`ze3d.fr`** (URL) et e-mails = **texte normal**, jamais le style logo.
+- **Couleurs** : accent **`#3C5E7C`** (filets, titres de section, kicker) ; texte `#1A2530`/`#26323f` ; gris secondaire `#6b7682` ; gris pied `#9aa3ad` ; fonds doux `#F3F5F7`.
+- **En-tete (letterhead)** : logo **`public/logo-ln.png`** a gauche + bloc identite a droite (`ZE3D — Emmanuel Zerdoun EI`, SIRET 812 525 103 00022, TVA FR47812525103, 47 rue Vivienne 75002 Paris, ze3d.fr, contact@ze3d.fr) + filet accent dessous.
+- **Bloc titre** : kicker MAJ accent (« Document … officiel ») · titre DM Sans 700 · sous-titre `ZE3D — Emmanuel Zerdoun EI` · meta dates (« Version du … · Document genere le … » en francais).
+- **Pied de page (chaque page)** : gauche = image **ZE3D** (Nom.png) · centre = « {type} · Document officiel » · droite = « Page X / Y ». Tout en DM Sans gris `#9aa3ad`, numerotation via `@page` margin boxes.
+- **Format** : A4, marges ~18mm. Genere via **Chrome headless** (HTML → PDF) + tampon image (PyMuPDF) pour le ZE3D du pied.
+- **Nommage / archivage** : `{Type} ZE3D - AA-MM.pdf` ; ancienne version → `00 - ARCHIVES` (indice si collision).
