@@ -816,4 +816,6 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
   - `02 - CGV/CGV ZE3D - AA-MM.pdf`  *(AA=annee 2 chiffres, MM=mois ; ex. `26-06`)*
 - **Archivage automatique** : a chaque regeneration, l'ancien fichier du dossier principal est deplace dans `00 - ARCHIVES/` (avec un indice ` (n)` si collision de nom — ex. plusieurs versions le meme mois). Le dossier principal contient TOUJOURS la derniere version.
 - 🔴 **REGLE** : a CHAQUE modif de `mentions-legales.astro` et/ou `cgv.astro`, relancer **`python3 scripts/generate-legal-pdfs.py`** → regenere le PDF + archive l'ancienne version automatiquement.
-- Dependance : PyMuPDF (`fitz`) installe pour verifier les rendus. Verifie le 06/06/2026 : Mentions 4 p., CGV 18 p., mise en page officielle OK.
+- **« ZE3D » en typo de marque partout** : en-tete/corps via `.brand-ze3d` (Nasalization + ratio H75) ; pied de page via une **image tamponnee** (PyMuPDF) derivee de `Sources/Charte graphique/Logo ZE3D - Nom.png` (proportions exactes), car Chrome ne rend pas d'image dans les margin-boxes. Reste du pied en **DM Sans**.
+- **Dependances du script** : Pillow (PIL) + PyMuPDF (`fitz`) — `pip3 install pillow pymupdf`.
+- Verifie le 06/06/2026 : Mentions 4 p., CGV 18 p., mise en page officielle OK (en-tete logo, dates, pied + numerotation).

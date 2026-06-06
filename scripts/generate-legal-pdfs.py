@@ -17,6 +17,8 @@ Usage : python3 scripts/generate-legal-pdfs.py
 """
 import re, shutil, subprocess, datetime
 from pathlib import Path
+from PIL import Image
+import fitz  # PyMuPDF
 
 ROOT   = Path("/Users/emmanuelzerdoun/Documents/SITE WEB")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -25,6 +27,19 @@ LOGO   = ROOT / "public/logo-ln.png"
 SYN    = Path("/Users/emmanuelzerdoun/Library/CloudStorage/SynologyDrive-ZE3D"
               "/00 - SOCLE/02 - JURIDIQUE")
 TMP    = Path("/tmp")
+
+# Marque « ZE3D » du pied de page : dérivée de la source canonique "Logo ZE3D - Nom.png"
+# (police Nasalization + ratio H 75 % + couleur d'origine), redimensionnée pour le pied.
+NOM      = ROOT / "Sources/Charte graphique/Logo ZE3D - Nom.png"
+FOOTMARK = TMP / "ze3d-footmark.png"
+_n = Image.open(NOM).convert("RGBA")
+_bb = _n.getbbox()
+if _bb:
+    _n = _n.crop(_bb)
+_h = 160
+_n = _n.resize((round(_n.width * _h / _n.height), _h), Image.LANCZOS)
+_n.save(FOOTMARK)
+NW, NH = _n.size   # proportions exactes du nom (pour le tampon)
 
 def furl(p: Path) -> str:
     return "file://" + str(p).replace(" ", "%20")
@@ -51,9 +66,8 @@ CSS = """
 @font-face{font-family:'Nasalization';src:url('%%FONT%%') format('opentype');font-weight:normal;font-style:normal}
 @page{
   size:A4; margin:18mm 17mm 17mm;
-  @bottom-left{content:"ZE3D";font-family:'Nasalization',sans-serif;font-size:8.5pt;color:#9aa3ad;}
-  @bottom-center{content:"%%FOOT%% · Document officiel";font-size:8pt;color:#9aa3ad;}
-  @bottom-right{content:"Page " counter(page) " / " counter(pages);font-size:8pt;color:#9aa3ad;}
+  @bottom-center{content:"%%FOOT%% · Document officiel";font-family:'DM Sans',system-ui,sans-serif;font-size:8pt;color:#9aa3ad;}
+  @bottom-right{content:"Page " counter(page) " / " counter(pages);font-family:'DM Sans',system-ui,sans-serif;font-size:8pt;color:#9aa3ad;}
 }
 *{box-sizing:border-box}
 html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -124,6 +138,7 @@ def archive_if_needed(final: Path):
 for d in DOCS:
     lastupd, content = extract(d["astro"])
     css = (CSS.replace("%%FONT%%", furl(FONT))
+              .replace("%%FOOTMARK%%", furl(FOOTMARK))
               .replace("%%FOOT%%", d["foot"]))
     html = f"""<!doctype html><html lang="fr"><head><meta charset="utf-8">
 <style>{css}</style></head><body>
@@ -146,10 +161,23 @@ for d in DOCS:
                     "--no-pdf-header-footer", f"--print-to-pdf={pdf_tmp}",
                     furl(html_path)], check=True,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    # Tampon de la marque ZE3D (image, proportions exactes) en bas à gauche de chaque page,
+    # aligné verticalement sur la ligne de pied (texte "Document officiel").
+    pdf = fitz.open(str(pdf_tmp))
+    x0 = 17 / 25.4 * 72   # marge gauche 17mm en points
+    for page in pdf:
+        hits = page.search_for("Document officiel")
+        if not hits:
+            continue
+        r = hits[0]; cy = (r.y0 + r.y1) / 2; th = r.y1 - r.y0
+        mh = th * 1.02; mw = mh * (NW / NH)
+        page.insert_image(fitz.Rect(x0, cy - mh/2, x0 + mw, cy + mh/2),
+                          filename=str(FOOTMARK), keep_proportion=True)
     final = d["folder"] / f"{d['base']}.pdf"
     final.parent.mkdir(parents=True, exist_ok=True)
     archived = archive_if_needed(final)
-    shutil.move(str(pdf_tmp), str(final))
+    pdf.save(str(final)); pdf.close()
+    pdf_tmp.unlink(missing_ok=True)
     print(f"✓ {final.name}")
     print(f"   → {final}")
     if archived:
