@@ -852,7 +852,13 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 - **But** : le code est deja sauvegarde sur GitHub ; `Sources/` (gitignore, ~94 Mo : rendus, charte, GBP, QR, signatures, photos) est le SEUL element non versionne → copie miroir sur le serveur pro Synology (sauvegarde auto).
 - **Script** : `scripts/backup-sources.sh` → `rsync -a --delete` de `Sources/` vers `SynologyDrive-ZE3D/05 - SITE/01 - CLAUDE CODE/Sources/` (vrai miroir ; Synology garde ses propres versions).
 - 🛡️ **GARDE-FOU anti-effacement (06/06)** : le script **abandonne sans rien synchroniser** si `Sources/` est **absent ou vide** → supprimer/renommer/déplacer le dossier de travail (ou tout le projet) ne supprime **JAMAIS** la sauvegarde sur le serveur. Le miroir `--delete` ne s'applique qu'aux modifs normales (édition de fichiers). Testé OK le 06/06.
-- 🚫 **PAS de doublon (06/06)** : le miroir **exclut** ce qui est déjà rangé ailleurs sur le réseau pro — logos (`Charte graphique/Logo ZE3D - *` → déjà dans `00 - SOCLE/03 - CHARTE - ID VISUEL/02 - LOGOS - VISUELS`, avec le PSD master) et charte PDF (→ `01 - CHARTE GRAPHIQUE`). `rsync --delete-excluded` les retire aussi du miroir. Le miroir ne garde donc QUE les éléments sans autre maison : `Rendus/`, `GBP photos/`, `QR codes/`, `Signatures mail/` (HTML), `Photos/`, + le HTML de la charte. Backup « dispatché » assumé.
+- 🚫 **PAS de doublon — sauvegarde DISPATCHÉE (06/06)** : `backup-sources.sh` range chaque élément dans sa maison propre sur le réseau pro :
+  - **logos** → `00 - SOCLE/03 - CHARTE - ID VISUEL/02 - LOGOS - VISUELS` (+ PSD master, géré par le fondateur) — exclus du miroir.
+  - **charte PDF** → `…/01 - CHARTE GRAPHIQUE` (via build-charte-pdf.sh) — exclu du miroir.
+  - **signatures mail** (HTML/code) → `…/04 - SIGNATURES MAILS` (copie ADDITIVE).
+  - **GBP photos** → `04 - COM/01 - GOOGLE BUSINESS PRO/01 - PHOTOS` (copie ADDITIVE).
+  - **miroir** `05 - SITE/01 - CLAUDE CODE/Sources` (`--delete --delete-excluded`) ne garde QUE le reste sans autre maison : `Rendus/`, `Photos/`, `QR codes/`, + HTML de la charte (~83 Mo).
+  Les copies vers les dossiers « maison » (signatures, GBP) sont **additives** (jamais de `--delete`) pour ne pas écraser ce que le fondateur y range lui-même.
 - **Auto** : 2ᵉ commande du hook `Stop` (`.claude/settings.local.json`) — ne resynchronise que si `Sources/` a change (marqueur `scripts/.sources-backup.stamp`). Lancable a la main : `bash scripts/backup-sources.sh`.
 - Le projet **reste** dans `~/Documents/SITE WEB` (pas de deplacement — choix fondateur : dev local + GitHub + cette sauvegarde Sources).
 - NB : l'ancien dossier doublon `05 - SITE/00 - SOURCES - IMAGES/` (82 Mo de rendus) a ete **supprime par le fondateur** le 06/06 ; le miroir ci-dessus est desormais l'**unique** copie des sources sur le serveur.

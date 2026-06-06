@@ -1,40 +1,55 @@
 #!/bin/bash
 # backup-sources.sh
-# Copie miroir du dossier Sources/ du projet vers le serveur pro (Synology Drive,
-# sauvegardé automatiquement). Ne se déclenche que si Sources/ a changé depuis le
-# dernier passage. Appelé par le hook "Stop" de Claude Code (et lançable à la main).
+# Sauvegarde "dispatchée" de Sources/ vers le réseau pro (SynologyDrive-ZE3D) :
+# chaque type d'élément va dans sa maison propre ; le miroir Claude Code ne garde
+# QUE ce qui n'a aucune autre maison. Appelé par le hook "Stop" + lançable à la main.
 #
-# Source : <projet>/Sources/
-# Dest   : SynologyDrive-ZE3D/05 - SITE/01 - CLAUDE CODE/Sources/
-#
-# rsync --delete = vrai miroir (la copie reflète exactement Sources/). Synology
-# conserve de toute façon ses propres versions, donc aucune perte définitive.
+# SÉCURITÉ : chaque cible est GUARDÉE (aucune synchro si la source est absente/vide)
+# => supprimer/vider le dossier de travail n'efface JAMAIS les sauvegardes du serveur.
 
 ROOT="/Users/emmanuelzerdoun/Documents/SITE WEB"
 SRC="$ROOT/Sources"
-DEST="/Users/emmanuelzerdoun/Library/CloudStorage/SynologyDrive-ZE3D/05 - SITE/01 - CLAUDE CODE/Sources"
 STAMP="$ROOT/scripts/.sources-backup.stamp"
+SYN="/Users/emmanuelzerdoun/Library/CloudStorage/SynologyDrive-ZE3D"
 
-# ─── GARDE-FOU ANTI-EFFACEMENT ───────────────────────────────────────────────
-# Si le dossier de travail Sources/ est ABSENT ou VIDE, on n'exécute PAS le miroir.
-# => supprimer (ou renommer/déplacer) le dossier de travail ne supprime JAMAIS la
-#    sauvegarde des sources sur le serveur (rsync --delete ne s'exécute pas).
-if [ ! -d "$SRC" ] || [ -z "$(find "$SRC" -type f ! -name '.DS_Store' -print -quit 2>/dev/null)" ]; then
+MIRROR="$SYN/05 - SITE/01 - CLAUDE CODE/Sources"
+SIG_DEST="$SYN/00 - SOCLE/03 - CHARTE - ID VISUEL/04 - SIGNATURES MAILS"
+GBP_DEST="$SYN/04 - COM/01 - GOOGLE BUSINESS PRO/01 - PHOTOS"
+
+# Garde-fou global : on ne fait RIEN si Sources/ est absent ou vide.
+[ -d "$SRC" ] && [ -n "$(find "$SRC" -type f ! -name '.DS_Store' -print -quit 2>/dev/null)" ] || exit 0
+
+# Rien à faire si rien n'a changé depuis le dernier passage.
+if [ -f "$STAMP" ] && [ -z "$(find "$SRC" -type f ! -name '.DS_Store' -newer "$STAMP" -print -quit 2>/dev/null)" ]; then
   exit 0
 fi
-# ─────────────────────────────────────────────────────────────────────────────
 
-if [ ! -f "$STAMP" ] || [ -n "$(find "$SRC" -type f -newer "$STAMP" -print -quit 2>/dev/null)" ]; then
-  mkdir -p "$DEST"
-  # On EXCLUT les éléments déjà rangés ailleurs sur le réseau pro (pas de doublon) :
-  #  - logos -> 00 - SOCLE/03 - CHARTE - ID VISUEL/02 - LOGOS - VISUELS
-  #  - charte PDF -> 00 - SOCLE/03 - CHARTE - ID VISUEL/01 - CHARTE GRAPHIQUE
-  # --delete-excluded => ces éléments sont aussi retirés du miroir s'ils y traînent.
-  rsync -a --delete --delete-excluded \
-    --exclude='.DS_Store' \
-    --exclude='Charte graphique/Logo ZE3D - *' \
-    --exclude='Charte graphique/Charte graphique - ZE3D.pdf' \
-    "$SRC/" "$DEST/" >/dev/null 2>&1
-  touch "$STAMP"
-fi
+# Copie d'un sous-dossier vers sa maison propre (ADDITIF : ne supprime jamais ce que
+# le fondateur aurait ajouté manuellement dans ce dossier). Guardé : skip si source vide.
+push_dir() {
+  local s="$1" d="$2"
+  [ -d "$s" ] && [ -n "$(find "$s" -type f ! -name '.DS_Store' -print -quit 2>/dev/null)" ] || return 0
+  mkdir -p "$d"
+  rsync -a --exclude='.DS_Store' "$s/" "$d/" >/dev/null 2>&1
+}
+
+# 1) Signatures mail -> 00 - SOCLE/03 - CHARTE - ID VISUEL/04 - SIGNATURES MAILS
+push_dir "$SRC/Signatures mail" "$SIG_DEST"
+# 2) GBP photos -> 04 - COM/01 - GOOGLE BUSINESS PRO/01 - PHOTOS
+push_dir "$SRC/GBP photos" "$GBP_DEST"
+
+# 3) Le reste -> miroir Claude Code, SANS ce qui est déjà rangé ailleurs :
+#    - logos + charte PDF      (déjà dans 00 - SOCLE/03 - CHARTE - ID VISUEL)
+#    - Signatures mail, GBP photos (rangés ci-dessus)
+#    --delete-excluded retire aussi ces éléments du miroir s'ils y traînent.
+mkdir -p "$MIRROR"
+rsync -a --delete --delete-excluded \
+  --exclude='.DS_Store' \
+  --exclude='/Charte graphique/Logo ZE3D - *' \
+  --exclude='/Charte graphique/Charte graphique - ZE3D.pdf' \
+  --exclude='/Signatures mail' \
+  --exclude='/GBP photos' \
+  "$SRC/" "$MIRROR/" >/dev/null 2>&1
+
+touch "$STAMP"
 exit 0
