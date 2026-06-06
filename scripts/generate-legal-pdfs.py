@@ -162,7 +162,7 @@ for d in DOCS:
   <div class="kicker">{d['kicker']}</div>
   <div class="doc-title">{d['title']}</div>
   <div class="doc-sub"><span class="brand-ze3d">ZE3D</span> — Emmanuel Zerdoun EI</div>
-  <div class="doc-meta">Version du <b>{lastupd}</b> · Document généré le {GENDATE}</div>
+  <div class="doc-meta">Version du <b>{lastupd}</b></div>
 </div>
 {content}
 </body></html>"""

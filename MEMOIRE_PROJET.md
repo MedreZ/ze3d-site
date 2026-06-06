@@ -840,7 +840,7 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
   - **`ze3d.fr`** (URL) et e-mails = **texte normal**, jamais le style logo.
 - **Couleurs** : accent **`#3C5E7C`** (filets, titres de section, kicker) ; texte `#1A2530`/`#26323f` ; gris secondaire `#6b7682` ; gris pied `#9aa3ad` ; fonds doux `#F3F5F7`.
 - **En-tete (letterhead)** : logo **`public/logo-ln.png`** a gauche + bloc identite a droite (`ZE3D — Emmanuel Zerdoun EI`, SIRET 812 525 103 00022, TVA FR47812525103, 47 rue Vivienne 75002 Paris, ze3d.fr, contact@ze3d.fr) + filet accent dessous.
-- **Bloc titre** : kicker MAJ accent (« Document … officiel ») · titre DM Sans 700 · sous-titre `ZE3D — Emmanuel Zerdoun EI` · meta dates (« Version du … · Document genere le … » en francais).
+- **Bloc titre** : kicker MAJ accent (« Document … officiel ») · titre DM Sans 700 · sous-titre `ZE3D — Emmanuel Zerdoun EI` · meta = **« Version du [date d'effet] » UNIQUEMENT** (PAS de date de generation : figee/trompeuse sur un PDF statique ; le mois de production reste dans le nom du fichier d'archive). Date en francais.
 - **Pied de page (chaque page)** : gauche = image **ZE3D** (Nom.png) · centre = « {type} · Document officiel » · droite = « Page X / Y ». Tout en DM Sans gris `#9aa3ad`, numerotation via `@page` margin boxes.
 - **Format** : A4, marges ~18mm. Genere via **Chrome headless** (HTML → PDF) + tampon image (PyMuPDF) pour le ZE3D du pied.
 - **Nommage / archivage** : `{Type} ZE3D - AA-MM.pdf` ; ancienne version → `00 - ARCHIVES` (indice si collision).
