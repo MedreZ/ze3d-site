@@ -51,8 +51,8 @@ CSS = """
 @font-face{font-family:'Nasalization';src:url('%%FONT%%') format('opentype');font-weight:normal;font-style:normal}
 @page{
   size:A4; margin:18mm 17mm 17mm;
-  @bottom-left{content:"ZE3D · %%FOOT%%";font-size:8pt;color:#9aa3ad;}
-  @bottom-center{content:"Document officiel";font-size:8pt;color:#9aa3ad;}
+  @bottom-left{content:"ZE3D";font-family:'Nasalization',sans-serif;font-size:8.5pt;color:#9aa3ad;}
+  @bottom-center{content:"%%FOOT%% · Document officiel";font-size:8pt;color:#9aa3ad;}
   @bottom-right{content:"Page " counter(page) " / " counter(pages);font-size:8pt;color:#9aa3ad;}
 }
 *{box-sizing:border-box}
@@ -89,7 +89,7 @@ body{font-family:'DM Sans',system-ui,Arial,sans-serif;color:#1A2530;font-size:10
 .brand-ze3d{font-family:'Nasalization',sans-serif;font-weight:normal;text-transform:uppercase;letter-spacing:normal;display:inline-block;transform:scaleX(.75);transform-origin:left center;margin-right:-.71em;vertical-align:baseline}
 """
 
-ID_BLOCK = ('<b>ZE3D</b> — Emmanuel Zerdoun EI<br>'
+ID_BLOCK = ('<b><span class="brand-ze3d">ZE3D</span></b> — Emmanuel Zerdoun EI<br>'
             'SIRET 812&nbsp;525&nbsp;103&nbsp;00022 · TVA FR47812525103<br>'
             '47 rue Vivienne, 75002 Paris<br>'
             'ze3d.fr · contact@ze3d.fr')
