@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # marqueur local de génération des PDF juridiques
 scripts/.legal-pdf.stamp
+
+# marqueur local de sauvegarde du dossier Sources
+scripts/.sources-backup.stamp
