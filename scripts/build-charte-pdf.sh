@@ -25,5 +25,6 @@ URL="file://${HTML// /%20}"
 "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="$PDF_LOCAL" "$URL" >/dev/null 2>&1
 mkdir -p "$SYNO_DIR"
 cp "$PDF_LOCAL" "$SYNO_DIR/Charte graphique - ZE3D.pdf"
+cp "$HTML" "$SYNO_DIR/charte-graphique-ZE3D.html"   # source HTML rangée avec le PDF
 touch "$STAMP"
 exit 0

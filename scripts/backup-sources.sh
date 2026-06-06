@@ -15,6 +15,7 @@ SYN="/Users/emmanuelzerdoun/Library/CloudStorage/SynologyDrive-ZE3D"
 MIRROR="$SYN/05 - SITE/01 - CLAUDE CODE/Sources"
 SIG_DEST="$SYN/00 - SOCLE/03 - CHARTE - ID VISUEL/04 - SIGNATURES MAILS"
 GBP_DEST="$SYN/04 - COM/01 - GOOGLE BUSINESS PRO/01 - PHOTOS"
+QR_DEST="$SYN/00 - SOCLE/03 - CHARTE - ID VISUEL/05 - QR CODE SITE"
 
 # Garde-fou global : on ne fait RIEN si Sources/ est absent ou vide.
 [ -d "$SRC" ] && [ -n "$(find "$SRC" -type f ! -name '.DS_Store' -print -quit 2>/dev/null)" ] || exit 0
@@ -37,18 +38,21 @@ push_dir() {
 push_dir "$SRC/Signatures mail" "$SIG_DEST"
 # 2) GBP photos -> 04 - COM/01 - GOOGLE BUSINESS PRO/01 - PHOTOS
 push_dir "$SRC/GBP photos" "$GBP_DEST"
+# 3) QR codes -> 00 - SOCLE/03 - CHARTE - ID VISUEL/05 - QR CODE SITE
+push_dir "$SRC/QR codes" "$QR_DEST"
 
-# 3) Le reste -> miroir Claude Code, SANS ce qui est déjà rangé ailleurs :
-#    - logos + charte PDF      (déjà dans 00 - SOCLE/03 - CHARTE - ID VISUEL)
-#    - Signatures mail, GBP photos (rangés ci-dessus)
+# 4) Le reste -> miroir Claude Code, SANS ce qui est déjà rangé ailleurs :
+#    - Charte graphique (logos -> 02 LOGOS-VISUELS ; PDF+HTML -> 01 CHARTE GRAPHIQUE)
+#    - Signatures mail, GBP photos, QR codes (rangés ci-dessus)
 #    --delete-excluded retire aussi ces éléments du miroir s'ils y traînent.
+#    => le miroir ne garde que : Rendus/ + Photos/ (aucune autre maison).
 mkdir -p "$MIRROR"
 rsync -a --delete --delete-excluded \
   --exclude='.DS_Store' \
-  --exclude='/Charte graphique/Logo ZE3D - *' \
-  --exclude='/Charte graphique/Charte graphique - ZE3D.pdf' \
+  --exclude='/Charte graphique' \
   --exclude='/Signatures mail' \
   --exclude='/GBP photos' \
+  --exclude='/QR codes' \
   "$SRC/" "$MIRROR/" >/dev/null 2>&1
 
 touch "$STAMP"
