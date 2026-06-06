@@ -825,6 +825,7 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 - Le script ne regenere QUE le document dont la source a change (mtime source > mtime PDF), et **archive automatiquement** la version precedente dans `00 - ARCHIVES` (indice ` (n)` si collision). `--force` pour tout regenerer.
 - Regeneration manuelle : `python3 scripts/generate-legal-pdfs.py`.
 - Note : le hook se declenche dans une session Claude Code ; si la source est editee hors session, la regeneration aura lieu au tour suivant (auto-rattrapage).
+- **CGV telechargeable sur le site (06/06)** : bouton « Telecharger les CGV (PDF) » sur `/cgv` → `/cgv-ze3d.pdf`. Le script publie une copie a NOM STABLE dans `public/cgv-ze3d.pdf` (rafraichie a chaque regen CGV). ⚠️ La version EN LIGNE ne se met a jour qu'au prochain **deploiement** (commit + merge main). Les **mentions legales** restent en HTML seul (pas de PDF telechargeable — choix fondateur, suffisant legalement).
 
 ---
 

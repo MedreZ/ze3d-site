@@ -58,7 +58,8 @@ DOCS = [
     dict(astro=ROOT/"src/pages/cgv.astro",
          kicker="Document juridique officiel", title="Conditions Générales de Vente",
          foot="CGV",
-         folder=SYN/"02 - CGV", base=f"CGV ZE3D - {YYMM}"),
+         folder=SYN/"02 - CGV", base=f"CGV ZE3D - {YYMM}",
+         public_copy=ROOT/"public/cgv-ze3d.pdf"),
 ]
 
 CSS = """
@@ -188,8 +189,13 @@ for d in DOCS:
     moved = archive_all(folder)
     pdf.save(str(final)); pdf.close()
     pdf_tmp.unlink(missing_ok=True)
+    if d.get("public_copy"):
+        d["public_copy"].parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(str(final), str(d["public_copy"]))
     print(f"✓ {final.name}")
     print(f"   → {final}")
+    if d.get("public_copy"):
+        print(f"   ⇩ copie site : public/{d['public_copy'].name}")
     for m in moved:
         print(f"   ↪ archivé : {m}")
 print("Terminé.")
