@@ -853,4 +853,5 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 - **Script** : `scripts/backup-sources.sh` → `rsync -a --delete` de `Sources/` vers `SynologyDrive-ZE3D/05 - SITE/01 - CLAUDE CODE/Sources/` (vrai miroir ; Synology garde ses propres versions).
 - **Auto** : 2ᵉ commande du hook `Stop` (`.claude/settings.local.json`) — ne resynchronise que si `Sources/` a change (marqueur `scripts/.sources-backup.stamp`). Lancable a la main : `bash scripts/backup-sources.sh`.
 - Le projet **reste** dans `~/Documents/SITE WEB` (pas de deplacement — choix fondateur : dev local + GitHub + cette sauvegarde Sources).
-- NB : la bibliotheque de rendus existait deja dans `05 - SITE/00 - SOURCES - IMAGES/` (82 Mo, gere a la main) ; le miroir ci-dessus est complet et autonome (ne touche pas a ce dossier).
+- NB : l'ancien dossier doublon `05 - SITE/00 - SOURCES - IMAGES/` (82 Mo de rendus) a ete **supprime par le fondateur** le 06/06 ; le miroir ci-dessus est desormais l'**unique** copie des sources sur le serveur.
+- Option launchd (sauvegarde quotidienne planifiee par macOS) **ecartee** : bloquee par la protection de confidentialite macOS (TCC) sur Documents/CloudStorage (« Operation not permitted ») sauf a accorder l'Acces complet au disque a /bin/bash. Choix fondateur = rester sur le hook Claude (qui herite des autorisations de Claude Code).
