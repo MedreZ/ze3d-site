@@ -805,3 +805,15 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 ### 🔵 RAPPELS MANUELS pour le fondateur (apres deploiement)
 1. **Reuploader le nouveau logo** sur la fiche Google Business (l'ancien `logo-gbp.jpg` a ete supprime ; repartir de `Sources/Charte graphique/`).
 2. **Recoller les 2 signatures** dans Ionos (nouvelle image `sig-ze3d-886c4914.jpg`) — uniquement APRES deploiement prod (sinon l'image n'existe pas encore en ligne).
+
+---
+
+## 21. PDF JURIDIQUES OFFICIELS — mentions légales + CGV (06/06/2026)
+
+- **Script** : `scripts/generate-legal-pdfs.py`. Genere les PDF officiels des **Mentions legales** et **CGV** depuis le texte EXACT des `.astro` (`src/pages/mentions-legales.astro`, `src/pages/cgv.astro`), mis en page sur l'identite du site (DM Sans, logo LN, `.brand-ze3d` Nasalization, accent #3C5E7C) : en-tete logo + identite societe, dates (Version du / Document genere le), pied de page + **numerotation** sur chaque page (via `@page` margin boxes, rendu par Chrome headless).
+- **Sortie (Synology)** sous `…/00 - SOCLE/02 - JURIDIQUE/` :
+  - `03 - MENTIONS LEGALES/Mentions légales ZE3D - AA-MM.pdf`
+  - `02 - CGV/CGV ZE3D - AA-MM.pdf`  *(AA=annee 2 chiffres, MM=mois ; ex. `26-06`)*
+- **Archivage automatique** : a chaque regeneration, l'ancien fichier du dossier principal est deplace dans `00 - ARCHIVES/` (avec un indice ` (n)` si collision de nom — ex. plusieurs versions le meme mois). Le dossier principal contient TOUJOURS la derniere version.
+- 🔴 **REGLE** : a CHAQUE modif de `mentions-legales.astro` et/ou `cgv.astro`, relancer **`python3 scripts/generate-legal-pdfs.py`** → regenere le PDF + archive l'ancienne version automatiquement.
+- Dependance : PyMuPDF (`fitz`) installe pour verifier les rendus. Verifie le 06/06/2026 : Mentions 4 p., CGV 18 p., mise en page officielle OK.
