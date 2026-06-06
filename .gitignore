@@ -28,3 +28,6 @@ scripts/.legal-pdf.stamp
 
 # marqueur local de sauvegarde du dossier Sources
 scripts/.sources-backup.stamp
+
+# marqueur local de génération du PDF charte
+scripts/.charte-pdf.stamp

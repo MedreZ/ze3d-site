@@ -856,3 +856,11 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 - Le projet **reste** dans `~/Documents/SITE WEB` (pas de deplacement — choix fondateur : dev local + GitHub + cette sauvegarde Sources).
 - NB : l'ancien dossier doublon `05 - SITE/00 - SOURCES - IMAGES/` (82 Mo de rendus) a ete **supprime par le fondateur** le 06/06 ; le miroir ci-dessus est desormais l'**unique** copie des sources sur le serveur.
 - Option launchd (sauvegarde quotidienne planifiee par macOS) **ecartee** : bloquee par la protection de confidentialite macOS (TCC) sur Documents/CloudStorage (« Operation not permitted ») sauf a accorder l'Acces complet au disque a /bin/bash. Choix fondateur = rester sur le hook Claude (qui herite des autorisations de Claude Code).
+
+---
+
+## 24. PDF CHARTE GRAPHIQUE sur le serveur + ARBORESCENCE SYNOLOGY (06/06/2026)
+
+- **PDF charte graphique** depose dans `SynologyDrive-ZE3D/00 - SOCLE/03 - CHARTE - ID VISUEL/01 - CHARTE GRAPHIQUE/Charte graphique - ZE3D.pdf` (en plus de la copie locale `Sources/Charte graphique/`).
+- **Auto** : `scripts/build-charte-pdf.sh` (3ᵉ commande du hook `Stop`) regenere le PDF depuis `charte-graphique-ZE3D.html` (Chrome) + le copie dans le dossier SOCLE, **si** un fichier source de la charte (HTML/image) a change. Marqueur `scripts/.charte-pdf.stamp`. Lancable a la main : `bash scripts/build-charte-pdf.sh`.
+- 🔴 **REGLE GLOBALE — arborescence serveur pro** : comprendre la structure de `SynologyDrive - ZE3D` et **proposer de moi-meme les bons emplacements** ; **RESCANNER** l'arborescence avant chaque proposition (elle evolue). Carte + logique + commande de scan dans la **memoire globale** : `~/.claude/projects/-Users-emmanuelzerdoun-Documents-SITE-WEB/memory/synology-arborescence.md`. Structure : `00-SOCLE` (structurant : admin/juridique/charte/process), `01-PROJETS`, `02-ADMIN` (devis/factures), `03-BIBLIOTHEQUES` (modeles), `04-COM`, `05-SITE`.
