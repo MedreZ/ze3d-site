@@ -781,7 +781,7 @@ reformulation legale, PAS GA4 standard (qui imposerait un bandeau de consentemen
 **`scripts/rebuild-brand-assets.py`** (Python/PIL) regenere TOUT depuis Charte graphique, a dimensions calees (rendu identique) :
 - `public/logo-ln.png` (header, depuis LN) · `public/logo-fond-fonce.png` (footer, depuis Logotype FF) · `public/chargement-logo.png` (splash : logotype centre 1500x1500 + **halo blanc doux** flou=100 / opacite plafond=128 ≈ 50%).
 - Favicons (favicon.ico 16/32/48, favicon-16/32.png, apple-touch-icon 180, icon-512) depuis Favicon.png.
-- `public/og-ze3d-card.jpg` (1200x1200, LNP centre sur blanc).
+- `public/og-ze3d-card.jpg` (1200x1200) = vignette og:image Accueil/À-propos/Contact. **MAJ 06/06** : désormais le **Logotype à taille réelle (544x1040) centré sur blanc** (au lieu du LNP). Copie réseau pro : `00 - SOCLE/03 - CHARTE - ID VISUEL/02 - LOGOS - VISUELS/Logo ZE3D - Card 1200x1200.png`. Régénéré par `rebuild-brand-assets.py`.
 - **Relancer ce script apres toute modif des sources Charte graphique.**
 
 ### Modifs site (sur develop, NON encore deployees au 05/06)

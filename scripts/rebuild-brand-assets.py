@@ -87,14 +87,20 @@ fav.resize((16, 16), Image.LANCZOS).save(PUB / "favicon-16.png")
 fav.save(PUB / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
 print("✓ favicons            icon-512 / apple-touch-icon / favicon-32 / favicon-16 / favicon.ico")
 
-# ── 5. CARTE OG sociale : og-ze3d-card.jpg (LNP centré sur blanc) ──
+# ── 5. CARTE OG sociale : Logotype à TAILLE RÉELLE centré sur blanc 1200x1200 ──
+#     Sert de vignette (og:image) pour Accueil / À-propos / Contact.
 C = 1200
-lnp = crop_content(load("Logo ZE3D - LNP.png"))
-lnp = fit(lnp, max_w=int(C * 0.82), max_h=int(C * 0.72))
-card = Image.new("RGB", (C, C), (255, 255, 255))
-card.paste(lnp, ((C - lnp.width) // 2, (C - lnp.height) // 2), lnp)
-card.save(PUB / "og-ze3d-card.jpg", quality=92)
-print(f"✓ og-ze3d-card.jpg     {C}x{C}  (LNP {lnp.width}x{lnp.height} centré sur blanc)")
+logo = load("Logo ZE3D - Logotype.png")          # 544x1040, taille réelle (PAS de resize)
+card = Image.new("RGBA", (C, C), (255, 255, 255, 255))
+card.alpha_composite(logo, ((C - logo.width) // 2, (C - logo.height) // 2))
+card.convert("RGB").save(PUB / "og-ze3d-card.jpg", quality=92)
+print(f"✓ og-ze3d-card.jpg     {C}x{C}  (Logotype {logo.size} taille réelle sur blanc)")
+# Copie réseau pro réutilisable (si le dossier existe)
+SYNO_LOGOS = Path("/Users/emmanuelzerdoun/Library/CloudStorage/SynologyDrive-ZE3D"
+                  "/00 - SOCLE/03 - CHARTE - ID VISUEL/02 - LOGOS - VISUELS")
+if SYNO_LOGOS.is_dir():
+    card.save(SYNO_LOGOS / "Logo ZE3D - Card 1200x1200.png")
+    print(f"✓ Logo ZE3D - Card 1200x1200.png -> 02 - LOGOS - VISUELS")
 
 print("=" * 60)
 print("Terminé.")
