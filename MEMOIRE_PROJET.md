@@ -851,6 +851,7 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 
 - **But** : le code est deja sauvegarde sur GitHub ; `Sources/` (gitignore, ~94 Mo : rendus, charte, GBP, QR, signatures, photos) est le SEUL element non versionne → copie miroir sur le serveur pro Synology (sauvegarde auto).
 - **Script** : `scripts/backup-sources.sh` → `rsync -a --delete` de `Sources/` vers `SynologyDrive-ZE3D/05 - SITE/01 - CLAUDE CODE/Sources/` (vrai miroir ; Synology garde ses propres versions).
+- 🛡️ **GARDE-FOU anti-effacement (06/06)** : le script **abandonne sans rien synchroniser** si `Sources/` est **absent ou vide** → supprimer/renommer/déplacer le dossier de travail (ou tout le projet) ne supprime **JAMAIS** la sauvegarde sur le serveur. Le miroir `--delete` ne s'applique qu'aux modifs normales (édition de fichiers). Testé OK le 06/06.
 - **Auto** : 2ᵉ commande du hook `Stop` (`.claude/settings.local.json`) — ne resynchronise que si `Sources/` a change (marqueur `scripts/.sources-backup.stamp`). Lancable a la main : `bash scripts/backup-sources.sh`.
 - Le projet **reste** dans `~/Documents/SITE WEB` (pas de deplacement — choix fondateur : dev local + GitHub + cette sauvegarde Sources).
 - NB : l'ancien dossier doublon `05 - SITE/00 - SOURCES - IMAGES/` (82 Mo de rendus) a ete **supprime par le fondateur** le 06/06 ; le miroir ci-dessus est desormais l'**unique** copie des sources sur le serveur.

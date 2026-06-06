@@ -15,6 +15,15 @@ SRC="$ROOT/Sources"
 DEST="/Users/emmanuelzerdoun/Library/CloudStorage/SynologyDrive-ZE3D/05 - SITE/01 - CLAUDE CODE/Sources"
 STAMP="$ROOT/scripts/.sources-backup.stamp"
 
+# ─── GARDE-FOU ANTI-EFFACEMENT ───────────────────────────────────────────────
+# Si le dossier de travail Sources/ est ABSENT ou VIDE, on n'exécute PAS le miroir.
+# => supprimer (ou renommer/déplacer) le dossier de travail ne supprime JAMAIS la
+#    sauvegarde des sources sur le serveur (rsync --delete ne s'exécute pas).
+if [ ! -d "$SRC" ] || [ -z "$(find "$SRC" -type f ! -name '.DS_Store' -print -quit 2>/dev/null)" ]; then
+  exit 0
+fi
+# ─────────────────────────────────────────────────────────────────────────────
+
 if [ ! -f "$STAMP" ] || [ -n "$(find "$SRC" -type f -newer "$STAMP" -print -quit 2>/dev/null)" ]; then
   mkdir -p "$DEST"
   rsync -a --delete --exclude='.DS_Store' "$SRC/" "$DEST/" >/dev/null 2>&1
