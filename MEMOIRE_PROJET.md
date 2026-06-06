@@ -844,3 +844,13 @@ Supprime : `Sources/Logo/` (entier), anciennes sources racine (`ZE3D logo - pour
 - **Pied de page (chaque page)** : gauche = image **ZE3D** (Nom.png) · centre = « {type} · Document officiel » · droite = « Page X / Y ». Tout en DM Sans gris `#9aa3ad`, numerotation via `@page` margin boxes.
 - **Format** : A4, marges ~18mm. Genere via **Chrome headless** (HTML → PDF) + tampon image (PyMuPDF) pour le ZE3D du pied.
 - **Nommage / archivage** : `{Type} ZE3D - AA-MM.pdf` ; ancienne version → `00 - ARCHIVES` (indice si collision).
+
+---
+
+## 23. SAUVEGARDE AUTO DE `Sources/` (06/06/2026)
+
+- **But** : le code est deja sauvegarde sur GitHub ; `Sources/` (gitignore, ~94 Mo : rendus, charte, GBP, QR, signatures, photos) est le SEUL element non versionne → copie miroir sur le serveur pro Synology (sauvegarde auto).
+- **Script** : `scripts/backup-sources.sh` → `rsync -a --delete` de `Sources/` vers `SynologyDrive-ZE3D/05 - SITE/01 - CLAUDE CODE/Sources/` (vrai miroir ; Synology garde ses propres versions).
+- **Auto** : 2ᵉ commande du hook `Stop` (`.claude/settings.local.json`) — ne resynchronise que si `Sources/` a change (marqueur `scripts/.sources-backup.stamp`). Lancable a la main : `bash scripts/backup-sources.sh`.
+- Le projet **reste** dans `~/Documents/SITE WEB` (pas de deplacement — choix fondateur : dev local + GitHub + cette sauvegarde Sources).
+- NB : la bibliotheque de rendus existait deja dans `05 - SITE/00 - SOURCES - IMAGES/` (82 Mo, gere a la main) ; le miroir ci-dessus est complet et autonome (ne touche pas a ce dossier).
