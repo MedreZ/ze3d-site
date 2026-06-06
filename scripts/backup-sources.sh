@@ -26,7 +26,15 @@ fi
 
 if [ ! -f "$STAMP" ] || [ -n "$(find "$SRC" -type f -newer "$STAMP" -print -quit 2>/dev/null)" ]; then
   mkdir -p "$DEST"
-  rsync -a --delete --exclude='.DS_Store' "$SRC/" "$DEST/" >/dev/null 2>&1
+  # On EXCLUT les éléments déjà rangés ailleurs sur le réseau pro (pas de doublon) :
+  #  - logos -> 00 - SOCLE/03 - CHARTE - ID VISUEL/02 - LOGOS - VISUELS
+  #  - charte PDF -> 00 - SOCLE/03 - CHARTE - ID VISUEL/01 - CHARTE GRAPHIQUE
+  # --delete-excluded => ces éléments sont aussi retirés du miroir s'ils y traînent.
+  rsync -a --delete --delete-excluded \
+    --exclude='.DS_Store' \
+    --exclude='Charte graphique/Logo ZE3D - *' \
+    --exclude='Charte graphique/Charte graphique - ZE3D.pdf' \
+    "$SRC/" "$DEST/" >/dev/null 2>&1
   touch "$STAMP"
 fi
 exit 0
