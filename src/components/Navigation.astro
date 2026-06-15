@@ -10,10 +10,10 @@ const currentPath = Astro.url.pathname;
 /* Définition des liens de navigation */
 const navLinks = [
   { label: 'Accueil',      href: '/'            },
-  { label: 'Prestations',  href: '/prestations'  },
-  { label: 'Réalisations', href: '/realisations' },
-  { label: 'À propos',     href: '/a-propos'     },
-  { label: 'Contact',      href: '/contact'      },
+  { label: 'Prestations',  href: '/prestations/'  },
+  { label: 'Réalisations', href: '/realisations/' },
+  { label: 'À propos',     href: '/a-propos/'     },
+  { label: 'Contact',      href: '/contact/'      },
 ];
 ---
 
@@ -51,7 +51,7 @@ const navLinks = [
     </ul>
 
     <!-- CTA desktop -->
-    <a href="/contact" class="nav-cta btn-primary">
+    <a href="/contact/" class="nav-cta btn-primary">
       Devis gratuit
     </a>
 
@@ -90,7 +90,7 @@ const navLinks = [
       })}
       <!-- CTA mobile -->
       <li>
-        <a href="/contact" class="btn-primary nav-mobile-cta">
+        <a href="/contact/" class="btn-primary nav-mobile-cta">
           Devis gratuit
         </a>
       </li>
