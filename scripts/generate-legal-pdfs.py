@@ -104,7 +104,7 @@ body{font-family:'DM Sans',system-ui,Arial,sans-serif;color:#1A2530;font-size:10
 .brand-ze3d{font-family:'Nasalization',sans-serif;font-weight:normal;text-transform:uppercase;letter-spacing:normal;display:inline-block;transform:scaleX(.75);transform-origin:left center;margin-right:-.71em;vertical-align:baseline}
 """
 
-ID_BLOCK = ('<b><span class="brand-ze3d">ZE3D</span></b> — Emmanuel Zerdoun EI<br>'
+ID_BLOCK = ('<b><span class="brand-ze3d">ZE3D</span></b> - Emmanuel Zerdoun EI<br>'
             'SIRET 812&nbsp;525&nbsp;103&nbsp;00022 · TVA FR47812525103<br>'
             '47 rue Vivienne, 75002 Paris<br>'
             'ze3d.fr · contact@ze3d.fr')
@@ -161,7 +161,7 @@ for d in DOCS:
 <div class="titleblock">
   <div class="kicker">{d['kicker']}</div>
   <div class="doc-title">{d['title']}</div>
-  <div class="doc-sub"><span class="brand-ze3d">ZE3D</span> — Emmanuel Zerdoun EI</div>
+  <div class="doc-sub"><span class="brand-ze3d">ZE3D</span> - Emmanuel Zerdoun EI</div>
   <div class="doc-meta">Version du <b>{lastupd}</b></div>
 </div>
 {content}
