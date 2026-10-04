@@ -20,7 +20,7 @@ from pathlib import Path
 from PIL import Image
 import fitz  # PyMuPDF
 
-ROOT   = Path("/Users/emmanuelzerdoun/Documents/SITE WEB")
+ROOT   = Path("/Users/emmanuelzerdoun/Dossier Claude/ZE3D.fr")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 FONT   = ROOT / "public/fonts/Nasalization.otf"
 LOGO   = ROOT / "public/logo-ln.png"

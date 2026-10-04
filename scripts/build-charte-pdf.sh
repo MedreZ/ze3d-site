@@ -6,7 +6,7 @@
 # Ne se régénère que si un fichier source de la charte (HTML ou image) a changé.
 # Appelé par le hook "Stop" de Claude Code, et lançable à la main.
 
-ROOT="/Users/emmanuelzerdoun/Documents/SITE WEB"
+ROOT="/Users/emmanuelzerdoun/Dossier Claude/ZE3D.fr"
 DIR="$ROOT/Sources/Charte graphique"
 HTML="$DIR/charte-graphique-ZE3D.html"
 PDF_LOCAL="$DIR/Charte graphique - ZE3D.pdf"

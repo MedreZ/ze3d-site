@@ -7,7 +7,7 @@
 # SÉCURITÉ : chaque cible est GUARDÉE (aucune synchro si la source est absente/vide)
 # => supprimer/vider le dossier de travail n'efface JAMAIS les sauvegardes du serveur.
 
-ROOT="/Users/emmanuelzerdoun/Documents/SITE WEB"
+ROOT="/Users/emmanuelzerdoun/Dossier Claude/ZE3D.fr"
 SRC="$ROOT/Sources"
 STAMP="$ROOT/scripts/.sources-backup.stamp"
 SYN="/Users/emmanuelzerdoun/Library/CloudStorage/SynologyDrive-ZE3D"

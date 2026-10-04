@@ -6,7 +6,7 @@
 # Le script Python ne régénère que le document réellement modifié et archive
 # automatiquement l'ancienne version (cf. scripts/generate-legal-pdfs.py).
 
-ROOT="/Users/emmanuelzerdoun/Documents/SITE WEB"
+ROOT="/Users/emmanuelzerdoun/Dossier Claude/ZE3D.fr"
 STAMP="$ROOT/scripts/.legal-pdf.stamp"
 ML="$ROOT/src/pages/mentions-legales.astro"
 CGV="$ROOT/src/pages/cgv.astro"
