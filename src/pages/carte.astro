@@ -1,6 +1,6 @@
 ---
 /**
- * carte.astro — Carte de visite numérique d'Emmanuel Zerdoun
+ * carte.astro - Carte de visite numérique d'Emmanuel Zerdoun
  * Atteinte par QR code (ze3d.fr/carte). Hors menu, mais indexée.
  * But unique : enregistrer le contact en un geste (vCard) + rappeler les coordonnées.
  * jobTitle volontairement SANS le titre « Architecte » (formation sans diplôme).
@@ -36,7 +36,7 @@ const schemas = [
     '@type': 'ProfilePage',
     '@id': 'https://ze3d.fr/carte/#profilepage',
     url: 'https://ze3d.fr/carte/',
-    name: 'Emmanuel Zerdoun — ZE3D',
+    name: 'Emmanuel Zerdoun - ZE3D',
     isPartOf: { '@id': 'https://ze3d.fr/#website' },
     mainEntity: { '@id': 'https://ze3d.fr/carte/#person' },
   },
@@ -44,8 +44,8 @@ const schemas = [
 ---
 
 <Layout
-  title="Emmanuel Zerdoun — ZE3D | Carte de visite"
-  description="Emmanuel Zerdoun, fondateur de ZE3D à Perpignan — Scan-to-BIM, modélisation 3D et BIM, rendu architectural. Enregistrez ses coordonnées en un geste."
+  title="Emmanuel Zerdoun - ZE3D | Carte de visite"
+  description="Emmanuel Zerdoun, fondateur de ZE3D à Perpignan - Scan-to-BIM, modélisation 3D et BIM, rendu architectural. Enregistrez ses coordonnées en un geste."
   image="/og-ze3d-card.jpg"
   schemas={schemas}
   bare
