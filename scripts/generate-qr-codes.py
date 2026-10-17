@@ -29,6 +29,7 @@ URLS = {
     "ze3d-realisations":     "https://ze3d.fr/realisations",
     "ze3d-mentions-legales": "https://ze3d.fr/mentions-legales",
     "ze3d-cgv":              "https://ze3d.fr/cgv",
+    "ze3d-carte":            "https://ze3d.fr/carte",
 }
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

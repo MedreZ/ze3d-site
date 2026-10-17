@@ -1,0 +1,189 @@
+---
+/**
+ * carte.astro — Carte de visite numérique d'Emmanuel Zerdoun
+ * Atteinte par QR code (ze3d.fr/carte). Hors menu, mais indexée.
+ * But unique : enregistrer le contact en un geste (vCard) + rappeler les coordonnées.
+ * jobTitle volontairement SANS le titre « Architecte » (formation sans diplôme).
+ */
+import Layout from '../layouts/Layout.astro';
+
+/* E-mail : affiché en clair pour l'humain, encodé en entités HTML dans la source
+   pour gêner les robots aspirateurs d'adresses (protection légère, sans effet SEO). */
+const email = 'emmanuel.zerdoun@ze3d.fr';
+const emailEnc = [...email].map((c) => `&#${c.charCodeAt(0)};`).join('');
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://ze3d.fr/carte/#person',
+    name: 'Emmanuel Zerdoun',
+    jobTitle: 'Expert BIM et modélisateur 3D',
+    image: 'https://ze3d.fr/photo-emmanuel.JPG',
+    worksFor: { '@id': 'https://ze3d.fr/#organization' },
+    telephone: '+33673042128',
+    email: 'emmanuel.zerdoun@ze3d.fr',
+    url: 'https://ze3d.fr',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Perpignan',
+      addressRegion: 'Occitanie',
+      addressCountry: 'FR',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': 'https://ze3d.fr/carte/#profilepage',
+    url: 'https://ze3d.fr/carte/',
+    name: 'Emmanuel Zerdoun — ZE3D',
+    isPartOf: { '@id': 'https://ze3d.fr/#website' },
+    mainEntity: { '@id': 'https://ze3d.fr/carte/#person' },
+  },
+];
+---
+
+<Layout
+  title="Emmanuel Zerdoun — ZE3D | Carte de visite"
+  description="Emmanuel Zerdoun, fondateur de ZE3D à Perpignan — Scan-to-BIM, modélisation 3D et BIM, rendu architectural. Enregistrez ses coordonnées en un geste."
+  image="/og-ze3d-card.jpg"
+  schemas={schemas}
+  bare
+>
+  <main class="carte">
+    <section class="carte-card">
+      <div class="carte-photo">
+        <picture>
+          <source srcset="/photo-emmanuel.webp" type="image/webp" />
+          <img
+            src="/photo-emmanuel.JPG"
+            alt="Emmanuel Zerdoun, fondateur de ZE3D"
+            width="160"
+            height="160"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+      </div>
+
+      <h1 class="carte-nom">Emmanuel Zerdoun</h1>
+      <div class="carte-brand">
+        <img src="/logo-ln.png" alt="ZE3D" />
+      </div>
+      <p class="carte-tagline">
+        <span>Scan-to-BIM · Modélisation 3D &amp; BIM</span>
+        <span>Rendus architecturaux</span>
+      </p>
+
+      <a class="btn-primary carte-cta" href="/emmanuel-zerdoun.vcf" download>
+        Ajouter à mes contacts
+      </a>
+
+      <ul class="carte-coords">
+        <li><span class="lbl">Tél</span><a href="tel:+33673042128">06&nbsp;73&nbsp;04&nbsp;21&nbsp;28</a></li>
+        <li><span class="lbl">E-mail</span><a href={`mailto:${email}`} set:html={emailEnc}></a></li>
+        <li><span class="lbl">Site</span><a href="https://ze3d.fr">ze3d.fr</a></li>
+        <li><span class="lbl">Zone</span><span>Perpignan · Occitanie · France</span></li>
+      </ul>
+
+      <a class="carte-devis" href="/contact/">Un projet ? Demander un devis →</a>
+    </section>
+  </main>
+
+  <style>
+    .carte {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px var(--space-6);
+      background: var(--color-bg, #fff);
+    }
+    .carte-card {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--color-line, #e4e8ec);
+      border-radius: 16px;
+      padding: 40px 32px 32px;
+      box-shadow: 0 10px 40px rgba(26, 37, 48, 0.06);
+    }
+    .carte-photo {
+      display: flex;
+      justify-content: center;
+    }
+    .carte-photo img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 12px rgba(26, 37, 48, 0.12);
+    }
+    .carte-nom {
+      margin: 16px 0 6px;
+      font-size: 1.9rem;
+      color: var(--color-text, #1a2530);
+    }
+    .carte-brand {
+      display: flex;
+      justify-content: center;
+      margin: 2px 0 0;
+    }
+    .carte-brand img {
+      height: 40px;
+      width: auto;
+    }
+    .carte-tagline {
+      margin: 10px 0 24px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--color-accent, #3c5e7c);
+    }
+    .carte-tagline span { display: block; }
+    .carte-cta {
+      width: 100%;
+      justify-content: center;
+      height: 54px;
+      font-size: 1rem;
+    }
+    .carte-coords {
+      list-style: none;
+      margin: 22px 0 0;
+      padding: 20px 0 0;
+      border-top: 1px solid var(--color-line, #e4e8ec);
+      text-align: left;
+    }
+    .carte-coords li {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 6px 0;
+      font-size: 1rem;
+    }
+    .carte-coords .lbl {
+      flex: 0 0 64px;
+      color: var(--color-accent, #3c5e7c);
+      font-weight: 500;
+    }
+    .carte-coords a,
+    .carte-coords span:not(.lbl) {
+      color: var(--color-text, #1a2530);
+      text-decoration: none;
+    }
+    .carte-coords a:hover { text-decoration: underline; }
+    .carte-devis {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 0.95rem;
+      color: var(--color-accent, #3c5e7c);
+      text-decoration: none;
+    }
+    .carte-devis:hover { text-decoration: underline; }
+    @media (max-width: 480px) {
+      .carte-card { padding: 32px 22px 26px; }
+      .carte-nom { font-size: 1.6rem; }
+    }
+  </style>
+</Layout>

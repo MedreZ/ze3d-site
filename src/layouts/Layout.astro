@@ -19,6 +19,7 @@ interface Props {
   image?:       string;
   noindex?:     boolean;   // true → page exclue de l'indexation (CGV, mentions, 404)
   schemas?:     object[];  // données structurées JSON-LD propres à la page
+  bare?:        boolean;   // true → sans en-tête ni pied de page (page autonome, ex. carte de visite)
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   image       = '/og-default.jpg',
   noindex     = false,
   schemas     = [],
+  bare        = false,
 } = Astro.props;
 
 /* URL canonique */
@@ -155,16 +157,16 @@ const jsonLdBlocks = noindex ? [] : [orgLd, websiteLd, ...schemas];
   </head>
 
   <body>
-    <!-- Navigation fixe — toujours visible -->
-    <Navigation />
+    <!-- Navigation fixe — masquée en mode bare (page autonome) -->
+    {!bare && <Navigation />}
 
-    <!-- Décalage pour compenser la nav fixe -->
-    <div class="layout-content">
+    <!-- Décalage pour compenser la nav fixe (inutile en mode bare) -->
+    <div class={bare ? '' : 'layout-content'}>
       <slot />
     </div>
 
-    <!-- Footer sombre -->
-    <Footer />
+    <!-- Footer sombre — masqué en mode bare -->
+    {!bare && <Footer />}
   </body>
 </html>
 
