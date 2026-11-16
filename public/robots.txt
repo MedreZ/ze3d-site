@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /sig-ze3d-
+Disallow: /emmanuel-zerdoun.vcf
 
 Sitemap: https://ze3d.fr/sitemap-index.xml

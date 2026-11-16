@@ -15,7 +15,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/cgv') &&
         !page.includes('/mentions-legales') &&
-        !page.includes('/404'),
+        !page.includes('/404') &&
+        !page.includes('/carte'),
     }),
   ],
 });
